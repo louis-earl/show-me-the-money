@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {connect} from 'react-redux'
 
 const Meeting = () => {
-  const [ runningTime, setRunningTime ] = useState(5652) // time in seconds
+  const [ runningTime, setRunningTime ] = useState(5652) // time in seconds !!!!! reset init state to zero for deployment
   const [ startStop, setStartStop ] = useState(false) // use Start and Stop as values
   
   const timer = () => {
@@ -10,6 +10,7 @@ const Meeting = () => {
   }
 
   const startStopFuc = (e) => {
+    {(startStop == false) && console.log("This will start timer")}
     {(startStop == true) && console.log("This will send meeting data to db")}
     setStartStop(!startStop)
   }
