@@ -7,7 +7,7 @@ const DisplayUsers = (props) => {
     const [usersInMeeting, setUsersInMeeting] = useState([])
 
     const handleClick = (e, username) => {
-        const styleClass = "userList-buttonin-meeting"
+        const styleClass = "userList-button-in-meeting"
         let arr = usersInMeeting
         if(e.target.className == styleClass) { e.target.className = "userList-button" }
         else { e.target.className = styleClass }
