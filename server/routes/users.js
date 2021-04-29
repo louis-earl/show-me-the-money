@@ -1,25 +1,24 @@
 const express = require('express')
 const { getTokenDecoder } = require('authenticare/server')
-
 const db = require('../db/users')
 
 const router = express.Router()
 
 router.get('/', getTokenDecoder(), async (req, res) => {
-   try { 
-     const users =  await db.getAllUsers()
-       res.json({users})
-   } catch (err) {
+  db.getAllUsers()
+    .then(users => {
+      res.json(users)
+        .catch(err => {
+          return "the error is: ", err.message
+        })
+    })
 
-    if (err.message === 'Unauthorized') {
-        return res.status(403).send(
-          'Unauthorized: Unregistered user'
-        )
-      }
-      res.status(500).send(err.message)
-    }
-  })
-    
+})
+
+router.patch('/', async (req, res) => {
+
+})
+
 
 
 module.exports = router
