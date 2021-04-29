@@ -3,17 +3,52 @@ import {connect} from 'react-redux'
 import Ticker from './Ticker'
 
 import { saveMeeting } from '../apis/meetings'
+import {startMeeting, endMeeting} from '../actions/currentMeeting'
 
-const Meeting = () => {
+const Meeting = (props) => {
+
+
+
+
+    const attendees = [
+      {
+        id: 1,
+        hourlyWage: 24.00
+      },
+      {
+        id: 2,
+        hourlyWage: 24.00,
+  
+      },
+      {
+        id: 2,
+        hourlyWage: 24.00,
+        
+      }
+    ]
+
+    const meetingName = 'Discuss rollout of new firmware'
+    const meetingInProgress = props.currentMeeting.meetingInProgress
+    console.log(meetingInProgress)
+
+
   const [ runningTime, setRunningTime ] = useState(5652) // time in seconds !!!!! reset init state to zero for deployment
-  const [ startStop, setStartStop ] = useState(false) // use Start and Stop as values
+
   
 
-  const startStopFuc = (e) => {
-    setStartStop(!startStop)
+  const handleClick = () => {
+    
+    if (!meetingInProgress) {
+    props.dispatch(startMeeting(attendees, meetingName))
+    
     // {(startStop == false) && timer(true)}  dispatch start Meeting, send user object
     // {(startStop == true) && timer(false)}  dispatch stop Meeting, call thunk that dispatches meeting to db
-    setStartStop(!startStop)
+    }
+    else {
+      props.dispatch(endMeeting())
+    }
+
+
   }
 
   // TEST BUTTON FUNCTION
@@ -34,11 +69,11 @@ const Meeting = () => {
     </ul>
     <div>
       {/* <div className="timer">{displayTime()} </div> */}
-      {startStop && <Ticker /> }
+      {meetingInProgress && <Ticker /> }
       <div className="running cost">{/*  DISPLAY: running cost */}</div>
     </div>
     <div>
-      <button onClick={(e) => startStopFuc()}>{startStop ? <p>Stop</p> : <p>Start</p>}</button>
+      <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>Stop</p> : <p>Start</p>}</button>
     </div>
 
 {/* Test button */}
@@ -48,4 +83,11 @@ const Meeting = () => {
   </div>
 }
 
-export default connect()(Meeting)
+
+function mapStateToProps (globalstate) {
+  return {
+    currentMeeting: globalstate.currentMeeting
+
+  }
+}
+export default connect(mapStateToProps)(Meeting)
