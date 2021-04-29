@@ -2,7 +2,6 @@ const express = require('express')
 const path = require('path')
 
 const authRoutes = require('./routes/auth')
-const meetingRoutes = require('./routes/meetings')
 const usersRoutes = require('./routes/users')
 const meetingRoutes = require('./routes/meetings')
 
