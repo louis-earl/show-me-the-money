@@ -15,3 +15,13 @@ export function saveMeeting (meeting) {
     .then((res) => res.body)
     .catch((res) => console.log("Error", res))
 }
+
+export function saveAttendees (obj) {
+  return request
+  .post(baseUrl + '/meetings/attendees')
+  .set(acceptJsonHeader)
+  .set(getAuthorizationHeader())
+  .send(obj)
+  .then((res => res.body))
+  .catch((res) => console.log("Error", res))
+}
