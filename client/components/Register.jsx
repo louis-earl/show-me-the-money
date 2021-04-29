@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import {loginError, registerUserRequest} from '../actions/auth'
 
 function Register (props) {
+  console.log("Props.auth", props.auth)
   const {auth} = props
 
   const [formData, setFormData] = useState({
@@ -66,7 +68,7 @@ function Register (props) {
             <input required className="input is-large has-text-centered is-fullwidth" placeholder="Confirm Password" type="password" name="confirm_password" autoComplete="new-password" onChange={handleChange} value={formData.confirm_password}/>
           </label>
         </div>
-        <input className="button is-success is-large is-fullwidth" value="Register" type="submit" />
+        <Link to='/meeting'><input className="button is-success is-large is-fullwidth" value="Register" type="submit" /></Link>
       </form>
     )
 }

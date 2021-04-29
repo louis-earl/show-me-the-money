@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import {Link} from 'react-router-dom'
 import {connect} from "react-redux"
 
 import {loginUser, loginError} from "../actions/auth"
@@ -63,11 +64,11 @@ function Login (props) {
           onChange={handleChange}
         />
       </label>
-      <input
+      <Link to='/meeting'><input
         className="button is-large is-fullwidth is-success"
         value="Login"
         type="submit"
-      />
+      /></Link>
     </form>
   )
 }

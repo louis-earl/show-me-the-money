@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Ticker from './Ticker'
 import DisplayUsers from './DisplayUsers'
 
-import { saveMeeting } from '../apis/meetings'
+
 import { fetchUsers }  from '../actions/users'
 import {startMeeting, endMeeting} from '../actions/currentMeeting'
 
