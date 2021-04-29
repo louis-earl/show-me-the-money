@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Ticker from './Ticker'
 
 import { saveMeeting } from '../apis/meetings'
+import DisplayUsers from './DisplayUsers'
 
 const Meeting = () => {
   const [ runningTime, setRunningTime ] = useState(5652) // time in seconds !!!!! reset init state to zero for deployment
@@ -19,9 +20,7 @@ const Meeting = () => {
 
   return <div className="container">
     <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
-    <ul>
-      {/*  MAP THROUGH EMPLOYEES DISPLAY IN li/button*/}
-    </ul>
+    <DisplayUsers />
     <div>
       {/* <div className="timer">{displayTime()} </div> */}
       {startStop && <Ticker /> }
