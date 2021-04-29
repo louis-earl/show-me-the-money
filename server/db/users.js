@@ -23,8 +23,17 @@ function getUserByUsername (username, db = connection) {
     .first()
 }
 
+function getAllUsers (db = connection) {
+  return db('users')
+  .select()
+  .catch((err) => {
+    console.log(err.message)
+  })
+}
+
 module.exports = {
   createUser,
   userExists,
-  getUserByUsername
+  getUserByUsername,
+  getAllUsers
 }
