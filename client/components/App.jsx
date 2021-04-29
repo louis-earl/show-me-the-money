@@ -6,6 +6,7 @@ import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
 import Meeting from './Meeting'
+import Dashboard from './Dashboard'
 import PastMeetingFull from './PastMeetingFull'
 import History from './History'
 
@@ -34,14 +35,19 @@ function App({ auth, dispatch }) {
         </div>
 
         <div className=''>
-          {!auth.isAuthenticated &&
+          {auth.isAuthenticated ?
+            <Route exact path="/" component={Dashboard} />
+            :
             <Route exact path="/" component={Login} />
+
           }
+          
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/meeting" component={Meeting} />
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/past-meeting/:id" component={PastMeetingFull} />
-          <Route path="/history" component={History} />
+      
         </div>
 
       </div>

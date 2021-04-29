@@ -26,7 +26,12 @@ function Nav ({auth, logout}) {
           <div className="navbar-end">
             { auth.isAuthenticated
               ? (
+                <>
                   <Link to='/' className="navbar-item is-large" onClick={() => logout()}>Logout</Link>
+                  <Link to='/dashboard' className="navbar-item is-large">Dashboard</Link>
+                  <Link to='/meeting' className="navbar-item is-large">New Meeting</Link>
+
+                  </>
                 )
               : (
                 <>

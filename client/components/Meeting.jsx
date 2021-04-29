@@ -38,8 +38,6 @@ const Meeting = (props) => {
     
     console.log(meetingInProgress)
 
-
-
   const handleClick = () => {
     
 
@@ -92,7 +90,6 @@ const Meeting = (props) => {
     saveMeeting(meeting)
     .then(result => console.log("Meeting saved", result))
   }
-
 
   return <div className="container">
 

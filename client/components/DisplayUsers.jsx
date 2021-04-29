@@ -1,34 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { selectedUsers } from '../actions/users'
 
 const mockData = [{username: 'Jack'},{username: 'seb'},{username: 'dianne'},{username: 'louis'},{username: 'marni'}]
 
 const DisplayUsers = (props) => {
     const [usersInMeeting, setUsersInMeeting] = useState([])
 
-    const handleClick = (e, username) => {
+    useEffect (() => {
+        console.log('dispatching');
+        props.dispatch(selectedUsers(usersInMeeting))
+    }, [usersInMeeting])
+
+    const handleClick = (e, user) => {
         const styleClass = "userList-button-in-meeting"
-        let arr = usersInMeeting
+        let arr = [...usersInMeeting]
         if(e.target.className == styleClass) { e.target.className = "userList-button" }
         else { e.target.className = styleClass }
 
-        if(arr.find(el => el === username) !== undefined){
-            const index = arr.indexOf(username)
+        const foundUser = arr.find(el => el.username === user.username) !== undefined
+        if(foundUser){ 
+            const index = arr.indexOf(user.username)
             arr.splice(index, 1)
             
             setUsersInMeeting(arr)
+            console.log("removed a user")
+        } else { 
+            setUsersInMeeting([...usersInMeeting, user]) 
+            console.log('added a user')
         }
-        else { setUsersInMeeting([...usersInMeeting, username]) }
-        
     }
-    console.log(usersInMeeting);
+
+
+    console.log(usersInMeeting)
     return (
         <div>
             <h1> Users:</h1>
             <ul>
                 {props.users.map((user, i) => {
                     return <li key={i}>
-                        <button className="userList-button" type='button' onClick={(e) => handleClick(e, user.username)}>
+                        <button className="userList-button" type='button' onClick={(e) => handleClick(e, user)}>
                             {user.username}
                         </button>
                     </li>
