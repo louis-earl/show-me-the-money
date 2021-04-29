@@ -5,9 +5,9 @@ const db  = require('../db/meetings')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    id = req.body
-  return db.getUsersMeetingHistory(id) 
+router.get('/', getTokenDecoder(), (req, res) => {
+ id = req.body
+  db.getUsersMeetingHistory(id) 
   .then(user => {
       res.json(user)
   })
