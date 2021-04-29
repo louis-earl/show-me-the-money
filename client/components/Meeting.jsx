@@ -3,14 +3,14 @@ import {connect} from 'react-redux'
 import Ticker from './Ticker'
 
 import { saveMeeting } from '../apis/meetings'
+import { fetchUsers }  from '../actions/users'
 
-const Meeting = () => {
+const Meeting = (props) => {
   const [ runningTime, setRunningTime ] = useState(5652) // time in seconds !!!!! reset init state to zero for deployment
   const [ startStop, setStartStop ] = useState(false) // use Start and Stop as values
   
 
   const startStopFuc = (e) => {
-    setStartStop(!startStop)
     // {(startStop == false) && timer(true)}  dispatch start Meeting, send user object
     // {(startStop == true) && timer(false)}  dispatch stop Meeting, call thunk that dispatches meeting to db
     setStartStop(!startStop)
