@@ -29,7 +29,9 @@ export function receiveMeetings() {
         //     .catch(err => {
         //         console.log("ERROR:", err)
         //     })
-        const dummyData = [{meetingName: "Meeting 01", cost: 23}, {meetingName: "Meeting 02", cost: 233}]
+        const dummyData = [
+            {id: 1, meetingName: "Meeting 01", cost: 23}, 
+            {id: 2, meetingName: "Meeting 02", cost: 233}]
 
         dispatch(receiveMeetingsSuccess(dummyData))
     }
@@ -41,9 +43,10 @@ export function addMeetingPending() {
     }
 }
 
-export function addMeetingSuccess() {
+export function addMeetingSuccess(meeting) {
     return {
-        type: ADD_MEETING_SUCCESS
+        type: ADD_MEETING_SUCCESS,
+        meeting
     }
 }
 
@@ -51,8 +54,8 @@ export function addMeeting(meeting) {
     return (dispatch) => {
         dispatch(addMeetingPending())
         return saveMeeting(meeting)
-            .then(() => {
-                dispatch(addMeetingSuccess())
+            .then((meeting) => {
+                dispatch(addMeetingSuccess(meeting))
             })
             .catch(err => {
                 console.log("ERROR:", err)
