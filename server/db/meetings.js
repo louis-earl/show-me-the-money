@@ -31,9 +31,9 @@ function getMeetingAttendees (id, db = connection) {
       })
 }
 
-function saveAttendees (obj, db = connection) {
+function saveAttendees (arr, db = connection) {
     return db('attendees')
-    .insert(obj)
+    .insert(arr)
     .catch((err) => {
         console.log(err.message)
       })
