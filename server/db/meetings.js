@@ -23,9 +23,9 @@ function getUsersMeetingHistory (id, db = connection) {
 
 function getMeetingAttendees (id, db = connection) {
     return db('users')
-    .join('attendees', 'users.id','attendees.meeting_id')
+    .join('attendees', 'users.id', 'attendees.user_id')
     .where('meeting_id', id)
-    .select('*', 'users.id as id')
+    .select()
     .catch((err) => {
         console.log(err.message)
       })

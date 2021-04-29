@@ -17,7 +17,7 @@ router.get('/', getTokenDecoder(), async (req, res) => {
 
 router.get('/:id/users', (req, res) => {
   id = req.body.params
-  db.getMeetingAttendees(1)
+  db.getMeetingAttendees(id)
   .then(attendees => {
     res.json(attendees)
   })
