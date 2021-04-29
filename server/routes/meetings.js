@@ -1,10 +1,10 @@
 const express = require('express')
-
+const { getTokenDecoder } = require('authenticare/server')
 const router = express.Router()
 
 const db = require('../db/meetings')
 
-router.post('/', (req, res) => {
+router.post('/', getTokenDecoder(), async (req, res) => {
   db.saveMeeting(meeting)
   .then((res) => {
     res.redirect('/meeting')
