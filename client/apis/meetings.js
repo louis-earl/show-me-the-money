@@ -26,3 +26,4 @@ export function getMeetingsOfUser (userID) {
     .then((res) => res.body)
     .catch((err) => console.log("Error", err))
 }
+
