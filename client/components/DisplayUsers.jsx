@@ -15,6 +15,7 @@ const DisplayUsers = (props) => {
         if(arr.find(el => el === username) !== undefined){
             const index = arr.indexOf(username)
             arr.splice(index, 1)
+            
             setUsersInMeeting(arr)
         }
         else { setUsersInMeeting([...usersInMeeting, username]) }
@@ -40,7 +41,8 @@ const DisplayUsers = (props) => {
 // will need map state to props
 const mapStateToProps = (globalState) => {
     return {
-        users: globalState.users
+        users: globalState.users,
+    
     }
 }
 

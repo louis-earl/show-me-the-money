@@ -6,7 +6,7 @@ import DisplayUsers from './DisplayUsers'
 
 import { saveMeeting } from '../apis/meetings'
 import { fetchUsers }  from '../actions/users'
-import {startMeeting, endMeeting, resetMeeting} from '../actions/currentMeeting'
+import {startMeeting, endMeeting, resetMeeting, addMeetingName} from '../actions/currentMeeting'
 import {addMeeting} from '../actions/meetings'
 
 const Meeting = (props) => {
@@ -80,6 +80,11 @@ const Meeting = (props) => {
     props.dispatch(resetMeeting())
     props.dispatch(fetchUsers())
   }
+
+  const handleChange = (e) => {
+    console.log(e.target.value)
+    props.dispatch(addMeetingName(e.target.value))
+  }
   // TEST BUTTON FUNCTION
 
   const clickHandler = () => {
@@ -103,8 +108,10 @@ const Meeting = (props) => {
 
     {!showSave
     ?
-    
-      <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>End</p> : <p>Start</p>}</button>
+    <>
+      <input required className="meeting" placeholder="awesome meeting" type="text" name="meeting_name"  onChange={handleChange}/>
+      <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>End Meeting</p> : <p>Start Meeting</p>}</button>
+      </>
     :
     <div>
     <button onClick={saveMeeting}>

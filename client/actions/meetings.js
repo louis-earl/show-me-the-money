@@ -6,6 +6,7 @@ export const RECEIVE_MEETINGS_SUCCESS = 'RECEIVE_MEETINGS_SUCCESS'
 export const ADD_MEETING_PENDING = 'ADD_MEETING_PENDING'
 export const ADD_MEETING_SUCCESS = 'ADD_MEETING_SUCCESS'
 
+
 export function receiveMeetingsPending() {
     return {
         type: RECEIVE_MEETINGS_PENDING
@@ -37,6 +38,8 @@ export function addMeetingPending() {
         type: ADD_MEETING_PENDING
     }
 }
+
+
 
 export function addMeetingSuccess(meeting) {
     return {

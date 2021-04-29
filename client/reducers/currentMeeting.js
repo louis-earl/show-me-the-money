@@ -1,4 +1,4 @@
-import { START_MEETING, END_MEETING, TICK_ONE_SECOND, RESET_MEETING} from '../actions/currentMeeting'
+import { START_MEETING, END_MEETING, TICK_ONE_SECOND, RESET_MEETING, ADD_MEETING_NAME} from '../actions/currentMeeting'
 
 const initialMeetingState = {
   meeting_name: '',
@@ -45,6 +45,9 @@ function currentMeeting (state = initialMeetingState, action) {
 
       return initialMeetingState
 
+    case ADD_MEETING_NAME:
+
+        return {...state, meeting_name: action.meeting_name}
       default:
         return state
    

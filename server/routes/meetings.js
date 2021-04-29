@@ -30,7 +30,9 @@ router.post('/', getTokenDecoder(), async (req, res) => {
   const newData = {
     cost: req.body.cost,
     attendee_count: req.body.attendee_count,
-    meeting_name: req.body.meeting_name
+    meeting_name: req.body.meeting_name,
+    start_time: req.body.start_time,
+    end_time: req.body.end_time
 
   }
   db.saveMeeting(newData)
