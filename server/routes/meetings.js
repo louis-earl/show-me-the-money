@@ -6,8 +6,8 @@ const db  = require('../db/meetings')
 
 const router = express.Router()
 
-router.get('/', getTokenDecoder(), async (req, res) => {
- id = req.body
+router.get('/:id', getTokenDecoder(), async (req, res) => {
+ id = req.params.id
   db.getUsersMeetingHistory(id) 
   .then(user => {
       res.json(user)
@@ -35,6 +35,8 @@ router.post('/', getTokenDecoder(), async (req, res) => {
     res.status(500).send(err.message)
   })
 })
+
+
 
 module.exports = router
 

@@ -7,6 +7,8 @@ import Register from './Register'
 import Nav from './Nav'
 import Meeting from './Meeting'
 import Dashboard from './Dashboard'
+import PastMeetingFull from './PastMeetingFull'
+import History from './History'
 
 import { checkAuth } from '../actions/auth'
 import { fetchUsers } from '../actions/users'
@@ -44,6 +46,7 @@ function App({ auth, dispatch }) {
           <Route path="/register" component={Register} />
           <Route path="/meeting" component={Meeting} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route path="/past-meeting/:id" component={PastMeetingFull} />
       
         </div>
 
