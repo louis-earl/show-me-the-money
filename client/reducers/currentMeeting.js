@@ -1,14 +1,16 @@
 import { START_MEETING, END_MEETING, TICK_ONE_SECOND, RESET_MEETING} from '../actions/currentMeeting'
 
 const initialMeetingState = {
-  meetingName: '',
+  meeting_name: '',
   attendees: [],
   //Start time returned as a unix time stamp
-  startTime: null,
+  start_time: null,
   //End time returned as a unix time stamp
-  endTime: null,
-  totalCost: 0,
-  meetingInProgress: false
+  end_time: null,
+  cost: 0,
+  meetingInProgress: false,
+  attendee_count: 0
+ 
 }
 
 function currentMeeting (state = initialMeetingState, action) {
@@ -16,15 +18,16 @@ function currentMeeting (state = initialMeetingState, action) {
     case START_MEETING:
       console.log(action.meetingName)
       return {...state, 
-        meetingName: action.meetingName,
+        meeting_name: action.meetingName,
         attendees: action.attendees,
-        startTime: Date.now(),
+        start_time: Date.now(),
         meetingInProgress: true,
-        showSave: false
+        attendee_count: action.attendees.length,
+        
       }
 
     case END_MEETING:
-      return {...state, meetingInProgress: false, endTime: Date.now(), showSave: true}
+      return {...state, meetingInProgress: false, end_time: Date.now()}
 
    
 
@@ -36,7 +39,7 @@ function currentMeeting (state = initialMeetingState, action) {
         
         })
         console.log(totalWage, 'totalwage')
-        return {...state, totalCost: state.totalCost + totalWage }
+        return {...state, cost: state.cost + totalWage }
 
     case RESET_MEETING:
 

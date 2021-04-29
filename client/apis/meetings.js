@@ -6,7 +6,7 @@ const acceptJsonHeader = { Accept: 'application/json' }
 import { baseApiUrl as baseUrl } from '../config'
 
 export function saveMeeting (meeting) {
-  console.log("Save meeting API request")
+  console.log("Save meeting API request", meeting)
   return request
     .post(baseUrl + '/meetings')
     .set(acceptJsonHeader)

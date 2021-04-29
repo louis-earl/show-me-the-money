@@ -6,7 +6,7 @@ import DisplayUsers from './DisplayUsers'
 
 import { saveMeeting } from '../apis/meetings'
 import { fetchUsers }  from '../actions/users'
-import {startMeeting, endMeeting} from '../actions/currentMeeting'
+import {startMeeting, endMeeting, resetMeeting} from '../actions/currentMeeting'
 import {addMeeting} from '../actions/meetings'
 
 const Meeting = (props) => {
@@ -34,7 +34,7 @@ const Meeting = (props) => {
 
     const meetingName = 'Discuss rollout of new firmware'
     const meetingInProgress = props.currentMeeting.meetingInProgress
-    const showSave = !props.currentMeeting.meetingInProgress && props.currentMeeting.endTime
+    const showSave = !props.currentMeeting.meetingInProgress && props.currentMeeting.end_time
     
     console.log(meetingInProgress)
 
@@ -72,14 +72,16 @@ const Meeting = (props) => {
   // }
 
   const saveMeeting = () => {
-    props.dispatch(addMeeting(currentMeeting))
+    props.dispatch(addMeeting(props.currentMeeting))
     
   }
 
   const refresh = () => {
     props.dispatch(resetMeeting())
+    props.dispatch(fetchUsers())
   }
   // TEST BUTTON FUNCTION
+
   const clickHandler = () => {
     const meeting = { meeting_name: 'Test Meeting' }
     saveMeeting(meeting)
