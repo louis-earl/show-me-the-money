@@ -15,8 +15,8 @@ router.get('/', getTokenDecoder(), async (req, res) => {
   .catch(err => { return "the error is: ", err.message })
 })
 
-router.get('/:id/users', (req, res) => {
-  id = req.body.params
+router.get('/:id/users', getTokenDecoder(), async  (req, res) => {
+  id = req.params.id
   db.getMeetingAttendees(id)
   .then(attendees => {
     res.json(attendees)
