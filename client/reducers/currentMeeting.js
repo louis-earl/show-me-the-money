@@ -19,14 +19,14 @@ function currentMeeting (state = initialMeetingState, action) {
         meetingName: action.meetingName,
         attendees: action.attendees,
         startTime: Date.now(),
-        meetingInProgress: true
+        meetingInProgress: true,
+        showSave: false
       }
 
     case END_MEETING:
-      return {...state, meetingInProgress: false, endTime: Date.now()}
+      return {...state, meetingInProgress: false, endTime: Date.now(), showSave: true}
 
-    default:
-      return state
+   
 
     case TICK_ONE_SECOND:
 
@@ -41,6 +41,9 @@ function currentMeeting (state = initialMeetingState, action) {
     case RESET_MEETING:
 
       return initialMeetingState
+
+      default:
+        return state
    
   }
 

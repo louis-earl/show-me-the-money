@@ -4,10 +4,9 @@ import Ticker from './Ticker'
 
 import { saveMeeting } from '../apis/meetings'
 import {startMeeting, endMeeting} from '../actions/currentMeeting'
+import {addMeeting} from '../actions/meetings'
 
 const Meeting = (props) => {
-
-
 
 
     const attendees = [
@@ -29,6 +28,8 @@ const Meeting = (props) => {
 
     const meetingName = 'Discuss rollout of new firmware'
     const meetingInProgress = props.currentMeeting.meetingInProgress
+    const showSave = !props.currentMeeting.meetingInProgress && props.currentMeeting.endTime
+    
     console.log(meetingInProgress)
 
 
@@ -38,6 +39,9 @@ const Meeting = (props) => {
 
   const handleClick = () => {
     
+
+
+
     if (!meetingInProgress) {
     props.dispatch(startMeeting(attendees, meetingName))
     
@@ -45,12 +49,36 @@ const Meeting = (props) => {
     // {(startStop == true) && timer(false)}  dispatch stop Meeting, call thunk that dispatches meeting to db
     }
     else {
+      
       props.dispatch(endMeeting())
+      //change state of show Q
+
     }
 
 
   }
 
+  // const endMeeting = () => {
+
+  //   props.dispatch(endMeeting())
+
+
+  // }
+
+  // const startMeeting = () => {
+
+  //   props.dispatch(startMeeting(attendees, meetingName))
+
+  // }
+
+  const saveMeeting = () => {
+    props.dispatch(addMeeting(currentMeeting))
+    
+  }
+
+  const refresh = () => {
+    props.dispatch(resetMeeting())
+  }
 
   return <div className="container">
     <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
@@ -62,12 +90,44 @@ const Meeting = (props) => {
       {meetingInProgress && <Ticker /> }
       <div className="running cost">{/*  DISPLAY: running cost */}</div>
     </div>
-    <div>
-      <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>Stop</p> : <p>Start</p>}</button>
-    </div>
-  </div>
-}
 
+    {!showSave
+    ?
+    
+      <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>End</p> : <p>Start</p>}</button>
+    :
+    <div>
+    <button onClick={saveMeeting}>
+      Save meeting? 
+    </button>
+     <button onClick={refresh}>
+     don't save meeting? 
+   </button>
+   </div>
+    }
+
+    {/* {!showSave &&
+    meetingInProgress 
+    ? <div>
+      <button onClick={endMeeting()}>End</button>
+    </div>
+  : <button onClick={startMeeting()}>Start</button>
+    }
+  
+  {showSave 
+  ? <div>
+    <button onClick={saveMeeting()}>Save Meeting?</button>
+    <button onClick={refresh()}>No, save</button>
+  </div>
+
+  : null
+  }
+      
+    </div>
+  // </div> */}
+
+</div>
+}
 
 function mapStateToProps (globalstate) {
   return {
