@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import {connect} from 'react-redux'
+
 import Ticker from './Ticker'
+import DisplayUsers from './DisplayUsers'
 
 import { saveMeeting } from '../apis/meetings'
 import { fetchUsers }  from '../actions/users'
 import {startMeeting, endMeeting} from '../actions/currentMeeting'
 
 const Meeting = (props) => {
-
-
-
 
     const attendees = [
       {
@@ -59,9 +58,7 @@ const Meeting = (props) => {
 
 
     <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
-    <ul>
-      {/*  MAP THROUGH EMPLOYEES DISPLAY IN li/button*/}
-    </ul>
+    <DisplayUsers />
     <div>
       {/* <div className="timer">{displayTime()} </div> */}
       {meetingInProgress && <Ticker /> }
