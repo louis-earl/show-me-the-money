@@ -8,6 +8,13 @@ export function receiveUsers (users) {
   }
 }
 
+export function selectedUsers (currentUsers) {
+  return {
+    type: 'SELECTED_USERS',
+    currentUsers: currentUsers
+  }
+}
+
 export function fetchUsers () {
   return dispatch => {
     return getUsers()

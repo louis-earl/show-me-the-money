@@ -1,4 +1,4 @@
-import { START_MEETING, END_MEETING, TICK_ONE_SECOND, RESET_MEETING} from '../actions/currentMeeting'
+import { START_MEETING, END_MEETING, TICK_ONE_SECOND, RESET_MEETING } from '../actions/currentMeeting'
 
 const initialMeetingState = {
   meetingName: '',
@@ -25,11 +25,7 @@ function currentMeeting (state = initialMeetingState, action) {
     case END_MEETING:
       return {...state, meetingInProgress: false, endTime: Date.now()}
 
-    default:
-      return state
-
     case TICK_ONE_SECOND:
-
         const totalWage = state.attendees.reduce((total, attendee) => {
           
           return total = (attendee.hourlyWage / 60 / 60)
@@ -39,9 +35,10 @@ function currentMeeting (state = initialMeetingState, action) {
         return {...state, totalCost: state.totalCost + totalWage }
 
     case RESET_MEETING:
-
       return initialMeetingState
-   
+
+   default:
+      return state
   }
 
   

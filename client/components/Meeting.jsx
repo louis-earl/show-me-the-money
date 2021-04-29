@@ -35,8 +35,6 @@ const Meeting = (props) => {
     const meetingInProgress = props.currentMeeting.meetingInProgress
     console.log(meetingInProgress)
 
-
-
   const handleClick = () => {
     
     if (!meetingInProgress) {
@@ -56,21 +54,17 @@ const Meeting = (props) => {
     .then(result => console.log("Meeting saved", result))
   }
 
-
   return <div className="container">
-
-
-
-    <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
-    <DisplayUsers />
-    <div>
-      {/* <div className="timer">{displayTime()} </div> */}
-      {meetingInProgress && <Ticker /> }
-      <div className="running cost">{/*  DISPLAY: running cost */}</div>
-    </div>
-    <div>
-      <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>Stop</p> : <p>Start</p>}</button>
-    </div>
+            <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
+            <DisplayUsers />
+            <div>
+              {/* <div className="timer">{displayTime()} </div> */}
+              {meetingInProgress && <Ticker /> }
+              <div className="running cost">{/*  DISPLAY: running cost */}</div>
+            </div>
+            <div>
+              <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>Stop</p> : <p>Start</p>}</button>
+            </div>
 
 {/* Test button */}
   <button onClick={clickHandler}>Click to save meeting</button>
