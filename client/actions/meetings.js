@@ -29,11 +29,6 @@ export function receiveMeetings(userID) {
             .catch(err => {
                 console.log("ERROR:", err)
             })
-        // const dummyData = [
-        //     {id: 1, meetingName: "Meeting 01", cost: 23}, 
-        //     {id: 2, meetingName: "Meeting 02", cost: 233}]
-
-        dispatch(receiveMeetingsSuccess(dummyData))
     }
 }
 
