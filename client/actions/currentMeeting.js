@@ -3,7 +3,7 @@ export const END_MEETING = 'END_MEETING'
 export const TICK_ONE_SECOND = 'TICK_ONE_SECOND'
 export const RESET_MEETING = 'RESET_MEETING'
 
-  export function  startMetting(attendees, meetingName) {
+  export function startMeeting(attendees, meetingName) {
     return {
       type: START_MEETING,
       attendees,
@@ -11,9 +11,9 @@ export const RESET_MEETING = 'RESET_MEETING'
     }
   }
      
-  export function  endMetting() {
+  export function  endMeeting() {
     return {
-      type: ADD_MEETING,
+      type: END_MEETING,
     }
   }
 
