@@ -13,5 +13,16 @@ export function saveMeeting (meeting) {
     .set(getAuthorizationHeader())
     .send(meeting)
     .then((res) => res.body)
-    .catch((res) => console.log("Error", res))
+    .catch((err) => console.log("Error", err))
+}
+
+// Gets meetings 
+export function getMeetingsOfUser (userID) {
+  console.log("Get all meetings API request")
+  return request
+    .get(baseUrl + '/meetings/' + userID)
+    .set(acceptJsonHeader)
+    .set(getAuthorizationHeader())
+    .then((res) => res.body)
+    .catch((err) => console.log("Error", err))
 }

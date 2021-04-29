@@ -5,6 +5,7 @@ const authRoutes = require('./routes/auth')
 const usersRoutes = require('./routes/users')
 const meetingRoutes = require('./routes/meetings')
 
+
 const server = express()
 
 server.use(express.json())
