@@ -10,6 +10,7 @@ function Register (props) {
     username: '',
     first_name: '',
     last_name: '',
+    hourly_wage: '',
     password: '',
     confirm_password: ''
   })
@@ -30,10 +31,11 @@ function Register (props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     e.target.reset()
-    let {username, password, confirm_password, first_name, last_name} = formData
+    let {username, password, confirm_password, first_name, last_name, hourly_wage} = formData
+    hourly_wage = parseFloat(hourly_wage).toFixed(2)
     if (confirm_password != password) return props.dispatch(loginError("Passwords don't match"))
     const confirmSuccess = () => { props.history.push('/') }
-    props.dispatch(registerUserRequest({username, password, first_name, last_name}, confirmSuccess))
+    props.dispatch(registerUserRequest({username, password, first_name, last_name, hourly_wage}, confirmSuccess))
   }
 
     return (
@@ -50,6 +52,9 @@ function Register (props) {
           </label>
           <label className="column is-6 label is-large has-text-centered">Last Name
             <input required className="input is-large has-text-centered is-fullwidth" placeholder="Last Name" type="text" name="last_name" onChange={handleChange} value={formData.last_name}/>
+          </label>
+          <label className="column is-6 label is-large has-text-centered">Hourly Wage ($)
+            <input required className="input is-large has-text-centered is-fullwidth" placeholder="20.00" type="number" name="hourly_wage" onChange={handleChange} value={formData.hourly_wage}/>
           </label>
         </div>
         <br />
