@@ -36,15 +36,7 @@ router.post('/', getTokenDecoder(), async (req, res) => {
   })
 })
 
-router.post('/attendees', getTokenDecoder(), async (req,res) => {
-  db.saveAttendees(req.body)
-  .then(id => {
-    res.json({id: id[0], message: "Attendees and meetings saved"})
-  })
-  .catch(err => {
-    res.status(500).send(err.message)
-  })
-})
+
 
 module.exports = router
 
