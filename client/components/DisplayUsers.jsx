@@ -5,9 +5,9 @@ const mockData = [{username: 'Jack'},{username: 'seb'},{username: 'dianne'},{use
 
 const DisplayUsers = (props) => {
     const [usersInMeeting, setUsersInMeeting] = useState([])
-
+    
     const handleClick = (e, username) => {
-        const styleClass = "userList-buttonin-meeting"
+        const styleClass = "userList-button-in-meeting"
         let arr = usersInMeeting
         if(e.target.className == styleClass) { e.target.className = "userList-button" }
         else { e.target.className = styleClass }
@@ -20,7 +20,8 @@ const DisplayUsers = (props) => {
         else { setUsersInMeeting([...usersInMeeting, username]) }
         
     }
-    console.log(usersInMeeting);
+    console.log('USERSINMEETING', usersInMeeting);
+    console.log('props.users', props.users.users);
     return (
         <div>
             <h1> Users:</h1>
@@ -38,5 +39,10 @@ const DisplayUsers = (props) => {
 }
 
 // will need map state to props
+const mapStateToProps = (globalState) => {
+    return {
+        users: globalState.users
+    }
+}
 
-export default connect()(DisplayUsers)
+export default connect(mapStateToProps)(DisplayUsers)
