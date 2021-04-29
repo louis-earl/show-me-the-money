@@ -9,12 +9,14 @@ import Meeting from './Meeting'
 import History from './History'
 
 import {checkAuth} from '../actions/auth'
+import { fetchUsers } from '../actions/users'
 
 function App ({auth, dispatch}) {
   
   useEffect(() => {
     const confirmSuccess = () => { }
     dispatch(checkAuth(confirmSuccess))
+    
   }, [])
 
     return (

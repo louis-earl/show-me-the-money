@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+
 import Ticker from './Ticker'
+import DisplayUsers from './DisplayUsers'
 
 import { saveMeeting } from '../apis/meetings'
+import { fetchUsers }  from '../actions/users'
 import {startMeeting, endMeeting} from '../actions/currentMeeting'
 import {addMeeting} from '../actions/meetings'
 
 const Meeting = (props) => {
 
+    useEffect (() => {
+      props.dispatch(fetchUsers())
+    },[])
 
     const attendees = [
       {
@@ -33,9 +39,6 @@ const Meeting = (props) => {
     console.log(meetingInProgress)
 
 
-  const [ runningTime, setRunningTime ] = useState(5652) // time in seconds !!!!! reset init state to zero for deployment
-
-  
 
   const handleClick = () => {
     
@@ -44,9 +47,6 @@ const Meeting = (props) => {
 
     if (!meetingInProgress) {
     props.dispatch(startMeeting(attendees, meetingName))
-    
-    // {(startStop == false) && timer(true)}  dispatch start Meeting, send user object
-    // {(startStop == true) && timer(false)}  dispatch stop Meeting, call thunk that dispatches meeting to db
     }
     else {
       
@@ -79,12 +79,20 @@ const Meeting = (props) => {
   const refresh = () => {
     props.dispatch(resetMeeting())
   }
+  // TEST BUTTON FUNCTION
+  const clickHandler = () => {
+    const meeting = { meeting_name: 'Test Meeting' }
+    saveMeeting(meeting)
+    .then(result => console.log("Meeting saved", result))
+  }
+
 
   return <div className="container">
+
+
+
     <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
-    <ul>
-      {/*  MAP THROUGH EMPLOYEES DISPLAY IN li/button*/}
-    </ul>
+    <DisplayUsers />
     <div>
       {/* <div className="timer">{displayTime()} </div> */}
       {meetingInProgress && <Ticker /> }
