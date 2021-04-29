@@ -17,5 +17,4 @@ server.use('/api/v1/meetings', meetingRoutes)
 server.use('/api/v1/users', usersRoutes)
 server.use('/api/v1/attendees', attendeesRoutes)
 
-
 module.exports = server
