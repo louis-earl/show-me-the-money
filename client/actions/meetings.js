@@ -1,4 +1,4 @@
-import { addMeeting } from '../apis/meetings'
+import { saveMeeting } from '../apis/meetings'
 
 export const RECEIVE_MEETINGS_PENDING = 'RECEIVE_MEETINGS_PENDING'
 export const RECEIVE_MEETINGS_SUCCESS = 'RECEIVE_MEETINGS_SUCCESS'
@@ -6,30 +6,32 @@ export const RECEIVE_MEETINGS_SUCCESS = 'RECEIVE_MEETINGS_SUCCESS'
 export const ADD_MEETING_PENDING = 'ADD_MEETING_PENDING'
 export const ADD_MEETING_SUCCESS = 'ADD_MEETING_SUCCESS'
 
-export const ADD_MEETING = 'ADD_MEETING'
-
 export function receiveMeetingsPending() {
     return {
         type: RECEIVE_MEETINGS_PENDING
     }
 }
 
-export function receiveMeetingsSuccess() {
+export function receiveMeetingsSuccess(meetings) {
     return {
-        type: RECEIVE_MEETINGS_SUCCESS
+        type: RECEIVE_MEETINGS_SUCCESS,
+        meetings
     }
 }
 
 export function receiveMeetings() {
     return (dispatch) => {
         dispatch(receiveMeetingsPending())
-        return getPastMeetings()
-            .then(() => {
-                dispatch(receiveMeetingsSuccess())
-            })
-            .catch(err => {
-                console.log("ERROR:", err)
-            })
+        // return getPastMeetings()
+        //     .then(() => {
+        //         dispatch(receiveMeetingsSuccess())
+        //     })
+        //     .catch(err => {
+        //         console.log("ERROR:", err)
+        //     })
+        const dummyData = [{meetingName: "Meeting 01", cost: 23}, {meetingName: "Meeting 02", cost: 233}]
+
+        dispatch(receiveMeetingsSuccess(dummyData))
     }
 }
 
@@ -48,7 +50,7 @@ export function addMeetingSuccess() {
 export function addMeeting(meeting) {
     return (dispatch) => {
         dispatch(addMeetingPending())
-        return addMeeting()
+        return saveMeeting(meeting)
             .then(() => {
                 dispatch(addMeetingSuccess())
             })

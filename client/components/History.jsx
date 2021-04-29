@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { receiveMeetings } from '../actions/meetings'
+import PastMeetingSummary from './PastMeetingSummary'
 
 function History(props) {
 
@@ -14,7 +15,9 @@ function History(props) {
     <h2 className="title is-2">Meeting history</h2>
     {
       props.meetingsHistory &&
-      <p>I have past meetings!</p>
+      props.meetingsHistory.map((meeting) => {
+        return <PastMeetingSummary key={meeting.id} meeting={meeting} />
+      })
     }
   </div>
 }
