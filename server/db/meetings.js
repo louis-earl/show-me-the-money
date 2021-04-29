@@ -21,7 +21,18 @@ function getUsersMeetingHistory (id, db = connection) {
 
 }
 
+function getMeetingAttendees (id, db = connection) {
+    return db('users')
+    .join('attendees', 'users.id','attendees.meeting_id')
+    .where('meeting_id', id)
+    .select('*', 'users.id as id')
+    .catch((err) => {
+        console.log(err.message)
+      })
+}
+
 module.exports = {
     saveMeeting,
-    getUsersMeetingHistory
+    getUsersMeetingHistory,
+    getMeetingAttendees
 }

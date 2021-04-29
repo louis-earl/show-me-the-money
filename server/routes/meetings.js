@@ -6,13 +6,21 @@ const db  = require('../db/meetings')
 
 const router = express.Router()
 
-router.get('/', getTokenDecoder(), (req, res) => {
+router.get('/', getTokenDecoder(), async (req, res) => {
  id = req.body
   db.getUsersMeetingHistory(id) 
   .then(user => {
       res.json(user)
   })
   .catch(err => { return "the error is: ", err.message })
+})
+
+router.get('/:id/users', (req, res) => {
+  id = req.body.params
+  db.getMeetingAttendees(1)
+  .then(attendees => {
+    res.json(attendees)
+  })
 })
 
 router.post('/', (req, res) => {
