@@ -6,13 +6,33 @@ import { saveMeeting } from '../apis/meetings'
 
 const Meeting = (props) => {
 
+    const attendees = [
+      {
+        id: 1,
+        hourlyWage: 24.00
+      },
+      {
+        id: 2,
+        hourlyWage: 24.00,
+  
+      },
+      {
+        id: 2,
+        hourlyWage: 24.00,
+        
+      }
+    ]
+
+    const meetingName = 'Discuss rollout of new firmware'
+
 
   const [ runningTime, setRunningTime ] = useState(5652) // time in seconds !!!!! reset init state to zero for deployment
   const [ startStop, setStartStop ] = useState(false) // use Start and Stop as values
   
 
-  const startStopFuc = (e) => {
-    setStartStop(!startStop)
+  const startStopFuc = () => {
+    
+    props.dispatch(startMeeting(attendees, meetingName))
     // {(startStop == false) && timer(true)}  dispatch start Meeting, send user object
     // {(startStop == true) && timer(false)}  dispatch stop Meeting, call thunk that dispatches meeting to db
     setStartStop(!startStop)
