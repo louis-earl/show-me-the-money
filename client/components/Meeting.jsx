@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import Ticker from './Ticker'
 import DisplayUsers from './DisplayUsers'
@@ -9,6 +9,10 @@ import { fetchUsers }  from '../actions/users'
 import {startMeeting, endMeeting} from '../actions/currentMeeting'
 
 const Meeting = (props) => {
+
+    useEffect (() => {
+      props.dispatch(fetchUsers())
+    },[])
 
     const attendees = [
       {
