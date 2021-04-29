@@ -19,7 +19,8 @@ router.post('/', getTokenDecoder(), async (req, res) => {
   console.log("Post route for saveMeeting")
   const newData = {
     cost: req.body.cost,
-    attendee_count: req.body.attendee_count
+    attendee_count: req.body.attendee_count,
+    meeting_name: req.body.meeting_name
 
   }
   db.saveMeeting(newData)
