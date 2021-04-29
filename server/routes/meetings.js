@@ -36,5 +36,9 @@ router.post('/', getTokenDecoder(), async (req, res) => {
   })
 })
 
+router.post('/attendees', async (req,res) => {
+  
+})
+
 module.exports = router
 

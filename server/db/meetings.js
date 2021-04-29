@@ -31,8 +31,18 @@ function getMeetingAttendees (id, db = connection) {
       })
 }
 
+function saveAttendees (obj, db = connection) {
+    return db('attendees')
+    .insert(obj)
+    .catch((err) => {
+        console.log(err.message)
+      })
+}
+
+
 module.exports = {
     saveMeeting,
     getUsersMeetingHistory,
-    getMeetingAttendees
+    getMeetingAttendees,
+    saveAttendees
 }
