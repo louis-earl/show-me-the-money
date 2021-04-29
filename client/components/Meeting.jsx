@@ -1,27 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import {connect} from 'react-redux'
+import Ticker from './Ticker'
 
 const Meeting = () => {
   const [ runningTime, setRunningTime ] = useState(5652) // time in seconds !!!!! reset init state to zero for deployment
   const [ startStop, setStartStop ] = useState(false) // use Start and Stop as values
   
-  const timer = () => {
-    let time = setInterval(runningTime, 1000)
-  }
 
   const startStopFuc = (e) => {
-    {(startStop == false) && console.log("This will start timer")}
-    {(startStop == true) && console.log("This will send meeting data to db")}
+    setStartStop(!startStop)
+    // {(startStop == false) && timer(true)}  dispatch start Meeting, send user object
+    // {(startStop == true) && timer(false)}  dispatch stop Meeting, call thunk that dispatches meeting to db
     setStartStop(!startStop)
   }
 
-  const displayTime = () => {
-    {/*  DISPLAY: hours | min | sec */}
-    let hours = Math.floor(runningTime / 60 /60)
-    let min = Math.floor(runningTime / 60)
-    let sec = runningTime % 60
-    return <h3>{hours} | {min} | {sec}</h3>
-  }
 
   return <div className="container">
     <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
@@ -29,7 +21,8 @@ const Meeting = () => {
       {/*  MAP THROUGH EMPLOYEES DISPLAY IN li/button*/}
     </ul>
     <div>
-      <div className="timer">{displayTime()} </div>
+      {/* <div className="timer">{displayTime()} </div> */}
+      {startStop && <Ticker /> }
       <div className="running cost">{/*  DISPLAY: running cost */}</div>
     </div>
     <div>
