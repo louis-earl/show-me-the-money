@@ -65,12 +65,12 @@ As a user:
   | --- | --- |
   | auth | Store information regarding user logins, auth status and auth errors |
   | currentMeeting | Track meeting progress such as current cost and current duration |
-  | meetings | store the list of meetings the user has attended in the past |
+  | meetingsHistory | store the list of meetings the user has attended in the past |
   | users | store the list of users who can attend meetings |
 
  ## Actions
 
- ### meetings
+ ### meetingsHistory
 
  | type | data | purpose |
  | --- | --- | --- |
