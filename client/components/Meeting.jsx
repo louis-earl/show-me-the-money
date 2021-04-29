@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Ticker from './Ticker'
 
 import { saveMeeting } from '../apis/meetings'
+import { fetchUsers }  from '../actions/users'
 import {startMeeting, endMeeting} from '../actions/currentMeeting'
 
 const Meeting = (props) => {
@@ -32,17 +33,11 @@ const Meeting = (props) => {
     console.log(meetingInProgress)
 
 
-  const [ runningTime, setRunningTime ] = useState(5652) // time in seconds !!!!! reset init state to zero for deployment
-
-  
 
   const handleClick = () => {
     
     if (!meetingInProgress) {
     props.dispatch(startMeeting(attendees, meetingName))
-    
-    // {(startStop == false) && timer(true)}  dispatch start Meeting, send user object
-    // {(startStop == true) && timer(false)}  dispatch stop Meeting, call thunk that dispatches meeting to db
     }
     else {
       props.dispatch(endMeeting())
