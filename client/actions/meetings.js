@@ -1,7 +1,11 @@
-import { getPastMeetings } from '../apis/meetingsHistory'
+import { addMeeting } from '../apis/meetings'
 
 export const RECEIVE_MEETINGS_PENDING = 'RECEIVE_MEETINGS_PENDING'
 export const RECEIVE_MEETINGS_SUCCESS = 'RECEIVE_MEETINGS_SUCCESS'
+
+export const ADD_MEETING_PENDING = 'ADD_MEETING_PENDING'
+export const ADD_MEETING_SUCCESS = 'ADD_MEETING_SUCCESS'
+
 export const ADD_MEETING = 'ADD_MEETING'
 
 export function receiveMeetingsPending() {
@@ -29,27 +33,27 @@ export function receiveMeetings() {
     }
 }
 
-export function addMeeting(meeting) {
+export function addMeetingPending() {
     return {
-        type: ADD_MEETING,
-        meeting
+        type: ADD_MEETING_PENDING
     }
 }
 
+export function addMeetingSuccess() {
+    return {
+        type: ADD_MEETING_SUCCESS
+    }
+}
 
-// REDDIT EXAMPLE:
-//
-// export function fetchPosts (subreddit) {
-//     return (dispatch) => {
-//       dispatch(requestPosts())
-//       return request
-//         .get(`/api/v1/reddit/subreddit/${subreddit}`)
-//         .then(res => {
-//           dispatch(receivePosts(res.body))
-//           return null
-//         })
-//         .catch(err => {
-//           dispatch(showError(err.message))
-//         })
-//     }
-//   }
+export function addMeeting(meeting) {
+    return (dispatch) => {
+        dispatch(addMeetingPending())
+        return addMeeting()
+            .then(() => {
+                dispatch(addMeetingSuccess())
+            })
+            .catch(err => {
+                console.log("ERROR:", err)
+            })
+    }
+}

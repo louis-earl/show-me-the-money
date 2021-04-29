@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { receiveMeetings } from '../actions/meetingsHistory'
+import { receiveMeetings } from '../actions/meetings'
 
 function History(props) {
 
