@@ -41,6 +41,9 @@ router.post('/attendees', async (req,res) => {
   .then(id => {
     res.json({id: id[0], message: "Attendees and meetings saved"})
   })
+  .catch(err => {
+    res.status(500).send(err.message)
+  })
 })
 
 module.exports = router
