@@ -12,10 +12,12 @@ function History(props) {
     props.dispatch(receiveMeetings(props.user.id))
   }, [props.user.id])
 
+
+
   return <div className="container">
     <h2 className="title is-2">{props.user.first_name}'s Meeting history:</h2>
     {
-      props.meetingsHistory ?
+      props.meetingsHistory.length > 0 ?
       props.meetingsHistory.map((meeting) => {
         return <PastMeetingSummary key={meeting.id} meeting={meeting} />
       })
