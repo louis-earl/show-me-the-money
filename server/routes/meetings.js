@@ -6,7 +6,7 @@ const db  = require('../db/meetings')
 
 const router = express.Router()
 
-router.get('/', getTokenDecoder(), (req, res) => {
+router.get('/', getTokenDecoder(), async (req, res) => {
  id = req.body
   db.getUsersMeetingHistory(id) 
   .then(user => {
@@ -14,6 +14,16 @@ router.get('/', getTokenDecoder(), (req, res) => {
   })
   .catch(err => { return "the error is: ", err.message })
 })
+
+
+router.get('/:id/users', getTokenDecoder(), async  (req, res) => {
+  id = req.params.id
+  db.getMeetingAttendees(id)
+  .then(attendees => {
+    res.json(attendees)
+  })
+})
+
 
 router.post('/', getTokenDecoder(), async (req, res) => {
   console.log("Post route for saveMeeting")
