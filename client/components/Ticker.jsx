@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import displayTime from '../utils/meeting'
-
-function Ticker() {
+import {connect} from 'react-redux'
+import {tickOneSecond} from '../actions/currentMeeting'
+function Ticker(props) {
     const [seconds, setSeconds] = useState(0)
-
+    const totalCost = props.currentMeeting.totalCost
+    
     useEffect (() => {
         const interval = setInterval(() => {
             setSeconds(seconds => seconds+1)
-        }, 1000)
+            props.dispatch(tickOneSecond())
+        }, 1000) 
         return () => {clearInterval(interval)}
       }, [])
 
@@ -16,8 +19,16 @@ function Ticker() {
     return (
         <div>
             <p>{seconds}</p>
+            <p>Cost so far!: {totalCost.toFixed(2)} </p>
         </div>
     )
 }
 
-export default Ticker
+
+function mapStateToProps (globalstate) {
+  return {
+    currentMeeting: globalstate.currentMeeting
+
+  }
+}
+export default connect(mapStateToProps)(Ticker)
