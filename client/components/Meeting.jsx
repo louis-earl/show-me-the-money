@@ -16,8 +16,18 @@ const Meeting = () => {
     setStartStop(!startStop)
   }
 
+  // TEST BUTTON FUNCTION
+  const clickHandler = () => {
+    const meeting = { meeting_name: 'Test Meeting' }
+    saveMeeting(meeting)
+    .then(result => console.log("Meeting saved", result))
+  }
+
 
   return <div className="container">
+
+
+
     <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
     <ul>
       {/*  MAP THROUGH EMPLOYEES DISPLAY IN li/button*/}
@@ -30,6 +40,11 @@ const Meeting = () => {
     <div>
       <button onClick={(e) => startStopFuc()}>{startStop ? <p>Stop</p> : <p>Start</p>}</button>
     </div>
+
+{/* Test button */}
+  <button onClick={clickHandler}>Click to save meeting</button>
+
+
   </div>
 }
 
