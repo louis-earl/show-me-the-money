@@ -30,6 +30,7 @@ function Register (props) {
   }
 
   const handleSubmit = (e) => {
+    console.log("handlesubmit")
     e.preventDefault()
     e.target.reset()
     let {username, password, confirm_password, first_name, last_name, hourly_wage} = formData
@@ -67,7 +68,7 @@ function Register (props) {
             <input required className="input is-large has-text-centered is-fullwidth" placeholder="Confirm Password" type="password" name="confirm_password" autoComplete="new-password" onChange={handleChange} value={formData.confirm_password}/>
           </label>
         </div>
-        <Link to='/dashboard'><input className="button is-success is-large is-fullwidth" value="Register" type="submit" /></Link>
+<input className="button is-success is-large is-fullwidth" value="Register" type="submit" />
       </form>
     )
 }

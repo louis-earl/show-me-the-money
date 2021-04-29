@@ -73,7 +73,7 @@ export function registerUserRequest (creds, confirmSuccess) {
         dispatch(receiveLogin(userInfo))
         confirmSuccess()
       })
-      .catch(err => dispatch(loginError(err)))
+      .catch(err => dispatch(loginError("Bad problem")))
   }
 }
 
