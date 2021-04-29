@@ -1,4 +1,5 @@
 const express = require('express')
+
 const { getTokenDecoder } = require('authenticare/server')
 
 const db  = require('../db/meetings')
@@ -14,5 +15,15 @@ router.get('/', getTokenDecoder(), (req, res) => {
   .catch(err => { return "the error is: ", err.message })
 })
 
+router.post('/', (req, res) => {
+  db.saveMeeting(meeting)
+  .then((res) => {
+    res.redirect('/meeting')
+  })
+  .catch(err => {
+    res.status(500).send(err.message)
+  })
+})
 
 module.exports = router
+
