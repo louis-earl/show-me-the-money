@@ -11,6 +11,6 @@ server.use(express.json())
 server.use(express.static(path.join('server', 'public')))
 
 server.use('/api/v1', authRoutes)
-server.use('/api/v1/users')
+server.use('/api/v1/users', usersRoutes)
 
 module.exports = server

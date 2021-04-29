@@ -5,15 +5,21 @@ const db = require('../db/users')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    db.getAllUsers()
-    .then(users => {
-        res.json(users)
-    })
-    .catch(err => {
-        return "the error is: ", err.message
-      })
-})
+router.get('/', getTokenDecoder(), async (req, res) => {
+   try { 
+     const users =  await db.getAllUsers()
+       res.json({users})
+   } catch (err) {
+
+    if (err.message === 'Unauthorized') {
+        return res.status(403).send(
+          'Unauthorized: Unregistered user'
+        )
+      }
+      res.status(500).send(err.message)
+    }
+  })
+    
 
 
 module.exports = router
