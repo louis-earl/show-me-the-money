@@ -35,12 +35,16 @@ const Meeting = (props) => {
     !props.currentMeeting.meetingInProgress && props.currentMeeting.end_time;
 
   const handleClick = () => {
+    if (localMeetingName !== "") {
     if (!meetingInProgress) {
       props.dispatch(startMeeting(props.currentUsers, localMeetingName));
     } else {
       props.dispatch(endMeeting());
       //change state of show Q
     }
+  } else {
+    alert("Enter Meeting Name!")
+  }
   };
 
   const saveMeeting = () => {
@@ -48,12 +52,14 @@ const Meeting = (props) => {
     .then((res) => (saveAttendees(formatAttendees(res.id, props.currentMeeting))));
     props.dispatch(resetMeeting());
     props.dispatch(fetchUsers());
+    setLocalMeetingName("")
   };
 
   const refresh = () => {
     props.dispatch(resetMeeting());
     setUsersInMeeting([])
     props.dispatch(fetchUsers());
+    setLocalMeetingName("")
   };
 
   const handleChange = (e) => {
