@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { receiveMeetings } from '../actions/meetings'
 
 function PastMeetingSummary(props) {
     const { id, meeting_name, cost, attendees } = props.meeting
