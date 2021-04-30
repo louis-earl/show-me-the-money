@@ -12,7 +12,8 @@ import Graph from './Graph'
 const Meeting = (props) => {
 
     useEffect (() => {
-      props.dispatch(fetchUsers())
+      props.isAuthenticated && (
+      props.dispatch(fetchUsers()))
     },[])
 
     const attendees = [
@@ -56,6 +57,7 @@ const Meeting = (props) => {
   }
 
   return <div className="container">
+          {props.isAuthenticated ? (<div>
             <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
             <DisplayUsers />
             <div>
@@ -67,19 +69,22 @@ const Meeting = (props) => {
               <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>Stop</p> : <p>Start</p>}</button>
               <Graph />
             </div>
-
-{/* Test button */}
+            {/* Test button */}
   <button onClick={clickHandler}>Click to save meeting</button>
+            </div>) 
+              : (<span>Sorry, you need to be logged in to start a meeting.</span>)}
+
+            
 
 
-  </div>
+</div>
 }
 
 
 function mapStateToProps (globalstate) {
   return {
-    currentMeeting: globalstate.currentMeeting
-
+    currentMeeting: globalstate.currentMeeting,
+    isAuthenticated: globalstate.auth.isAuthenticated
   }
 }
 export default connect(mapStateToProps)(Meeting)
