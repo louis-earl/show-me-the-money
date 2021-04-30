@@ -22,6 +22,7 @@ const DisplayUsers = (props) => {
         if(foundUser){ 
             const index = arr.indexOf(user.username)
             arr.splice(index, 1)
+            
             setUsersInMeeting(arr)
             console.log("removed a user")
         } else { 
@@ -51,7 +52,8 @@ const DisplayUsers = (props) => {
 // will need map state to props
 const mapStateToProps = (globalState) => {
     return {
-        users: globalState.users
+        users: globalState.users,
+    
     }
 }
 
