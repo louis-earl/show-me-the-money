@@ -16,7 +16,8 @@ const initialMeetingState = {
 function currentMeeting (state = initialMeetingState, action) {
   switch (action.type) {
     case START_MEETING:
-      console.log(action.meetingName)
+      console.log("this is reducer", action.meetingName)
+
       return {...state, 
         meeting_name: action.meetingName,
         attendees: action.attendees,
@@ -34,7 +35,7 @@ function currentMeeting (state = initialMeetingState, action) {
     case TICK_ONE_SECOND:
         const totalWage = state.attendees.reduce((total, attendee) => {
           
-          return total = (attendee.hourlyWage / 60 / 60)
+          return total = (attendee.hourly_wage / 60 / 60)
         
         })
         console.log(totalWage, 'totalwage')
@@ -43,9 +44,7 @@ function currentMeeting (state = initialMeetingState, action) {
     case RESET_MEETING:
       return initialMeetingState
 
-    case ADD_MEETING_NAME:
 
-        return {...state, meeting_name: action.meeting_name}
       default:
         return state
    
