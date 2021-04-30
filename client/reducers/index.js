@@ -4,6 +4,7 @@ import auth from './auth'
 import meetingsHistory from './meetings'
 import currentMeeting from './currentMeeting'
 import users from './users'
+import attendees from './attendees'
 import currentUsers from './currentUsers'
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
   meetingsHistory,
   currentMeeting,
   users,
+  attendees,
   currentUsers
 })
