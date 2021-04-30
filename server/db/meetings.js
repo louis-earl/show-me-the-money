@@ -31,6 +31,13 @@ function getMeetingAttendees (id, db = connection) {
       })
 }
 
+function getAllMeetings (db = connection) {
+    return db('meetings') 
+    .select()
+    .orderBy('start_time', 'desc')
+
+}
+
 function saveAttendees (arr, db = connection) {
     return db('attendees')
     .insert(arr)
@@ -44,5 +51,6 @@ module.exports = {
     saveMeeting,
     getUsersMeetingHistory,
     getMeetingAttendees,
-    saveAttendees
+    saveAttendees,
+    getAllMeetings,
 }

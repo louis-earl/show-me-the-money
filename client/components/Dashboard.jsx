@@ -1,4 +1,5 @@
 import React from 'react'
+import Graph from './Graph'
 
 import History from './History'
 
@@ -8,6 +9,7 @@ function Dashboard() {
     <>
     <div className="dashboard">
     <History />
+    <Graph />
     </div>
     </>
 

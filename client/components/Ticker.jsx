@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {tickOneSecond} from '../actions/currentMeeting'
 function Ticker(props) {
     const [seconds, setSeconds] = useState(0)
-    const totalCost = props.currentMeeting.totalCost
+    const cost = props.currentMeeting.cost
     
     useEffect (() => {
         const interval = setInterval(() => {
@@ -19,7 +19,7 @@ function Ticker(props) {
     return (
         <div>
             <p>{seconds}</p>
-            <p>Cost so far! {totalCost.toFixed(2)} </p>
+            <p>Cost so far!: {cost.toFixed(2)} </p>
         </div>
     )
 }

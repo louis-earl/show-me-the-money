@@ -1,89 +1,123 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
-import Ticker from './Ticker'
-import DisplayUsers from './DisplayUsers'
+import Ticker from "./Ticker";
+import DisplayUsers from "./DisplayUsers";
 
-import { saveMeeting } from '../apis/meetings'
-import { fetchUsers }  from '../actions/users'
-import {startMeeting, endMeeting} from '../actions/currentMeeting'
+import { saveMeeting } from "../apis/meetings";
+import { saveAttendees } from "../apis/attendees"
+import { fetchUsers } from "../actions/users";
+import {
+  startMeeting,
+  endMeeting,
+  resetMeeting,
+  addMeetingName,
+} from "../actions/currentMeeting";
+import { addMeeting } from "../actions/meetings";
+import Graph from './Graph'
+
+import { formatAttendees } from "../utils/meeting"
+
 
 const Meeting = (props) => {
+  const [usersInMeeting, setUsersInMeeting] = useState([])
+  const [localMeetingName, setLocalMeetingName] = useState("");
+
 
     useEffect (() => {
+      // props.isAuthenticated && (
       props.dispatch(fetchUsers())
     },[])
 
-    const attendees = [
-      {
-        id: 1,
-        hourlyWage: 24.00
-      },
-      {
-        id: 2,
-        hourlyWage: 24.00,
-  
-      },
-      {
-        id: 2,
-        hourlyWage: 24.00,
-        
-      }
-    ]
-
-    const meetingName = 'Discuss rollout of new firmware'
-    const meetingInProgress = props.currentMeeting.meetingInProgress
-    console.log(meetingInProgress)
+  const meetingInProgress = props.currentMeeting.meetingInProgress;
+  const showSave =
+    !props.currentMeeting.meetingInProgress && props.currentMeeting.end_time;
 
   const handleClick = () => {
-    
+    if (localMeetingName !== "") {
     if (!meetingInProgress) {
-    props.dispatch(startMeeting(attendees, meetingName))
+      props.dispatch(startMeeting(props.currentUsers, localMeetingName));
+    } else {
+      props.dispatch(endMeeting());
+      //change state of show Q
     }
-    else {
-      props.dispatch(endMeeting())
-    }
-
-
+  } else {
+    alert("Enter Meeting Name!")
   }
+  };
 
+  const saveMeeting = () => {
+    props.dispatch(addMeeting(props.currentMeeting))
+    .then((res) => (saveAttendees(formatAttendees(res.id, props.currentMeeting))));
+    props.dispatch(resetMeeting());
+    props.dispatch(fetchUsers());
+    setLocalMeetingName("")
+  };
+
+  const refresh = () => {
+    props.dispatch(resetMeeting());
+    setUsersInMeeting([])
+    props.dispatch(fetchUsers());
+    setLocalMeetingName("")
+  };
+
+  const handleChange = (e) => {
+    setLocalMeetingName(e.target.value);
+  };
   // TEST BUTTON FUNCTION
-  const clickHandler = () => {
-    const meeting = { meeting_name: 'Test Meeting' }
-    saveMeeting(meeting)
-    .then(result => console.log("Meeting saved", result))
-  }
-  return  <>
+
+
+  return (
+    <>
             <div className="page-title">
               <h2>Start a new meeting! {/* DISPLAY MEETING ID */}</h2> 
             </div>
 
             <div className="meeting-page">
-            
-            <DisplayUsers />
 
-              <div className="meeting-controls">
-                  
-                  <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>Click to stop meeting</p> : <p>Click to start meeting</p>}</button>
-                <div className="running-cost">
-                  {/* <div className="timer">{displayTime()} </div> */}
-                  {meetingInProgress && <Ticker /> }
-                </div>
-  
-  
-  
-  {/* Test button */}
-    <button onClick={clickHandler}>Click to save meeting</button>
-    </div>
-            </div>
-  </>
-}
+      <div className="meeting-controls">
+        {props.isAuthenticated ? (<div>
+
+      <DisplayUsers usersInMeeting={usersInMeeting} setUsersInMeeting={setUsersInMeeting}/>
 
 
-function mapStateToProps (globalstate) {
+      
+        {meetingInProgress && <Ticker />}
+        <div className="running cost">{/*  DISPLAY: running cost */}</div>
+      
+
+      {!showSave ? (
+        <>
+          <input
+            required
+            className="meeting"
+            placeholder="awesome meeting"
+            type="text"
+            name="meeting_name"
+            onChange={handleChange}
+          />
+          <button onClick={(e) => handleClick()}>
+            {meetingInProgress ? <p>End Meeting</p> : <p>Start Meeting</p>}
+          </button>
+        </>
+      ) : (
+        <div>
+          <button onClick={saveMeeting}>Save meeting?</button>
+          <button onClick={refresh}>don't save meeting?</button>
+        </div>
+      )}
+      </div>) : (<span>Sorry, you need to be logged in to start a meeting.</span>)}
+      </div>
+      </div>
+    </>
+  );
+};
+
+function mapStateToProps(globalstate) {
   return {
-    currentMeeting: globalstate.currentMeeting
-
-  }
+    currentMeeting: globalstate.currentMeeting,
+    currentUsers: globalstate.currentUsers,
+    isAuthenticated: globalstate.auth.isAuthenticated
+  };
 }
-export default connect(mapStateToProps)(Meeting)
+export default connect(mapStateToProps)(Meeting);

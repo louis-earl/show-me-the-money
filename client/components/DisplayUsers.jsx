@@ -2,19 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { selectedUsers } from '../actions/users'
 
-const mockData = [{username: 'Jack'},{username: 'seb'},{username: 'dianne'},{username: 'louis'},{username: 'marni'}]
-
 const DisplayUsers = (props) => {
-    const [usersInMeeting, setUsersInMeeting] = useState([])
 
     useEffect (() => {
-        console.log('dispatching');
-        props.dispatch(selectedUsers(usersInMeeting))
-    }, [usersInMeeting])
+        props.dispatch(selectedUsers(props.usersInMeeting))
+    }, [props.usersInMeeting])
 
     const handleClick = (e, user) => {
         const styleClass = "userList-button-in-meeting"
-        let arr = [...usersInMeeting]
+        let arr = [...props.usersInMeeting]
         if(e.target.className == styleClass) { e.target.className = "userList-button" }
         else { e.target.className = styleClass }
 
@@ -22,16 +18,14 @@ const DisplayUsers = (props) => {
         if(foundUser){ 
             const index = arr.indexOf(user.username)
             arr.splice(index, 1)
-            setUsersInMeeting(arr)
-            console.log("removed a user")
+            
+            props.setUsersInMeeting(arr)
         } else { 
-            setUsersInMeeting([...usersInMeeting, user]) 
-            console.log('added a user')
+            props.setUsersInMeeting([...props.usersInMeeting, user]) 
         }
     }
 
 
-    console.log(usersInMeeting)
     return (
         <div className="users">
             <h3>Who would you like to invite to your meeting? Click to add attendees.</h3>
@@ -55,7 +49,8 @@ const DisplayUsers = (props) => {
 // will need map state to props
 const mapStateToProps = (globalState) => {
     return {
-        users: globalState.users
+        users: globalState.users,
+    
     }
 }
 
