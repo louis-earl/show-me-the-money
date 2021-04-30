@@ -6,6 +6,7 @@ import Ticker from "./Ticker";
 import DisplayUsers from "./DisplayUsers";
 
 import { saveMeeting } from "../apis/meetings";
+import { saveAttendees } from "../apis/attendees"
 import { fetchUsers } from "../actions/users";
 import {
   startMeeting,
@@ -16,8 +17,11 @@ import {
 import { addMeeting } from "../actions/meetings";
 import Graph from './Graph'
 
+import { formatAttendees } from "../utils/meeting"
+
 
 const Meeting = (props) => {
+  const [usersInMeeting, setUsersInMeeting] = useState([])
   const [localMeetingName, setLocalMeetingName] = useState("");
 
 
@@ -40,13 +44,15 @@ const Meeting = (props) => {
   };
 
   const saveMeeting = () => {
-    props.dispatch(addMeeting(props.currentMeeting));
+    props.dispatch(addMeeting(props.currentMeeting))
+    .then((res) => (saveAttendees(formatAttendees(res.id, props.currentMeeting))));
     props.dispatch(resetMeeting());
     props.dispatch(fetchUsers());
   };
 
   const refresh = () => {
     props.dispatch(resetMeeting());
+    setUsersInMeeting([])
     props.dispatch(fetchUsers());
   };
 
@@ -60,7 +66,7 @@ const Meeting = (props) => {
     <div className="container">
         {props.isAuthenticated ? (<div>
       <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2>
-      <DisplayUsers />
+      <DisplayUsers usersInMeeting={usersInMeeting} setUsersInMeeting={setUsersInMeeting}/>
       <div>
         {meetingInProgress && <Ticker />}
         <div className="running cost">{/*  DISPLAY: running cost */}</div>

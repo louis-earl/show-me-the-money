@@ -8,3 +8,8 @@
     return <h3>{hours} | {min} | {sec}</h3>
   }
 
+export const formatAttendees = (meetingId, meetingAttendees) => {
+  let ids = []
+  meetingAttendees.attendees.map(att => ids.push({meeting_id:meetingId, user_id:att.id}))
+  return ids
+}
