@@ -33,12 +33,12 @@ function currentMeeting (state = initialMeetingState, action) {
    
 
     case TICK_ONE_SECOND:
-        const totalWage = state.attendees.reduce((total, attendee) => {
-          
-          return total = (attendee.hourly_wage / 60 / 60)
-        
-        })
-        return {...state, cost: state.cost + totalWage }
+        const wages = state.attendees.map(e => e.hourly_wage/3600)
+        console.log(wages)
+        const reducer = (a, b) => {return a + b}
+        const totalWages = wages.reduce(reducer)
+        console.log(totalWages)
+        return {...state, cost: state.cost + totalWages }
 
     case RESET_MEETING:
       return initialMeetingState
