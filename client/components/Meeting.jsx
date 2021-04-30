@@ -31,7 +31,6 @@ const Meeting = (props) => {
     !props.currentMeeting.meetingInProgress && props.currentMeeting.end_time;
 
   const handleClick = () => {
-    console.log(localMeetingName)
     if (localMeetingName !== "") {
     if (!meetingInProgress) {
       props.dispatch(startMeeting(props.currentUsers, localMeetingName));
