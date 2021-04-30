@@ -35,7 +35,15 @@ router.get('/:id/users', getTokenDecoder(), async  (req, res) => {
 
 router.post('/', getTokenDecoder(), async (req, res) => {
   console.log("Post route for saveMeeting")
-  db.saveMeeting(req.body)
+  const newData = {
+    cost: req.body.cost,
+    attendee_count: req.body.attendee_count,
+    meeting_name: req.body.meeting_name,
+    start_time: req.body.start_time,
+    end_time: req.body.end_time
+
+  }
+  db.saveMeeting(newData)
   .then((id) => {
     res.json({id: id[0], message: "Meeting saved successfully."})
   })
