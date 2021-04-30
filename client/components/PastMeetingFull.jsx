@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 
 import { receiveMeetings } from '../actions/meetings'
 import Attendees from './Attendees';
+import DisplayTime from './DisplayTime';
 
 function PastMeetingFull(props) {
   const { id } = useParams();
@@ -14,11 +15,19 @@ function PastMeetingFull(props) {
   }, [props.user.id])
 
   let currentMeeting = null
+  let runtime = null
   // if the meeting history has loaded
   if (props.meetingsHistory) {
     // find the single meeting we are looking for using the page id (/:params)
     currentMeeting = props.meetingsHistory.find((meeting) => meeting.id == id)
+    if (currentMeeting) {
+    console.log(currentMeeting)
+    runtime = currentMeeting.end_time - currentMeeting.start_time
+    }
   }
+
+
+
 
   return (
     <>
@@ -26,7 +35,10 @@ function PastMeetingFull(props) {
         <div>
           <h2 className="title is-2">{currentMeeting.meeting_name}</h2>
           <h3 className="title is-3">Cost: ${currentMeeting.cost}</h3>
-          <Attendees currentMeeting={currentMeeting}/>
+          <Attendees currentMeeting={currentMeeting} />
+          {runtime &&
+            <h3 className="title is-3">Duration: <DisplayTime runtime={runtime} /></h3>
+          }
         </div>
       }
     </>
