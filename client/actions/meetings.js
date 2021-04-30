@@ -54,6 +54,7 @@ export function addMeeting(meeting) {
         return saveMeeting(meeting)
             .then((meeting) => {
                 dispatch(addMeetingSuccess(meeting))
+                return meeting
             })
             .catch(err => {
                 console.log("ERROR:", err)

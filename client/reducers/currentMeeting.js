@@ -9,14 +9,14 @@ const initialMeetingState = {
   end_time: null,
   cost: 0,
   meetingInProgress: false,
-  attendee_count: 0
+  attendee_count: 0,
+
  
 }
 
 function currentMeeting (state = initialMeetingState, action) {
   switch (action.type) {
     case START_MEETING:
-      console.log("this is reducer", action.meetingName)
 
       return {...state, 
         meeting_name: action.meetingName,
@@ -24,9 +24,9 @@ function currentMeeting (state = initialMeetingState, action) {
         start_time: Date.now(),
         meetingInProgress: true,
         attendee_count: action.attendees.length,
-        
+     
       }
-
+      
     case END_MEETING:
       return {...state, meetingInProgress: false, end_time: Date.now()}
 
@@ -38,7 +38,6 @@ function currentMeeting (state = initialMeetingState, action) {
           return total = (attendee.hourly_wage / 60 / 60)
         
         })
-        console.log(totalWage, 'totalwage')
         return {...state, cost: state.cost + totalWage }
 
     case RESET_MEETING:
