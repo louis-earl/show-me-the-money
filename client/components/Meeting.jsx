@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
@@ -13,13 +14,17 @@ import {
   addMeetingName,
 } from "../actions/currentMeeting";
 import { addMeeting } from "../actions/meetings";
+import Graph from './Graph'
+
 
 const Meeting = (props) => {
   const [localMeetingName, setLocalMeetingName] = useState("");
 
-  useEffect(() => {
-    props.dispatch(fetchUsers());
-  }, []);
+
+    useEffect (() => {
+      props.isAuthenticated && (
+      props.dispatch(fetchUsers()))
+    },[])
 
   const meetingInProgress = props.currentMeeting.meetingInProgress;
   const showSave =
@@ -50,8 +55,10 @@ const Meeting = (props) => {
   };
   // TEST BUTTON FUNCTION
 
+
   return (
     <div className="container">
+        {props.isAuthenticated ? (<div>
       <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2>
       <DisplayUsers />
       <div>
@@ -79,6 +86,7 @@ const Meeting = (props) => {
           <button onClick={refresh}>don't save meeting?</button>
         </div>
       )}
+      </div>) : (<span>Sorry, you need to be logged in to start a meeting.</span>)}
     </div>
   );
 };
@@ -87,6 +95,7 @@ function mapStateToProps(globalstate) {
   return {
     currentMeeting: globalstate.currentMeeting,
     currentUsers: globalstate.currentUsers,
+    isAuthenticated: globalstate.auth.isAuthenticated
   };
 }
 export default connect(mapStateToProps)(Meeting);

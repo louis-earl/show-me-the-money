@@ -31,9 +31,19 @@ function getAllUsers (db = connection) {
   })
 }
 
+function updateUser (id, obj, db = connection) {
+  return db('users')
+  .where('id', id)
+  .update(obj)
+  .catch((err) => {
+    console.log(err.message)
+  })
+}
+
 module.exports = {
   createUser,
   userExists,
   getUserByUsername,
-  getAllUsers
+  getAllUsers,
+  updateUser
 }
