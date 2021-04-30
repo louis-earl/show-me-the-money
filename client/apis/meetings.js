@@ -28,7 +28,7 @@ export function getMeetingsOfUser (userID) {
 }
 
 // Gets all meetings 
-export function getMeetingsOfUser () {
+export function getAllMeetings() {
   console.log("Get all meetings API request")
   return request
     .get(baseUrl + '/meetings/')
