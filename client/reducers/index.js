@@ -14,6 +14,6 @@ export default combineReducers({
   currentMeeting,
   users,
   currentUsers,
-  getMeetings
-  attendees,
+  getMeetings,
+  attendees
 })
