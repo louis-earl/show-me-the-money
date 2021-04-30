@@ -34,7 +34,7 @@ function getMeetingAttendees (id, db = connection) {
 function getAllMeetings (db = connection) {
     return db('meetings') 
     .select()
-    .orderBy('created_at', 'desc')
+    .orderBy('start_time', 'desc')
 
 }
 
