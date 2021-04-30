@@ -5,6 +5,7 @@ import Ticker from "./Ticker";
 import DisplayUsers from "./DisplayUsers";
 
 import { saveMeeting } from "../apis/meetings";
+import { saveAttendees } from "../apis/attendees"
 import { fetchUsers } from "../actions/users";
 import {
   startMeeting,
@@ -15,14 +16,17 @@ import {
 import { addMeeting } from "../actions/meetings";
 import Graph from './Graph'
 
+import { formatAttendees } from "../utils/meeting"
+
 
 const Meeting = (props) => {
+  const [usersInMeeting, setUsersInMeeting] = useState([])
   const [localMeetingName, setLocalMeetingName] = useState("");
 
 
     useEffect (() => {
-      props.isAuthenticated && (
-      props.dispatch(fetchUsers()))
+      // props.isAuthenticated && (
+      props.dispatch(fetchUsers())
     },[])
 
   const meetingInProgress = props.currentMeeting.meetingInProgress;
@@ -30,23 +34,31 @@ const Meeting = (props) => {
     !props.currentMeeting.meetingInProgress && props.currentMeeting.end_time;
 
   const handleClick = () => {
+    if (localMeetingName !== "") {
     if (!meetingInProgress) {
       props.dispatch(startMeeting(props.currentUsers, localMeetingName));
     } else {
       props.dispatch(endMeeting());
       //change state of show Q
     }
+  } else {
+    alert("Enter Meeting Name!")
+  }
   };
 
   const saveMeeting = () => {
-    props.dispatch(addMeeting(props.currentMeeting));
+    props.dispatch(addMeeting(props.currentMeeting))
+    .then((res) => (saveAttendees(formatAttendees(res.id, props.currentMeeting))));
     props.dispatch(resetMeeting());
     props.dispatch(fetchUsers());
+    setLocalMeetingName("")
   };
 
   const refresh = () => {
     props.dispatch(resetMeeting());
+    setUsersInMeeting([])
     props.dispatch(fetchUsers());
+    setLocalMeetingName("")
   };
 
   const handleChange = (e) => {
@@ -59,7 +71,7 @@ const Meeting = (props) => {
     <div className="container">
         {props.isAuthenticated ? (<div>
       <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2>
-      <DisplayUsers />
+      <DisplayUsers usersInMeeting={usersInMeeting} setUsersInMeeting={setUsersInMeeting}/>
       <div>
         {meetingInProgress && <Ticker />}
         <div className="running cost">{/*  DISPLAY: running cost */}</div>
