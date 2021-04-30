@@ -11,6 +11,6 @@ export function getUsers () {
     .set(acceptJsonHeader)
     .set(getAuthorizationHeader())
     .then(res => {
-      return res.body.users})
+      return res.body})
     .catch(err => console.log(err.message))
 }

@@ -22,8 +22,8 @@ const Meeting = (props) => {
 
 
     useEffect (() => {
-      props.isAuthenticated && (
-      props.dispatch(fetchUsers()))
+      // props.isAuthenticated && (
+      props.dispatch(fetchUsers())
     },[])
 
   const meetingInProgress = props.currentMeeting.meetingInProgress;

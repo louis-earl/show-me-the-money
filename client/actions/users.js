@@ -16,9 +16,11 @@ export function selectedUsers (currentUsers) {
 }
 
 export function fetchUsers () {
+  console.log('triggering')
   return dispatch => {
     return getUsers()
     .then (users => { 
+      console.log(users)
       return dispatch(receiveUsers(users))
     })
       .catch(err => console.log(err.message))
