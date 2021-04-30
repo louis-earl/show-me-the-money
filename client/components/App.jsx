@@ -23,18 +23,16 @@ function App({ auth, dispatch }) {
 
   return (
     <Router>
-      <div className="container has-text-centered">
+      <div className="container">
 
-        <div className="hero is-small is-primary">
-          <div className="hero-body has-text-centered">
-            <Link to='/' className="">
-              <h1 className="title is-1">$how Me The Money</h1>
+        <div className="header">
+            <Link to='/' className="link">
+              <h1 className="title">$how Me The Money</h1>
             </Link>
             <Route path="/" component={Nav} />
-          </div>
         </div>
 
-        <div className=''>
+
           {auth.isAuthenticated ?
             <Route exact path="/" component={Dashboard} />
             :
@@ -48,7 +46,6 @@ function App({ auth, dispatch }) {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/past-meeting/:id" component={PastMeetingFull} />
       
-        </div>
 
       </div>
     </Router>

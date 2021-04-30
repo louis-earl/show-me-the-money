@@ -68,14 +68,23 @@ const Meeting = (props) => {
 
 
   return (
-    <div className="container">
+    <>
+            <div className="page-title">
+              <h2>Start a new meeting! {/* DISPLAY MEETING ID */}</h2> 
+            </div>
+
+            <div className="meeting-page">
+
+      <div className="meeting-controls">
         {props.isAuthenticated ? (<div>
-      <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2>
+
       <DisplayUsers usersInMeeting={usersInMeeting} setUsersInMeeting={setUsersInMeeting}/>
-      <div>
+
+
+      
         {meetingInProgress && <Ticker />}
         <div className="running cost">{/*  DISPLAY: running cost */}</div>
-      </div>
+      
 
       {!showSave ? (
         <>
@@ -98,7 +107,9 @@ const Meeting = (props) => {
         </div>
       )}
       </div>) : (<span>Sorry, you need to be logged in to start a meeting.</span>)}
-    </div>
+      </div>
+      </div>
+    </>
   );
 };
 

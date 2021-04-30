@@ -13,37 +13,25 @@ function Nav ({auth, logout}) {
     })
   }
 
-    return <nav className="navbar">
-      <div className="container">
-        <div className="navbar-brand">
-          <span onClick={toggleBurger} className={`navbar-burger burger ${burgerVisible ? 'is-active': ''}`} data-target="navbarMenuHeroA">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="navbarMenuHeroA" className={`navbar-menu ${burgerVisible ? "is-active" : ''}`}>
-          <div className="navbar-end">
+    return      <div className="navbar">
             { auth.isAuthenticated
               ? (
                 <>
-                  <Link to='/' className="navbar-item is-large" onClick={() => logout()}>Logout</Link>
-                  <Link to='/dashboard' className="navbar-item is-large">Dashboard</Link>
-                  <Link to='/meeting' className="navbar-item is-large">New Meeting</Link>
+                  <Link to='/' className="navlink" onClick={() => logout()}>Logout</Link>
+                  <Link to='/dashboard' className="navlink">Dashboard</Link>
+                  <Link to='/meeting' className="navlink">New Meeting</Link>
 
                   </>
                 )
               : (
                 <>
-                  <Link onClick={toggleBurger} className="navbar-item is-large" to='/login'>Login</Link>
-                  <Link onClick={toggleBurger} className="navbar-item" to='/register'>Register</Link>
+                  <Link onClick={toggleBurger} className="navlink" to='/login'>Login</Link>
+                  <Link onClick={toggleBurger} className="navlink" to='/register'>Register</Link>
                 </>
               )
             }
           </div>
-        </div>
-      </div>
-    </nav>
+
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

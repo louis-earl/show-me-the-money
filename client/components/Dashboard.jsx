@@ -7,8 +7,10 @@ function Dashboard() {
   return (
 
     <>
+    <div className="dashboard">
     <History />
     <Graph />
+    </div>
     </>
 
 

@@ -14,8 +14,10 @@ function History(props) {
 
 
 
-  return <div className="container">
-    <h2 className="title is-2">{props.user.first_name}'s Meeting history:</h2>
+  return <div className="history">
+    <div className="page-title">
+    <h2>{props.user.first_name}'s meeting history</h2>
+    </div>
     {
       props.meetingsHistory.length > 0 ?
       props.meetingsHistory.map((meeting) => {
