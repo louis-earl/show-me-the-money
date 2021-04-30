@@ -27,3 +27,15 @@ export function getMeetingsOfUser (userID) {
     .catch((err) => console.log("Error", err))
 }
 
+// Gets all meetings 
+export function getMeetingsOfUser () {
+  console.log("Get all meetings API request")
+  return request
+    .get(baseUrl + '/meetings/')
+    .set(acceptJsonHeader)
+    .set(getAuthorizationHeader())
+    .then((res) => res.body)
+    .catch((err) => console.log("Error", err))
+}
+
+
