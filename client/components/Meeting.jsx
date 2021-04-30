@@ -40,7 +40,7 @@ const Meeting = (props) => {
       //change state of show Q
     }
   } else {
-    alert("Enter Name!")
+    alert("Enter Meeting Name!")
   }
   };
 
@@ -48,6 +48,7 @@ const Meeting = (props) => {
     props.dispatch(addMeeting(props.currentMeeting));
     props.dispatch(resetMeeting());
     props.dispatch(fetchUsers());
+    setLocalMeetingName("")
   };
 
   const refresh = () => {
