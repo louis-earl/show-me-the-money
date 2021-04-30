@@ -53,24 +53,30 @@ const Meeting = (props) => {
     saveMeeting(meeting)
     .then(result => console.log("Meeting saved", result))
   }
+  return  <>
+            <div className="page-title">
+              <h2>Start a new meeting! {/* DISPLAY MEETING ID */}</h2> 
+            </div>
 
-  return <div className="container">
-            <h2 className="title is-2">Meeting: {/* DISPLAY MEETING ID */}</h2> 
+            <div className="meeting-page">
+            
             <DisplayUsers />
-            <div>
-              {/* <div className="timer">{displayTime()} </div> */}
-              {meetingInProgress && <Ticker /> }
-              <div className="running cost">{/*  DISPLAY: running cost */}</div>
+
+              <div className="meeting-controls">
+                  
+                  <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>Click to stop meeting</p> : <p>Click to start meeting</p>}</button>
+                <div className="running-cost">
+                  {/* <div className="timer">{displayTime()} </div> */}
+                  {meetingInProgress && <Ticker /> }
+                </div>
+  
+  
+  
+  {/* Test button */}
+    <button onClick={clickHandler}>Click to save meeting</button>
+    </div>
             </div>
-            <div>
-              <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>Stop</p> : <p>Start</p>}</button>
-            </div>
-
-{/* Test button */}
-  <button onClick={clickHandler}>Click to save meeting</button>
-
-
-  </div>
+  </>
 }
 
 

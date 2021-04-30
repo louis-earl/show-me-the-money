@@ -32,7 +32,7 @@ function Login (props) {
 
   return (
     <form className="form box" onSubmit={handleSubmit}>
-      <h1 className="title is-2">Login</h1>
+      <h2 >Login</h2>
       <hr />
       {auth.errorMessage && (
         <span className="has-text-danger is-large">{auth.errorMessage}</span>
@@ -64,7 +64,7 @@ function Login (props) {
         />
       </label>
       <input
-        className="button is-large is-fullwidth is-success"
+        className="button"
         value="Login"
         type="submit"
       />

@@ -6,7 +6,9 @@ function Dashboard() {
   return (
 
     <>
+    <div className="dashboard">
     <History />
+    </div>
     </>
 
 

@@ -19,7 +19,7 @@ function Ticker(props) {
     return (
         <div>
             <p>{seconds}</p>
-            <p>Cost so far!: {totalCost.toFixed(2)} </p>
+            <p>Cost so far! {totalCost.toFixed(2)} </p>
         </div>
     )
 }

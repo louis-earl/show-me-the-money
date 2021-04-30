@@ -33,17 +33,21 @@ const DisplayUsers = (props) => {
 
     console.log(usersInMeeting)
     return (
-        <div>
-            <h1> Users:</h1>
-            <ul>
-                {props.users.map((user, i) => {
-                    return <li key={i}>
-                        <button className="userList-button" type='button' onClick={(e) => handleClick(e, user)}>
-                            {user.username}
-                        </button>
-                    </li>
-                })}
-            </ul>
+        <div className="users">
+            <h3>Who would you like to invite to your meeting? Click to add attendees.</h3>
+
+            <div className="user-list">
+                <ul>
+                    {props.users.map((user, i) => {
+                        return <li key={i}>
+                            <button className="userList-button" type='button' onClick={(e) => handleClick(e, user)}>
+                                {user.username}
+                            </button>
+                        </li>
+                    })}
+                </ul>
+            </div>
+
         </div>
     )
 }
