@@ -7,6 +7,7 @@ import DisplayUsers from './DisplayUsers'
 import { saveMeeting } from '../apis/meetings'
 import { fetchUsers }  from '../actions/users'
 import {startMeeting, endMeeting} from '../actions/currentMeeting'
+import Graph from './Graph'
 
 const Meeting = (props) => {
 
@@ -64,6 +65,7 @@ const Meeting = (props) => {
             </div>
             <div>
               <button onClick={(e) => handleClick()}>{meetingInProgress ? <p>Stop</p> : <p>Start</p>}</button>
+              <Graph />
             </div>
 
 {/* Test button */}
