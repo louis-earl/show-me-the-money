@@ -30,7 +30,6 @@ function Register (props) {
   }
 
   const handleSubmit = (e) => {
-    console.log("handlesubmit")
     e.preventDefault()
     e.target.reset()
     let {username, password, confirm_password, first_name, last_name, hourly_wage} = formData

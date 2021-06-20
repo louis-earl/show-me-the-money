@@ -21,20 +21,17 @@ function PastMeetingFull(props) {
     // find the single meeting we are looking for using the page id (/:params)
     currentMeeting = props.meetingsHistory.find((meeting) => meeting.id == id)
     if (currentMeeting) {
-    console.log(currentMeeting)
     runtime = currentMeeting.end_time - currentMeeting.start_time
+    console.log(runtime)
     }
   }
-
-
-
 
   return (
     <>
       {currentMeeting &&
         <div>
           <h2 className="title is-2">{currentMeeting.meeting_name}</h2>
-          <h3 className="title is-3">Cost: ${currentMeeting.cost}</h3>
+          <h3 className="title is-3">Cost: ${currentMeeting.cost.toFixed(2)}</h3>
           <Attendees currentMeeting={currentMeeting} />
           {runtime &&
             <h3 className="title is-3">Duration: <DisplayTime runtime={runtime} /></h3>

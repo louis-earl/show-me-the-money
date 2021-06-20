@@ -14,20 +14,18 @@ function Ticker(props) {
         return () => {clearInterval(interval)}
       }, [])
 
-
-
     return (
         <div>
             <p>{seconds}</p>
-            <p>Cost so far!: {cost.toFixed(2)} </p>
+            <p>Cost so far: ${cost.toFixed(2)} </p>
         </div>
     )
 }
 
 
-function mapStateToProps (globalstate) {
+function mapStateToProps (globalState) {
   return {
-    currentMeeting: globalstate.currentMeeting
+    currentMeeting: globalState.currentMeeting
 
   }
 }
