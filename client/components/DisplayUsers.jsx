@@ -8,10 +8,14 @@ const DisplayUsers = (props) => {
         props.dispatch(selectedUsers(props.usersInMeeting))
     }, [props.usersInMeeting])
 
+    useEffect(() => {
+        props.setUsersInMeeting([props.user])
+    }, [])
+
     const handleClick = (e, user) => {
-        const styleClass = "userList-button-in-meeting"
+        const styleClass = "button--user-selected"
         let arr = [...props.usersInMeeting]
-        if (e.target.className == styleClass) { e.target.className = "userList-button" }
+        if (e.target.className == styleClass) { e.target.className = "button--user" }
         else { e.target.className = styleClass }
 
         const foundUser = arr.find(el => el.username === user.username) !== undefined
@@ -34,7 +38,12 @@ const DisplayUsers = (props) => {
                 <div>
                     {props.users.map((user, i) => {
                         return (
-                            <button className="button--user" type='button' onClick={(e) => handleClick(e, user)}>
+                            <button
+                                key={i}
+                                className={user.username === props.user.username ? "button--user-selected" : "button--user"}
+                                type='button'
+                                onClick={(e) => handleClick(e, user)}
+                            >
                                 {user.username}
                             </button>
                         )
@@ -51,7 +60,7 @@ const DisplayUsers = (props) => {
 const mapStateToProps = (globalState) => {
     return {
         users: globalState.users,
-
+        user: globalState.auth.user
     }
 }
 
