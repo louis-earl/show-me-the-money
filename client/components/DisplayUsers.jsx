@@ -28,13 +28,13 @@ const DisplayUsers = (props) => {
 
     return (
         <div className="users">
-            <h3>Who would you like to invite to your meeting? Click to add attendees.</h3>
+            <p>Who would you like to invite to your meeting? Click to add attendees.</p>
 
             <div className="user-list">
                 <ul>
                     {props.users.map((user, i) => {
                         return <li key={i}>
-                            <button className="userList-button" type='button' onClick={(e) => handleClick(e, user)}>
+                            <button className="button--user" type='button' onClick={(e) => handleClick(e, user)}>
                                 {user.username}
                             </button>
                         </li>

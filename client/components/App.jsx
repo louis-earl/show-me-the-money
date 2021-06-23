@@ -23,15 +23,16 @@ function App({ auth, dispatch }) {
 
   return (
     <Router>
-      <div className="container">
 
-        <div className="header">
-            <Link to='/' className="link">
-              <h1 className="title">$how Me The Money</h1>
-            </Link>
-            <Route path="/" component={Nav} />
-        </div>
+      <div className="header">
+        <Link to='/' className="link title__link">
+          <h1 className="title">$how Me The Money</h1>
+        </Link>
+      </div>
+      <Route path="/" component={Nav} />
 
+      <div className="content__wrapper">
+        <div className="content">
 
           {auth.isAuthenticated ?
             <Route exact path="/" component={Dashboard} />
@@ -39,15 +40,16 @@ function App({ auth, dispatch }) {
             <Route exact path="/" component={Login} />
 
           }
-          
+
+
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/meeting" component={Meeting} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/past-meeting/:id" component={PastMeetingFull} />
-      
-
+        </div>
       </div>
+
     </Router>
   )
 }

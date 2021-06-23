@@ -16,15 +16,17 @@ function History(props) {
 
   return <div className="history">
     <div className="page-title">
-    <h2>{props.user.first_name}'s meeting history</h2>
+      <h2>{props.user.first_name}'s meeting history</h2>
     </div>
     {
       props.meetingsHistory.length > 0 ?
-      props.meetingsHistory.map((meeting) => {
-        return <PastMeetingSummary key={meeting.id} meeting={meeting} />
-      })
-      :
-      <h3>You haven't participated in any meetings yet! Go on, <Link to="/meeting">give it a try.</Link></h3>
+        props.meetingsHistory.map((meeting) => {
+          return <PastMeetingSummary key={meeting.id} meeting={meeting} />
+        })
+        :
+        <p>
+          You haven't participated in any meetings yet! Go on, <Link to="/meeting" className="link">give it a try.</Link>
+        </p>
     }
   </div>
 }

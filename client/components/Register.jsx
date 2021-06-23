@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import {loginError, registerUserRequest} from '../actions/auth'
+import { loginError, registerUserRequest } from '../actions/auth'
 
-function Register (props) {
-  const {auth} = props
+function Register(props) {
+  const { auth } = props
 
   const [formData, setFormData] = useState({
     username: '',
@@ -15,7 +15,7 @@ function Register (props) {
     password: '',
     confirm_password: ''
   })
-   
+
   useEffect(() => {
     props.dispatch(loginError(''))
   }, [])
@@ -32,47 +32,62 @@ function Register (props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     e.target.reset()
-    let {username, password, confirm_password, first_name, last_name, hourly_wage} = formData
+    let { username, password, confirm_password, first_name, last_name, hourly_wage } = formData
     hourly_wage = parseFloat(hourly_wage).toFixed(2)
     if (confirm_password != password) return props.dispatch(loginError("Passwords don't match"))
     const confirmSuccess = () => { props.history.push('/') }
-    props.dispatch(registerUserRequest({username, password, first_name, last_name, hourly_wage}, confirmSuccess))
+    props.dispatch(registerUserRequest({ username, password, first_name, last_name, hourly_wage }, confirmSuccess))
   }
 
-    return (
-      <form className="Register form box" onSubmit={handleSubmit}>
-        <h1 className="title is-2">Register</h1>
-        <hr />
-        {auth.errorMessage && <span className="has-text-danger is-large">{auth.errorMessage}</span>}
-        <label className="column is-6 is-offset-one-quarter label is-large has-text-centered">Username
-          <input required className="input is-large has-text-centered is-fullwidth" placeholder="User Name" type="text" name="username" autoComplete="username" onChange={handleChange} value={formData.username}/>
-        </label>
-        <div className="columns">
-          <label className="column is-6 label is-large has-text-centered">First Name
-            <input required className="input is-large has-text-centered is-fullwidth" placeholder="First Name" type="text" name="first_name" onChange={handleChange} value={formData.first_name}/>
-          </label>
-          <label className="column is-6 label is-large has-text-centered">Last Name
-            <input required className="input is-large has-text-centered is-fullwidth" placeholder="Last Name" type="text" name="last_name" onChange={handleChange} value={formData.last_name}/>
-          </label>
-          <label className="column is-6 label is-large has-text-centered">Hourly Wage ($)
-            <input required className="input is-large has-text-centered is-fullwidth" placeholder="20.00" type="number" name="hourly_wage" onChange={handleChange} value={formData.hourly_wage}/>
-          </label>
-        </div>
-        <br />
-        <div className="columns">
-          <label className="column is-6 label is-large has-text-centered">Password
-            <input required className="input is-large has-text-centered is-fullwidth" placeholder="Password" type="password" name="password"  autoComplete="new-password" onChange={handleChange} value={formData.password}/>
-          </label>
-          <label className="column is-6 label is-large has-text-centered">Confirm Password
-            <input required className="input is-large has-text-centered is-fullwidth" placeholder="Confirm Password" type="password" name="confirm_password" autoComplete="new-password" onChange={handleChange} value={formData.confirm_password}/>
-          </label>
-        </div>
-<input className="button is-success is-large is-fullwidth" value="Register" type="submit" />
-      </form>
-    )
+  return (
+    <form className="Register form box" onSubmit={handleSubmit}>
+      <h2>Create Account</h2>
+
+      <hr />
+      <br />
+
+      {auth.errorMessage &&
+        <span className="error">{auth.errorMessage}</span>
+      }
+
+      <div className="columns">
+        <input required placeholder="User Name" type="text" name="username" autoComplete="username" onChange={handleChange} value={formData.username} />
+      </div>
+
+      <div className="columns">
+        <input required placeholder="First Name" type="text" name="first_name" onChange={handleChange} value={formData.first_name} />
+
+        <input required placeholder="Last Name" type="text" name="last_name" onChange={handleChange} value={formData.last_name} />
+      </div>
+
+      <br />
+
+      <div className="columns">
+        <input required placeholder="Wage" type="number" name="hourly_wage" onChange={handleChange} value={formData.hourly_wage} />
+      </div>
+
+      <br />
+
+      <div className="columns">
+        <input required placeholder="Password" type="password" name="password" autoComplete="new-password" onChange={handleChange} value={formData.password} />
+
+        <input required placeholder="Confirm Password" type="password" name="confirm_password" autoComplete="new-password" onChange={handleChange} value={formData.confirm_password} />
+      </div>
+
+      <br />
+
+      <div className="columns">
+        <input value="Register" type="submit" />
+      </div>
+
+      <p>Already have an account? <Link to='/login' className="link">Sign In</Link></p>
+
+
+    </form>
+  )
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({ auth }) => {
   return {
     auth
   }

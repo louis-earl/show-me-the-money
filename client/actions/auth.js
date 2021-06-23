@@ -36,7 +36,7 @@ export function loginUser (creds, confirmSuccess) {
         confirmSuccess()
       })
       .catch(err => {
-        dispatch(loginError('You don\'t exist bieeetch'))
+        dispatch(loginError('Invalid username or password'))
       })
   }
 }

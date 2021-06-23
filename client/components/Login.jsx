@@ -1,10 +1,10 @@
-import React, {useState} from "react"
-import {connect} from "react-redux"
-import {Link} from 'react-router-dom'
-import {loginUser, loginError} from "../actions/auth"
+import React, { useState } from "react"
+import { connect } from "react-redux"
+import { Link } from 'react-router-dom'
+import { loginUser, loginError } from "../actions/auth"
 
-function Login (props) {
-  const {auth} = props
+function Login(props) {
+  const { auth } = props
 
   const [formData, setFormData] = useState({
     username: "",
@@ -32,29 +32,31 @@ function Login (props) {
 
   return (
     <form className="form box" onSubmit={handleSubmit}>
-      <h2 >Login</h2>
+      <h2>Kia Ora!</h2>
+      <p>Please sign in to continue.</p>
+
       <hr />
+      <br />
+
       {auth.errorMessage && (
-        <span className="has-text-danger is-large">{auth.errorMessage}</span>
+        <span className="error">{auth.errorMessage}</span>
       )}
-      <label className="label is-large has-text-centered">
-        Username
+
+      <div className="columns">
         <input
           required
-          className="input has-text-centered is-large is-fullwidth"
-          placeholder="User Name"
+          placeholder="Username"
           type="text"
           name="username"
           autoComplete="username"
           value={formData.username}
           onChange={handleChange}
         />
-      </label>
-      <label className="label is-large has-text-centered">
-        Password
+      </div>
+
+      <div className="columns">
         <input
           required
-          className="input has-text-centered is-large is-fullwidth"
           placeholder="Password"
           type="password"
           name="password"
@@ -62,17 +64,25 @@ function Login (props) {
           value={formData.password}
           onChange={handleChange}
         />
-      </label>
-      <input
-        className="button"
-        value="Login"
-        type="submit"
-      />
+      </div>
+
+      <br />
+
+      <div className="columns">
+        <input
+          className="button"
+          value="Sign In"
+          type="submit"
+        />
+      </div>
+
+      <p>Don't have an account? <Link to='/register' className="link">Register</Link></p>
+
     </form>
   )
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({ auth }) => {
   return {
     auth,
   }
