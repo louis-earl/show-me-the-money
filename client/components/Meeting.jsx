@@ -79,7 +79,6 @@ const Meeting = (props) => {
           {props.isAuthenticated ? (<div>
 
             {meetingInProgress && <Ticker />}
-            <div className="running cost">{/*  DISPLAY: running cost */}</div>
 
             {!showSave ? (
               <>
@@ -98,6 +97,7 @@ const Meeting = (props) => {
 
                 <DisplayUsers usersInMeeting={usersInMeeting} setUsersInMeeting={setUsersInMeeting} />
 
+                <div className="columns">
 
                 {meetingInProgress ?
                   <button className="button--warning" onClick={(e) => handleClick()}>
@@ -108,6 +108,9 @@ const Meeting = (props) => {
                     Start Meeting
                   </button>
                 }
+
+                </div>
+
               </>
             ) : (
               <div>

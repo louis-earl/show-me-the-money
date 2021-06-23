@@ -11,7 +11,7 @@ function PastMeetingSummary(props) {
     return (
         <Link to={"/past-meeting/" + id}>
             <div className="card">
-                <h3 className="title is-3">{meeting_name}</h3>
+                <h3>{meeting_name}</h3>
                 <p>Cost: ${cost.toFixed(2)}</p>
                 <p>Attendees: {attendee_count}</p>
                 <p>Duration: <DisplayTime runtime={runtime} /></p>

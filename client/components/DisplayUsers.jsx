@@ -4,24 +4,24 @@ import { selectedUsers } from '../actions/users'
 
 const DisplayUsers = (props) => {
 
-    useEffect (() => {
+    useEffect(() => {
         props.dispatch(selectedUsers(props.usersInMeeting))
     }, [props.usersInMeeting])
 
     const handleClick = (e, user) => {
         const styleClass = "userList-button-in-meeting"
         let arr = [...props.usersInMeeting]
-        if(e.target.className == styleClass) { e.target.className = "userList-button" }
+        if (e.target.className == styleClass) { e.target.className = "userList-button" }
         else { e.target.className = styleClass }
 
         const foundUser = arr.find(el => el.username === user.username) !== undefined
-        if(foundUser){ 
+        if (foundUser) {
             const index = arr.indexOf(user.username)
             arr.splice(index, 1)
-            
+
             props.setUsersInMeeting(arr)
-        } else { 
-            props.setUsersInMeeting([...props.usersInMeeting, user]) 
+        } else {
+            props.setUsersInMeeting([...props.usersInMeeting, user])
         }
     }
 
@@ -30,16 +30,17 @@ const DisplayUsers = (props) => {
         <div className="users">
             <p>Who would you like to invite to your meeting? Click to add attendees.</p>
 
-            <div className="user-list">
-                <ul>
+            <div className="columns">
+                <div>
                     {props.users.map((user, i) => {
-                        return <li key={i}>
+                        return (
                             <button className="button--user" type='button' onClick={(e) => handleClick(e, user)}>
                                 {user.username}
                             </button>
-                        </li>
+                        )
+
                     })}
-                </ul>
+                </div>
             </div>
 
         </div>
@@ -50,7 +51,7 @@ const DisplayUsers = (props) => {
 const mapStateToProps = (globalState) => {
     return {
         users: globalState.users,
-    
+
     }
 }
 
