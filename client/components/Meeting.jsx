@@ -21,7 +21,8 @@ import { formatAttendees } from "../utils/meeting"
 
 const Meeting = (props) => {
   const [usersInMeeting, setUsersInMeeting] = useState([])
-  const [localMeetingName, setLocalMeetingName] = useState("");
+  const [localMeetingName, setLocalMeetingName] = useState("")
+  const [isNameError, setIsNameError] = useState(false)
 
 
   useEffect(() => {
@@ -35,14 +36,19 @@ const Meeting = (props) => {
 
   const handleClick = () => {
     if (localMeetingName !== "") {
+      setIsNameError(false)
+
       if (!meetingInProgress) {
         props.dispatch(startMeeting(props.currentUsers, localMeetingName));
-      } else {
+      }
+      else {
         props.dispatch(endMeeting());
         //change state of show Q
       }
-    } else {
-      alert("Enter Meeting Name!")
+
+    }
+    else {
+      setIsNameError(true)
     }
   };
 
@@ -84,6 +90,8 @@ const Meeting = (props) => {
               <>
                 <p>What would you like to call your awesome meeting?</p>
 
+                {isNameError && <p className="error">Meeting name required</p>}
+
                 <div className="columns">
                   <input
                     required
@@ -99,15 +107,15 @@ const Meeting = (props) => {
 
                 <div className="columns">
 
-                {meetingInProgress ?
-                  <button className="button--warning" onClick={(e) => handleClick()}>
-                    End Meeting
-                  </button>
-                  :
-                  <button onClick={(e) => handleClick()}>
-                    Start Meeting
-                  </button>
-                }
+                  {meetingInProgress ?
+                    <button className="button--warning" onClick={(e) => handleClick()}>
+                      End Meeting
+                    </button>
+                    :
+                    <button onClick={(e) => handleClick()}>
+                      Start Meeting
+                    </button>
+                  }
 
                 </div>
 
