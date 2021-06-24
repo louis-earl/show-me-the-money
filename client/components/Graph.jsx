@@ -2,15 +2,8 @@ import React, { useEffect } from 'react'
 import { Line, Chart } from 'react-chartjs-2';
 import { connect } from 'react-redux'
 
-import { getMeetings } from '../actions/meetings'
-
 
 function Graph(props) {
-
-    useEffect(() => {
-        props.dispatch(getMeetings())
-    }, [])
-    console.log(props.meetingsHistory)
 
     const buildGraph = () => {
         // var ctx = document.getElementById('myChart').getContext('2d');

@@ -6,9 +6,6 @@ export const RECEIVE_MEETINGS_SUCCESS = 'RECEIVE_MEETINGS_SUCCESS'
 export const ADD_MEETING_PENDING = 'ADD_MEETING_PENDING'
 export const ADD_MEETING_SUCCESS = 'ADD_MEETING_SUCCESS'
 
-export const GET_ALL_MEETINGS = 'GET_ALL_MEETINGS'
-
-
 export function receiveMeetingsPending() {
     return {
         type: RECEIVE_MEETINGS_PENDING
@@ -41,8 +38,6 @@ export function addMeetingPending() {
     }
 }
 
-
-
 export function addMeetingSuccess(meeting) {
     return {
         type: ADD_MEETING_SUCCESS,
@@ -61,12 +56,5 @@ export function addMeeting(meeting) {
             .catch(err => {
                 console.log("ERROR:", err)
             })
-    }
-}
-
-export function getMeetings() {
-    return {
-        type: GET_ALL_MEETINGS,
-        meetingHistory: getAllMeetings()
     }
 }

@@ -35,7 +35,6 @@ function Login(props) {
       <h2>Kia Ora!</h2>
       <p>Please sign in to continue.</p>
 
-      <hr />
       <br />
 
       {auth.errorMessage && (

@@ -42,8 +42,9 @@ function Register(props) {
   return (
     <form className="Register form box" onSubmit={handleSubmit}>
       <h2>Create Account</h2>
+      <p>Welcome, let's get started!</p>
 
-      <hr />
+
       <br />
 
       {auth.errorMessage &&
