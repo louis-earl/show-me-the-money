@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { selectedUsers } from '../actions/users'
+import { selectedUsers } from '../../actions/users'
 
-const DisplayUsers = (props) => {
+const AddAttendees = (props) => {
 
     useEffect(() => {
         props.dispatch(selectedUsers(props.usersInMeeting))
@@ -65,4 +65,4 @@ const mapStateToProps = (globalState) => {
 }
 
 
-export default connect(mapStateToProps)(DisplayUsers)
+export default connect(mapStateToProps)(AddAttendees)

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
-import Meeting from './Meeting'
+import Meeting from './meeting/Meeting'
 import Dashboard from './Dashboard'
 import PastMeetingFull from './PastMeetingFull'
 import History from './History'
@@ -38,9 +38,7 @@ function App({ auth, dispatch }) {
             <Route exact path="/" component={Dashboard} />
             :
             <Route exact path="/" component={Login} />
-
           }
-
 
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />

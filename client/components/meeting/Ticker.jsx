@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 
-import {tickOneSecond} from '../actions/currentMeeting'
-import DisplayTime from './DisplayTime'
+import {tickOneSecond} from '../../actions/currentMeeting'
+import DisplayTime from '../subcomponents/DisplayTime'
 
 function Ticker(props) {
     const [seconds, setSeconds] = useState(0)

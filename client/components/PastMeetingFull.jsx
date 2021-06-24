@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 
 import { receiveMeetings } from '../actions/meetings'
 import Attendees from './Attendees';
-import DisplayTime from './DisplayTime';
+import DisplayTime from './subcomponents/DisplayTime';
 
 function PastMeetingFull(props) {
   const { id } = useParams();

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import DisplayTime from './DisplayTime'
+import DisplayTime from './subcomponents/DisplayTime'
 
 
 function PastMeetingSummary(props) {
