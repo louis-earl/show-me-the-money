@@ -5,6 +5,7 @@ const connection = require('./connection')
 function saveMeeting (obj, db = connection) {
     return db('meetings')
     .insert(obj, 'id')
+    .then(meetingID => getMeetingByMeetingID(meetingID))
     .catch((err) => {
         console.log(err.message)
       })
@@ -26,6 +27,16 @@ function getMeetingAttendees (id, db = connection) {
     .join('attendees', 'users.id', 'attendees.user_id')
     .where('meeting_id', id)
     .select()
+    .catch((err) => {
+        console.log(err.message)
+      })
+}
+
+function getMeetingByMeetingID (meetingID, db = connection) {
+    return db('meetings')
+    .where('id', meetingID)
+    .select()
+    .first()
     .catch((err) => {
         console.log(err.message)
       })

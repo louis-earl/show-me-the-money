@@ -44,8 +44,8 @@ router.post('/', getTokenDecoder(), async (req, res) => {
 
   }
   db.saveMeeting(newData)
-  .then((id) => {
-    res.json({id: id[0], message: "Meeting saved successfully."})
+  .then((savedMeeting) => {
+    res.json(savedMeeting)
   })
   .catch(err => {
     res.status(500).send(err.message)

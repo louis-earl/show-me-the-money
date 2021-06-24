@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import displayTime from '../utils/meeting'
 import {connect} from 'react-redux'
+
 import {tickOneSecond} from '../actions/currentMeeting'
+import DisplayTime from './DisplayTime'
+
 function Ticker(props) {
     const [seconds, setSeconds] = useState(0)
     const cost = props.currentMeeting.cost
@@ -16,7 +18,7 @@ function Ticker(props) {
 
     return (
         <div>
-            <p>Time: {seconds}</p>
+            <p>Time: <DisplayTime runtime={seconds * 1000} /></p>
             <p>Cost so far: ${cost.toFixed(2)} </p>
         </div>
     )
