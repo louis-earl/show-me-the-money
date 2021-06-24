@@ -13,7 +13,7 @@ function Attendees(props) {
         <>
             {props.attendees &&
                 <div className="attendees">
-                    <h3 className="title is-3">Attendees:</h3>
+                    <h3>Attendees:</h3>
                     <ul>
                         {props.attendees.map((attendee) => <li key={attendee.id}>{attendee.first_name}</li>)}
                     </ul>

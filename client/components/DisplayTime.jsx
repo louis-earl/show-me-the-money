@@ -7,11 +7,12 @@ function DisplayTime({ runtime }) {
     const sec = date.getSeconds()
 
     // still show mins if we have hours
-    const showMins = hours || min
+    const showHours = hours !=0
+    const showMins = showHours || min != 0
 
     return (
         <span>
-            {hours && <>{hours} hrs, </>}
+            {showHours && <>{hours} hrs, </>}
             {showMins && <>{min} mins, </>}
             {sec} secs
         </span>

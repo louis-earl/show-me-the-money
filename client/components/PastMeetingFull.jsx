@@ -30,11 +30,11 @@ function PastMeetingFull(props) {
     <>
       {currentMeeting &&
         <div>
-          <h2 className="title is-2">{currentMeeting.meeting_name}</h2>
-          <h3 className="title is-3">Cost: ${currentMeeting.cost.toFixed(2)}</h3>
+          <h2>{currentMeeting.meeting_name}</h2>
+          <h3>Cost: ${currentMeeting.cost.toFixed(2)}</h3>
           <Attendees currentMeeting={currentMeeting} />
           {runtime &&
-            <h3 className="title is-3">Duration: <DisplayTime runtime={runtime} /></h3>
+            <h3>Duration: <DisplayTime runtime={runtime} /></h3>
           }
         </div>
       }
