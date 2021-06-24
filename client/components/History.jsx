@@ -14,7 +14,7 @@ function History(props) {
 
 
 
-  return <div className="history">
+  return <div className="history section">
     <div className="page-title">
       <h2>{props.user.first_name}'s meeting history</h2>
     </div>
