@@ -11,7 +11,7 @@ function PastMeetingSummary(props) {
     return (
         <>
             {props.meeting &&
-                <Link to={"/past-meeting/" + id}>
+                <Link to={"/past-meeting/" + id} className="card__outer">
                     <div className="card">
                         <h3>{meeting_name}</h3>
                         <p>Cost: ${cost.toFixed(2)}</p>

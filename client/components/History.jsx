@@ -20,9 +20,11 @@ function History(props) {
     </div>
     {
       props.meetingsHistory.length > 0 ?
-        props.meetingsHistory.map((meeting) => {
-          return <PastMeetingSummary key={meeting.id} meeting={meeting} />
-        })
+        <div className="history__grid"> {
+          props.meetingsHistory.map((meeting) => {
+            return <PastMeetingSummary key={meeting.id} meeting={meeting} />
+          })}
+        </div>
         :
         <p>
           You haven't participated in any meetings yet! Go on, <Link to="/meeting" className="link">give it a try.</Link>
