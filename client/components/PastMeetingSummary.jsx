@@ -14,7 +14,7 @@ function PastMeetingSummary(props) {
                 <Link to={"/past-meeting/" + id} className="card__outer">
                     <div className="card">
                         <h3>{meeting_name}</h3>
-                        <p>Cost: ${cost.toFixed(2)}</p>
+                        <p className="cost">${cost.toFixed(2)}</p>
                         <p>Attendees: {attendee_count}</p>
                         <p>Duration: <DisplayTime runtime={runtime} /></p>
                     </div>

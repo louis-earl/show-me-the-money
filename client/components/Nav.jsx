@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -13,13 +13,29 @@ function Nav({ auth, logout }) {
     })
   }
 
+  useEffect(() => {
+    window.onscroll = function () { checkNav() };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function checkNav() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("nav__wrapper--sticky")
+      }
+      else {
+        navbar.classList.remove("nav__wrapper--sticky");
+      }
+    }
+  }, [])
+
   return (
-    <div className="nav__wrapper">
+    <div id="navbar" className="nav__wrapper">
       <nav>
         {auth.isAuthenticated
           ? (
             <ul className="nav__list">
-            
+
               <li className="nav__item">
                 <Link to='/dashboard' className="nav__link">Dashboard</Link>
               </li>
@@ -29,7 +45,7 @@ function Nav({ auth, logout }) {
               <li className="nav__item" id="log-out">
                 <Link to='/' className="nav__link" onClick={() => logout()}>Logout</Link>
               </li>
-  
+
             </ul>
           )
           : (
