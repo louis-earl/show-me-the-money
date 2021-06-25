@@ -174,3 +174,20 @@ input[type=submit], button {
     color: #00be4f;
     font-weight: 700;
 }
+
+.ticker__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.ticker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 200px;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    padding: 8px;
+    box-shadow: 2px 4px 6px 2px #2d2e3355;
+}

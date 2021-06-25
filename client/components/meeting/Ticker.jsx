@@ -17,9 +17,11 @@ function Ticker(props) {
       }, [])
 
     return (
-        <div>
-            <p>Time: <DisplayTime runtime={seconds * 1000} /></p>
-            <p>Cost so far: ${cost.toFixed(2)} </p>
+        <div className="ticker__wrapper">
+          <div className="ticker">
+              <p className="cost">${cost.toFixed(2)} </p>
+              <p><DisplayTime runtime={seconds * 1000} /></p>
+          </div>
         </div>
     )
 }

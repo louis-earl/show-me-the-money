@@ -18,7 +18,7 @@ const CurrentMeeting = (props) => {
   return (
     <>
       <div className="page-title">
-        <h2>{currentMeeting.name}</h2>
+        <h2>{currentMeeting.meeting_name}</h2>
       </div>
 
       <Ticker />
