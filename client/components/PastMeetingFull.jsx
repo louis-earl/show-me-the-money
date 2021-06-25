@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useParams } from 'react-router';
 
 import { receiveMeetings } from '../actions/meetings'
-import Attendees from './Attendees';
+import DisplayAttendees from './subcomponents/DisplayAttendees';
 import DisplayTime from './subcomponents/DisplayTime';
 
 function PastMeetingFull(props) {
@@ -32,7 +32,7 @@ function PastMeetingFull(props) {
         <div>
           <h2>{currentMeeting.meeting_name}</h2>
           <h3>Cost: ${currentMeeting.cost.toFixed(2)}</h3>
-          <Attendees currentMeeting={currentMeeting} />
+          <DisplayAttendees currentMeeting={currentMeeting} />
           {runtime &&
             <h3>Duration: <DisplayTime runtime={runtime} /></h3>
           }

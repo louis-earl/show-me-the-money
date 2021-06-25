@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { receiveAttendees } from '../actions/attendees';
+import { receiveAttendees } from '../../actions/attendees';
 
 
 function Attendees(props) {
 
     useEffect(() => {
         props.dispatch(receiveAttendees(props.currentMeeting.id))
-    })
+    }, [])
 
     return (
         <>
