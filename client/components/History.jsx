@@ -9,7 +9,7 @@ function History(props) {
 
   useEffect(() => {
     if (props.isAuth)
-    props.dispatch(receiveMeetings(props.user.id))
+      props.dispatch(receiveMeetings(props.user.id))
   }, [props.user.id])
 
   return <div className="history section">

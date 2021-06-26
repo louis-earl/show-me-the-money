@@ -11,7 +11,8 @@ function PastMeetingFull(props) {
 
   // Run when the auth is verified (we need to know the user id)
   useEffect(() => {
-    props.dispatch(receiveMeetings(props.user.id))
+    if (props.isAuth)
+      props.dispatch(receiveMeetings(props.user.id))
   }, [props.user.id])
 
   let currentMeeting = null
@@ -21,8 +22,8 @@ function PastMeetingFull(props) {
     // find the single meeting we are looking for using the page id (/:params)
     currentMeeting = props.meetingsHistory.find((meeting) => meeting.id == id)
     if (currentMeeting) {
-    runtime = currentMeeting.end_time - currentMeeting.start_time
-    console.log(runtime)
+      runtime = currentMeeting.end_time - currentMeeting.start_time
+      console.log(runtime)
     }
   }
 
@@ -47,6 +48,7 @@ function mapStateToProps(globalState) {
   return {
     meetingsHistory: globalState.meetingsHistory,
     user: globalState.auth.user,
+    isAuth: globalState.auth.isAuthenticated
   }
 }
 
