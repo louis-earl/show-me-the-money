@@ -7,16 +7,14 @@ import PastMeetingSummary from './PastMeetingSummary'
 
 function History(props) {
 
-
   useEffect(() => {
+    if (props.isAuth)
     props.dispatch(receiveMeetings(props.user.id))
   }, [props.user.id])
 
-
-
   return <div className="history section">
     <div className="page-title">
-      <h2>{props.user.first_name}'s meeting history</h2>
+      <h2>{props.user.first_name}'s Recent Meetings</h2>
     </div>
     {
       props.meetingsHistory.length > 0 ?
@@ -36,7 +34,8 @@ function History(props) {
 function mapStateToProps(globalState) {
   return {
     meetingsHistory: globalState.meetingsHistory,
-    user: globalState.auth.user
+    user: globalState.auth.user,
+    isAuth: globalState.auth.isAuthenticated
   }
 }
 
