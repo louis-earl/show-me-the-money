@@ -1,14 +1,14 @@
 import React from 'react'
 import Graph from './Graph'
 
-import History from './History'
+import RecentHistory from './RecentHistory'
 
 function Dashboard() {
   return (
 
     <>
     <div className="dashboard">
-    <History />
+    <RecentHistory />
     <Graph />
     </div>
     </>

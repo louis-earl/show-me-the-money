@@ -145,10 +145,12 @@ input[type=submit], button {
     box-shadow: 2px 4px 6px 2px #2d2e3355;
     padding: 4px 16px;
     border-radius: 16px;
+    height: 100%;
 }
 
 .card__outer {
-
+    height: 100%;
+    
 }
 
 #log-out {
@@ -190,4 +192,10 @@ input[type=submit], button {
     text-align: center;
     padding: 8px;
     box-shadow: 2px 4px 6px 2px #2d2e3355;
+}
+
+.add {
+    height: 100px;
+    width: auto;
+    margin: 0 auto;
 }

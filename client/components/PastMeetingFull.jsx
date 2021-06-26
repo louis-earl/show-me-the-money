@@ -32,7 +32,7 @@ function PastMeetingFull(props) {
       {currentMeeting &&
         <div>
           <h2>{currentMeeting.meeting_name}</h2>
-          <h3>Cost: ${currentMeeting.cost.toFixed(2)}</h3>
+          <p className="cost">${currentMeeting.cost.toFixed(2)}</p>
           <DisplayAttendees currentMeeting={currentMeeting} />
           {runtime &&
             <h3>Duration: <DisplayTime runtime={runtime} /></h3>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { receiveMeetings } from '../actions/meetings'
 import PastMeetingSummary from './PastMeetingSummary'
 
-function History(props) {
+function RecentHistory(props) {
 
   useEffect(() => {
     if (props.isAuth)
@@ -19,10 +19,22 @@ function History(props) {
     {
       props.meetingsHistory.length > 0 ?
         <div className="history__grid"> {
+
           props.meetingsHistory.map((meeting) => {
             return <PastMeetingSummary key={meeting.id} meeting={meeting} />
           })}
+
+          <Link to="/meeting">
+            <div className="card__outer">
+              <div className="card">
+                <h3>Add new meeting</h3>
+                <img className="add" src="./images/add.png" />
+              </div>
+            </div>
+          </Link>
+
         </div>
+
         :
         <p>
           You haven't participated in any meetings yet! Go on, <Link to="/meeting" className="link">give it a try.</Link>
@@ -39,4 +51,4 @@ function mapStateToProps(globalState) {
   }
 }
 
-export default connect(mapStateToProps)(History)
+export default connect(mapStateToProps)(RecentHistory)

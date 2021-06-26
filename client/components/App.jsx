@@ -8,7 +8,6 @@ import Nav from './Nav'
 import Meeting from './meeting/Meeting'
 import Dashboard from './Dashboard'
 import PastMeetingFull from './PastMeetingFull'
-import History from './History'
 
 import { checkAuth } from '../actions/auth'
 import { fetchUsers } from '../actions/users'
