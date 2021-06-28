@@ -28,7 +28,9 @@ function RecentHistory(props) {
             <div className="card__outer">
               <div className="card">
                 <h3>Add new meeting</h3>
+                <div className="add__wrapper">
                 <img className="add" src="./images/add.png" />
+                </div>
               </div>
             </div>
           </Link>
