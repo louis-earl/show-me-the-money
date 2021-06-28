@@ -2,31 +2,27 @@ import React, { useState } from "react"
 import { connect } from "react-redux"
 
 import Ticker from "./Ticker"
-import AddAttendees from "./AddAttendees"
 
 import { endMeeting } from "../../actions/currentMeeting"
 
 const CurrentMeeting = (props) => {
 
-  const currentMeeting = props.currentMeeting
-  const [usersInMeeting, setUsersInMeeting] = useState([])
-
-  const handleClick = () => {
+  const handleEnd = () => {
     props.dispatch(endMeeting())
   }
 
   return (
     <>
-      <div className="page-title">
-        <h2>{currentMeeting.meeting_name}</h2>
-      </div>
 
       <Ticker />
 
-      <AddAttendees usersInMeeting={usersInMeeting} setUsersInMeeting={setUsersInMeeting} />
+      <div className="columns columns--center">
 
-      <div className="columns">
-        <button className="button--warning" onClick={(e) => handleClick()}>
+        <button className="button--warning" onClick={(e) => handlePause()}>
+          Pause
+        </button>
+
+        <button className="button--error" onClick={(e) => handleEnd()}>
           End Meeting
         </button>
       </div>

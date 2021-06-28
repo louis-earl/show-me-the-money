@@ -42,6 +42,9 @@ function Nav({ auth, logout }) {
               <li className="nav__item">
                 <Link to='/meeting' className="nav__link">New Meeting</Link>
               </li>
+              <li className="nav__item">
+                <Link to='/debug-meeting' className="nav__link">*DEBUG* Meeting</Link>
+              </li>
               <li className="nav__item" id="log-out">
                 <Link to='/' className="nav__link" onClick={() => logout()}>Logout</Link>
               </li>

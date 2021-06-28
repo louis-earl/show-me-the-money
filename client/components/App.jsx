@@ -11,6 +11,7 @@ import PastMeetingFull from './PastMeetingFull'
 
 import { checkAuth } from '../actions/auth'
 import { fetchUsers } from '../actions/users'
+import CurrentMeeting from './meeting/CurrentMeeting'
 
 function App({ auth, dispatch }) {
 
@@ -44,6 +45,7 @@ function App({ auth, dispatch }) {
           <Route path="/meeting" component={Meeting} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/past-meeting/:id" component={PastMeetingFull} />
+          <Route path="/debug-meeting" component={CurrentMeeting} />
         </div>
       </div>
 
