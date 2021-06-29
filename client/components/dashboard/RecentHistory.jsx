@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { receiveMeetings } from '../actions/meetings'
+import { receiveMeetings } from '../../actions/meetings'
 import PastMeetingSummary from './PastMeetingSummary'
 
 function RecentHistory(props) {

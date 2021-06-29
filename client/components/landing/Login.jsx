@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom'
-import { loginUser, loginError } from "../actions/auth"
+import { loginUser, loginError } from "../../actions/auth"
 
 function Login(props) {
   const { auth } = props

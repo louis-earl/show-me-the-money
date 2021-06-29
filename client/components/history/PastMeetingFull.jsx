@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useParams } from 'react-router';
 
-import { receiveMeetings } from '../actions/meetings'
-import DisplayAttendees from './subcomponents/DisplayAttendees';
-import DisplayTime from './subcomponents/DisplayTime';
+import { receiveMeetings } from '../../actions/meetings'
+import DisplayAttendees from '../subcomponents/DisplayAttendees';
+import DisplayTime from '../subcomponents/DisplayTime';
 
 function PastMeetingFull(props) {
   const { id } = useParams();
@@ -23,7 +23,6 @@ function PastMeetingFull(props) {
     currentMeeting = props.meetingsHistory.find((meeting) => meeting.id == id)
     if (currentMeeting) {
       runtime = currentMeeting.end_time - currentMeeting.start_time
-      console.log(runtime)
     }
   }
 

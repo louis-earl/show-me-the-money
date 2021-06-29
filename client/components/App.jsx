@@ -2,15 +2,14 @@ import React, { useEffect } from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import Login from './Login'
-import Register from './Register'
+import Login from './landing/Login'
+import Register from './landing/Register'
 import Nav from './Nav'
 import Meeting from './meeting/Meeting'
-import Dashboard from './Dashboard'
-import PastMeetingFull from './PastMeetingFull'
+import Dashboard from './dashboard/Dashboard'
+import PastMeetingFull from './history/PastMeetingFull'
 
 import { checkAuth } from '../actions/auth'
-import { fetchUsers } from '../actions/users'
 import CurrentMeeting from './meeting/CurrentMeeting'
 
 function App({ auth, dispatch }) {

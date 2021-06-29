@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import TimeBubble from './subcomponents/TimeBubble'
-import AttendeesBubble from './subcomponents/AttendeesBubble'
+import TimeBubble from '../subcomponents/TimeBubble'
+import AttendeesBubble from '../subcomponents/AttendeesBubble'
 
 
 function PastMeetingSummary(props) {

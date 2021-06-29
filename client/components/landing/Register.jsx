@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { loginError, registerUserRequest } from '../actions/auth'
+import { loginError, registerUserRequest } from '../../actions/auth'
 
 function Register(props) {
   const { auth } = props
