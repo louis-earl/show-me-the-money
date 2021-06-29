@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { logoutUser } from '../actions/auth'
 
-function Nav({ auth, logout }) {
+function Nav({ auth, logout, location }) {
   const [burgerVisible, setBurgerVisible] = useState(false)
 
   const toggleBurger = () => {
@@ -29,6 +29,9 @@ function Nav({ auth, logout }) {
     }
   }, [])
 
+  const navPath = location.pathname
+  console.log(navPath)
+
   return (
     <div id="navbar" className="nav__wrapper">
       <nav>
@@ -36,15 +39,18 @@ function Nav({ auth, logout }) {
           ? (
             <ul className="nav__list">
 
-              <li className="nav__item">
+              <li className={"nav__item" + (navPath == "/dashboard" ? " nav-current" : "")}>
                 <Link to='/dashboard' className="nav__link">Dashboard</Link>
               </li>
-              <li className="nav__item">
+
+              <li className={"nav__item" + (navPath == "/meeting" ? " nav-current" : "")}>
                 <Link to='/meeting' className="nav__link">New Meeting</Link>
               </li>
-              <li className="nav__item">
+
+              <li className={"nav__item" + (navPath == "/history" ? " nav-current" : "")}>
                 <Link to='/history' className="nav__link">History</Link>
               </li>
+              
               <li className="nav__item" id="log-out">
                 <Link to='/' className="nav__link" onClick={() => logout()}>Logout</Link>
               </li>
