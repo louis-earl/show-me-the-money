@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react"
+import { connect } from "react-redux"
 
-import AddAttendees from "./AddAttendees";
+import AddAttendees from "./AddAttendees"
 
-import { fetchUsers } from "../../actions/users";
-import { startMeeting } from "../../actions/currentMeeting";
+import { fetchUsers } from "../../actions/users"
+import { startMeeting } from "../../actions/currentMeeting"
 
 const NewMeeting = (props) => {
   const [usersInMeeting, setUsersInMeeting] = useState([])
@@ -15,8 +15,6 @@ const NewMeeting = (props) => {
   useEffect(() => {
     props.dispatch(fetchUsers())
   }, [])
-
-  console.log(localMeetingName.length)
 
   const handleClick = () => {
     let canStart = true

@@ -11,7 +11,7 @@ const SaveMeeting = (props) => {
 
   const saveMeeting = () => {
     props.dispatch(addMeeting(props.currentMeeting))
-      .then((res) => (saveAttendees(formatAttendees(res.id, props.currentMeeting))));
+      .then((res) => (saveAttendees(formatAttendees(res.id, props.currentMeeting))))
       refresh()
   }
 
@@ -32,6 +32,6 @@ const SaveMeeting = (props) => {
 function mapStateToProps(globalState) {
   return {
     currentMeeting: globalState.currentMeeting,
-  };
+  }
 }
-export default connect(mapStateToProps)(SaveMeeting);
+export default connect(mapStateToProps)(SaveMeeting)

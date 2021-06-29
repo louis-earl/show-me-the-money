@@ -40,6 +40,6 @@ function mapStateToProps(globalState) {
     currentMeeting: globalState.currentMeeting,
     currentUsers: globalState.currentUsers,
     isAuthenticated: globalState.auth.isAuthenticated
-  };
+  }
 }
-export default connect(mapStateToProps)(Meeting);
+export default connect(mapStateToProps)(Meeting)

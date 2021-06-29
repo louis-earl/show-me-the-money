@@ -8,8 +8,8 @@ exports.up = function(knex) {
         table.integer('attendee_count')
         table.decimal('cost')
       })
-};
+}
 
 exports.down = function(knex) {
     return knex.schema.dropTable('users')
-};
+}

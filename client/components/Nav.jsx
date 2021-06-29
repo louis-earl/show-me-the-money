@@ -14,17 +14,17 @@ function Nav({ auth, logout, location }) {
   }
 
   useEffect(() => {
-    window.onscroll = function () { checkNav() };
+    window.onscroll = function () { checkNav() }
 
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
+    var navbar = document.getElementById("navbar")
+    var sticky = navbar.offsetTop
 
     function checkNav() {
       if (window.pageYOffset >= sticky) {
         navbar.classList.add("nav__wrapper--sticky")
       }
       else {
-        navbar.classList.remove("nav__wrapper--sticky");
+        navbar.classList.remove("nav__wrapper--sticky")
       }
     }
   }, [])

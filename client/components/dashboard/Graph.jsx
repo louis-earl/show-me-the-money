@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Bar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2'
 import { connect } from 'react-redux'
 
 
