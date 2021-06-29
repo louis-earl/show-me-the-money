@@ -32,8 +32,6 @@ const AddAttendees = (props) => {
 
     return (
         <div className="users">
-            <p>Who would you like to invite to your meeting? Click to add attendees.</p>
-
             <div className="columns">
                 <div>
                     {props.users.map((user, i) => {
@@ -47,7 +45,6 @@ const AddAttendees = (props) => {
                                 {user.username}
                             </button>
                         )
-
                     })}
                 </div>
             </div>

@@ -138,6 +138,7 @@ input[type=submit], button {
 
 .error {
     color: #c20071;
+    font-weight: 600;
 }
 
 .link {

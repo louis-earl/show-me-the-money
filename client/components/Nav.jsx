@@ -30,7 +30,6 @@ function Nav({ auth, logout, location }) {
   }, [])
 
   const navPath = location.pathname
-  console.log(navPath)
 
   return (
     <div id="navbar" className="nav__wrapper">
@@ -50,7 +49,7 @@ function Nav({ auth, logout, location }) {
               <li className={"nav__item" + (navPath == "/history" ? " nav-current" : "")}>
                 <Link to='/history' className="nav__link">History</Link>
               </li>
-              
+
               <li className="nav__item" id="log-out">
                 <Link to='/' className="nav__link" onClick={() => logout()}>Logout</Link>
               </li>

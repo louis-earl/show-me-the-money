@@ -9,24 +9,44 @@ import { startMeeting } from "../../actions/currentMeeting";
 const NewMeeting = (props) => {
   const [usersInMeeting, setUsersInMeeting] = useState([])
   const [localMeetingName, setLocalMeetingName] = useState("")
-  const [isNameError, setIsNameError] = useState(false)
+  const [nameErrorMessage, setNameErrorMessage] = useState("")
+  const [attendeeErrorMessage, setAttendeeErrorMessage] = useState("")
 
   useEffect(() => {
     props.dispatch(fetchUsers())
   }, [])
 
+  console.log(localMeetingName.length)
+
   const handleClick = () => {
-    if (localMeetingName !== "") {
-      setIsNameError(false)
-      props.dispatch(startMeeting(props.currentUsers, localMeetingName));
+    let canStart = true
+    if (localMeetingName == "") {
+      setNameErrorMessage("Meeting name required")
+      canStart = false
+    }
+    else if (localMeetingName.length <= 3) {
+      setNameErrorMessage("Meeting name must be longer than 3 characters")
+      canStart = false
     }
     else {
-      setIsNameError(true)
+      setNameErrorMessage("")
+    }
+
+    if (usersInMeeting.length == 0) {
+      setAttendeeErrorMessage("Meeting must have at least one attendee")
+      canStart = false
+    }
+    else {
+      setAttendeeErrorMessage("")
+    }
+    
+    if (canStart) {
+      props.dispatch(startMeeting(props.currentUsers, localMeetingName))
     }
   }
 
   const handleChange = (e) => {
-    setLocalMeetingName(e.target.value);
+    setLocalMeetingName(e.target.value)
   }
 
   return (
@@ -39,7 +59,7 @@ const NewMeeting = (props) => {
 
         <p>What would you like to call your awesome meeting?</p>
 
-        {isNameError && <p className="error">Meeting name required</p>}
+        {nameErrorMessage && <p className="error">{nameErrorMessage}</p>}
 
         <div className="columns">
           <input
@@ -51,6 +71,10 @@ const NewMeeting = (props) => {
             onChange={handleChange}
           />
         </div>
+
+        <p>Who would you like to invite to your meeting? Click to add attendees.</p>
+
+        {attendeeErrorMessage && <p className="error">{attendeeErrorMessage}</p>}
 
         <AddAttendees usersInMeeting={usersInMeeting} setUsersInMeeting={setUsersInMeeting} />
 
@@ -70,4 +94,4 @@ function mapStateToProps(globalState) {
     currentUsers: globalState.currentUsers,
   }
 }
-export default connect(mapStateToProps)(NewMeeting);
+export default connect(mapStateToProps)(NewMeeting)

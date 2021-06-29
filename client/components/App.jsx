@@ -17,7 +17,6 @@ function App({ auth, dispatch }) {
   useEffect(() => {
     const confirmSuccess = () => { }
     dispatch(checkAuth(confirmSuccess))
-
   }, [])
 
   return (
