@@ -8,9 +8,9 @@ import Nav from './Nav'
 import Meeting from './meeting/Meeting'
 import Dashboard from './dashboard/Dashboard'
 import PastMeetingFull from './history/PastMeetingFull'
+import History from './history/History'
 
 import { checkAuth } from '../actions/auth'
-import CurrentMeeting from './meeting/CurrentMeeting'
 
 function App({ auth, dispatch }) {
 
@@ -41,10 +41,11 @@ function App({ auth, dispatch }) {
 
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/meeting" component={Meeting} />
+
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route path="/meeting" component={Meeting} />
           <Route path="/past-meeting/:id" component={PastMeetingFull} />
-          <Route path="/debug-meeting" component={CurrentMeeting} />
+          <Route path="/history" component={History} />
         </div>
       </div>
 
