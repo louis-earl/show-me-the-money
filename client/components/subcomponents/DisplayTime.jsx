@@ -2,19 +2,23 @@ import React, { useEffect } from 'react'
 
 function DisplayTime({ runtime }) {
     const date = new Date(runtime)
-    const hours = date.getHours() - 12
+    const hrs = date.getHours() - 12
     const min = date.getMinutes()
     const sec = date.getSeconds()
 
     // still show mins if we have hours
-    const showHours = hours !=0
-    const showMins = showHours || min != 0
+    const showHrs = hrs !=0
+    const showMin = showHrs || min != 0
+
+    const hrsText = hrs == 1 ? "hr" : "hrs"
+    const minText = min == 1 ? "min" : "mins"
+    const secText = sec == 1 ? "sec" : "secs"
 
     return (
         <span>
-            {showHours && <>{hours} hrs, </>}
-            {showMins && <>{min} mins, </>}
-            {sec} secs
+            {showHrs && <>{hrs} {hrsText}, </>}
+            {showMin && <>{min} {minText}, </>}
+            {sec} {secText}
         </span>
     )
 }
