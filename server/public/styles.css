@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
+    background-color: #f2f2f2;
 }
 
 h2 {
@@ -35,6 +36,7 @@ nav {
     background-color: #2d2e33;
     display: flex;
     justify-content: center;
+    box-shadow: 0px 4px 4px #2d2e3355;
 }
 
 .nav__wrapper--sticky {
@@ -151,28 +153,35 @@ input[type=submit], button {
 
 .card {
     color: #000;
+    background-color: #fff;
     box-shadow: 2px 4px 6px 2px #2d2e3355;
     padding: 4px 16px;
     border-radius: 16px;
-    height: 100%;
-}
-
-.card__outer {
-    height: 100%;
 }
 
 #log-out {
     float: right;
 }
 
-.history__grid {
+.recent-history__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
+.recent-history__buttons {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+}
+
 .history__grid>* {
     flex-grow: 1;
+}
+
+.history__grid--show-all {
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 
 .section {
@@ -188,7 +197,7 @@ input[type=submit], button {
 .ticker__wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: 12px;
+    margin: 12px;
 }
 
 .ticker__ring {
@@ -198,7 +207,7 @@ input[type=submit], button {
     max-width: 56vh;
     max-height: 56vh;
     flex-grow: 1;
-    box-shadow: 2px 4px 6px 2px #2d2e3355;
+    box-shadow: 0px 4px 4px #2d2e3355;
 }
 
 .ticker {
@@ -211,7 +220,7 @@ input[type=submit], button {
     height: 100%;
     aspect-ratio: 1/1;
     text-align: center;
-    box-shadow: 2px 4px 6px 2px #2d2e3355;
+    box-shadow: 0px 4px 4px #2d2e3355;
 }
 
 .ticker__meeting-name {
@@ -263,3 +272,4 @@ input[type=submit], button {
 .add__wrapper {
     display: flex;
 }
+
