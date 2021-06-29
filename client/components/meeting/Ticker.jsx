@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { tickOneSecond } from '../../actions/currentMeeting'
-import DisplayTime from '../subcomponents/DisplayTime'
+import TimeBubble from '../subcomponents/TimeBubble'
+import AttendeesBubble from '../subcomponents/AttendeesBubble'
 
 function Ticker(props) {
   const [seconds, setSeconds] = useState(0)
@@ -25,14 +26,12 @@ function Ticker(props) {
           <p className="ticker__meeting-cost">${cost.toFixed(2)} </p>
           <p className="ticker__budget">of $100.00</p>
 
-          <div className="ticker__info-wrapper columns">
-            <img className="ticker__icon" src="./images/time.png" />
-            <p className="ticker__info-text"><DisplayTime runtime={seconds * 1000} /></p>
-          </div>
+          <div className="ticker__info-wrapper">
 
-          <div className="ticker__info-wrapper columns">
-            <img className="ticker__icon" src="./images/attendee.png" />
-            <p className="ticker__info-text">{props.currentMeeting.attendee_count} Attendees</p>
+            <TimeBubble time={seconds * 1000} />
+
+            <AttendeesBubble attendeeCount={props.currentMeeting.attendee_count} />
+
           </div>
         </div>
       </div>

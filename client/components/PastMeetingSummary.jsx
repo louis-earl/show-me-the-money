@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import DisplayTime from './subcomponents/DisplayTime'
+import TimeBubble from './subcomponents/TimeBubble'
+import AttendeesBubble from './subcomponents/AttendeesBubble'
 
 
 function PastMeetingSummary(props) {
@@ -15,8 +16,10 @@ function PastMeetingSummary(props) {
                     <div className="card">
                         <h3>{meeting_name}</h3>
                         <p className="cost">${cost.toFixed(2)}</p>
-                        <p>Attendees: {attendee_count}</p>
-                        <p>Duration: <DisplayTime runtime={runtime} /></p>
+
+                        <AttendeesBubble attendeeCount={attendee_count} />
+                        <TimeBubble time={runtime} />
+
                     </div>
                 </Link>
             }
