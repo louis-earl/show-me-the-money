@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { logoutUser } from '../actions/auth'
 
-function Nav({ auth, logout, location }) {
+function Nav({ auth, isMeeting, logout, location }) {
   const [burgerVisible, setBurgerVisible] = useState(false)
 
   const toggleBurger = () => {
@@ -42,8 +42,14 @@ function Nav({ auth, logout, location }) {
                 <Link to='/dashboard' className="nav__link">Dashboard</Link>
               </li>
 
-              <li className={"nav__item" + (navPath == "/meeting" ? " nav-current" : "")}>
-                <Link to='/meeting' className="nav__link">New Meeting</Link>
+              <li className=
+                {"nav__item"
+                  + (navPath == "/meeting" ? " nav-current" : "")
+                  + (isMeeting ? " nav-is-meeting" : "")
+                }>
+                <Link to='/meeting' className="nav__link">
+                  {isMeeting ? "Meeting In Progress" : "New Meeting"}
+                </Link>
               </li>
 
               <li className={"nav__item" + (navPath == "/history" ? " nav-current" : "")}>
@@ -82,9 +88,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, currentMeeting }) => {
   return {
-    auth
+    auth,
+    isMeeting: currentMeeting.meetingInProgress
   }
 }
 
