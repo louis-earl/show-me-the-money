@@ -10,6 +10,13 @@ function Ticker(props) {
   const cost = props.currentMeeting.cost
 
   useEffect(() => {
+
+    // if meeting already in progress, use those details instead 
+    if (props.currentMeeting.meetingInProgress) {
+      const runTime = (Date.now() - props.currentMeeting.start_time) / 1000
+      setSeconds(runTime)
+    }
+
     const interval = setInterval(() => {
       setSeconds(seconds => seconds + 1)
       props.dispatch(tickOneSecond())
