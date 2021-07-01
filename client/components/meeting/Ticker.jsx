@@ -15,6 +15,7 @@ function Ticker(props) {
     if (props.currentMeeting.meetingInProgress) {
       const runTime = (Date.now() - props.currentMeeting.start_time) / 1000
       setSeconds(runTime)
+      props.dispatch(tickOneSecond())
     }
 
     const interval = setInterval(() => {
