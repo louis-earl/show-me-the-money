@@ -12,6 +12,9 @@ function History(props) {
       props.dispatch(receiveMeetings(props.user.id))
   }, [props.user.id])
 
+  const historyArr = props.meetingsHistory.slice(0).reverse()
+
+
   return <div className="history section">
     <div className="page-title">
       <h2>{props.user.first_name}'s Meeting History</h2>
@@ -20,7 +23,7 @@ function History(props) {
       props.meetingsHistory.length > 0 ?
         <div className="recent-history__grid"> {
 
-          props.meetingsHistory.map((meeting) => {
+          historyArr.map((meeting) => {
               return <PastMeetingSummary key={meeting.id} meeting={meeting} />
           })}
 
