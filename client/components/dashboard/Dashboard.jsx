@@ -24,7 +24,9 @@ function Dashboard(props) {
 
           ? <>
             <RecentHistory />
-            <Graph />
+            {props.meetingsHistory.length > 1 &&
+              <Graph />
+            }
             <Statistics />
           </>
 
