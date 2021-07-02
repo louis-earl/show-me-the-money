@@ -9,11 +9,13 @@ h2 {
 }
 
 .header {
-    height: 120px;
-    background-color: #00be4f;
     color: #ffffff;
     display: grid;
     place-items: center;
+    background-color: #00be4f;
+    background-image: url("./images/money.png");
+    background-repeat: repeat;
+    background-size: contain;
 }
 
 .title {
@@ -21,6 +23,17 @@ h2 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 40px;
+    margin: 32px 0;
+    text-shadow: 0px 4px 4px #2d2e3355;
+}
+
+.title__link {
+    width: 100%;
+    height: 100%;
+    background-color: #00be4f;
+    background: linear-gradient(90deg, #00000000 0%, #00be4f 33.33%, #00be4f 66.66%, #00000000 100%);
+    display: grid;
+    place-items: center;
 }
 
 a {
@@ -62,7 +75,6 @@ nav {
 
 .nav-is-meeting {
     box-shadow: inset 0 -4px 0 0 #00be4f;
-
 }
 
 ul.nav__list {
@@ -107,7 +119,7 @@ input[type=text], input[type=password], input[type=number] {
     border: none;
     border-radius: 8px;
     font-size: 18px;
-    box-shadow: 2px 4px 6px 2px #2d2e3355;
+    box-shadow: 0px 4px 4px #2d2e3355;
 }
 
 input[type=submit], button {
@@ -119,6 +131,7 @@ input[type=submit], button {
     color: #ffffff;
     font-size: 18px;
     font-weight: 600;
+    box-shadow: 0px 4px 4px #2d2e3355;
 }
 
 .button--warning {
@@ -135,10 +148,6 @@ input[type=submit], button {
     background-color: #fff;
     color: #000;
     box-shadow: 0px 4px 4px #2d2e3355;
-}
-
-.button--user-selected {
-    box-shadow: 2px 4px 6px 2px #2d2e3355;
 }
 
 .error {
@@ -164,7 +173,7 @@ input[type=submit], button {
 .card {
     color: #000;
     background-color: #fff;
-    box-shadow: 2px 4px 6px 2px #2d2e3355;
+    box-shadow: 0px 4px 4px #2d2e3355;
     padding: 8px 24px;
     border-radius: 16px;
 }
@@ -283,4 +292,3 @@ input[type=submit], button {
 .add__wrapper {
     display: flex;
 }
-
