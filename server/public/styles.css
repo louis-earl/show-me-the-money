@@ -215,6 +215,10 @@ input[type=submit], button {
 }
 
 .statistic {
+    margin: 0 0 20px 0;
+}
+
+.statistic__text {
     font-size: 40px;
     color: #2d2e33;
     font-weight: 700;

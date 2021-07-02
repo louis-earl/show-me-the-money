@@ -1,12 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import DisplayTimeBig from '../subcomponents/DisplayTimeBig'
 
 function Statistics(props) {
 
-    const totalCost = 0
+    const costReducer = (accumulator, currentValue) => accumulator + currentValue.cost
+    const timeReducer = (accumulator, currentValue) => accumulator + (currentValue.end_time - currentValue.start_time)
+
+    const totalCost = props.meetingsHistory.reduce(costReducer, 0)
+    let totalTime = props.meetingsHistory.reduce(timeReducer, 0)
+
     const totalMeetings = props.meetingsHistory.length
-    const totalTime = 0
+
+
+
 
     return <div className="history section">
         <div className="page-title">
@@ -21,7 +29,7 @@ function Statistics(props) {
                             <div className="ticker">
                                 <h3>Total Cost</h3>
                                 {/* <p>By attending meetings, {props.user.first_name} has cost</p> */}
-                                <p className="cost">${totalCost}</p>
+                                <p className="cost statistic">${totalCost.toFixed(2)}</p>
                             </div>
                         </div>
                     </div>
@@ -30,7 +38,7 @@ function Statistics(props) {
                         <div className="statistic__ring">
                             <div className="ticker">
                                 <h3>Total Time</h3>
-                                <p><span className="statistic">{totalTime}</span> hrs</p>
+                                <p className="statistic"><DisplayTimeBig runtime={totalTime} /> </p>
                             </div>
                         </div>
                     </div>
@@ -39,7 +47,7 @@ function Statistics(props) {
                         <div className="statistic__ring">
                             <div className="ticker">
                                 <h3>Meeting Count</h3>
-                                <p><span className="statistic">{totalMeetings}</span> meetings</p>
+                                <p className="statistic"><span className="statistic__text">{totalMeetings}</span> meetings</p>
                             </div>
                         </div>
                     </div>
