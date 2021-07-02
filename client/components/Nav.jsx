@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { logoutUser } from '../actions/auth'
 
 function Nav({ auth, isMeeting, logout, location }) {
-  const [burgerVisible, setBurgerVisible] = useState(false)
 
   const toggleBurger = () => {
     setBurgerVisible(currentBurgerState => {
@@ -30,6 +29,9 @@ function Nav({ auth, isMeeting, logout, location }) {
   }, [])
 
   const navPath = location.pathname
+  const isLogin = navPath == "/login" || navPath == "/"
+  const isHistory = navPath == "/history" || navPath.includes("/past-meeting")
+  const isDashboard = navPath == "/dashboard" || navPath == "/"
 
   return (
     <div id="navbar" className="nav__wrapper">
@@ -38,7 +40,7 @@ function Nav({ auth, isMeeting, logout, location }) {
           ? (
             <ul className="nav__list">
 
-              <li className={"nav__item" + (navPath == "/dashboard" ? " nav-current" : "")}>
+              <li className={"nav__item" + (isDashboard ? " nav-current" : "")}>
                 <Link to='/dashboard' className="nav__link">Dashboard</Link>
               </li>
 
@@ -52,7 +54,7 @@ function Nav({ auth, isMeeting, logout, location }) {
                 </Link>
               </li>
 
-              <li className={"nav__item" + (navPath == "/history" ? " nav-current" : "")}>
+              <li className={"nav__item" + (isHistory ? " nav-current" : "")}>
                 <Link to='/history' className="nav__link">History</Link>
               </li>
 
@@ -64,12 +66,15 @@ function Nav({ auth, isMeeting, logout, location }) {
           )
           : (
             <ul className="nav__list">
-              <li className="nav__item">
+
+              <li className={"nav__item" + (isLogin ? " nav-current" : "")}>
                 <Link onClick={toggleBurger} className="nav__link" to='/login'>Login</Link>
               </li>
-              <li className="nav__item">
+
+              <li className={"nav__item" + (navPath == "/register" ? " nav-current" : "")}>
                 <Link onClick={toggleBurger} className="nav__link" to='/register'>Register</Link>
               </li>
+
             </ul>
           )
         }
