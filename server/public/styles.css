@@ -41,7 +41,7 @@ a {
 }
 
 nav {
-    max-width: 800px;
+    max-width: 900px;
     width: 100%;
 }
 
@@ -101,13 +101,13 @@ li.nav__item:hover {
 }
 
 .content__wrapper {
-    margin: 20px;
+    margin: 20px 32px;
     display: flex;
     justify-content: center;
 }
 
 .content {
-    max-width: 800px;
+    max-width: 900px;
     width: 100%;
 }
 
@@ -176,6 +176,8 @@ input[type=submit], button {
     box-shadow: 0px 4px 4px #2d2e3355;
     padding: 8px 24px;
     border-radius: 16px;
+    margin: 12px;
+    flex: 0 0 calc(calc(100% / 3) - 72px);
 }
 
 #log-out {
@@ -183,15 +185,18 @@ input[type=submit], button {
 }
 
 .dashboard__grid {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 20px; */
+    display: flex;
+    flex-wrap: wrap;
+    margin: -12px;
 }
 
 .recent-history__buttons {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(100% / 3);
 }
 
 .history__grid>* {
@@ -228,7 +233,8 @@ input[type=submit], button {
 .ring__wrapper {
     display: flex;
     justify-content: center;
-    margin: 12px;
+    margin: 24px;
+    flex: 0 0 calc(calc(100% / 3) - 48px);
 }
 
 .ticker__ring {
@@ -312,4 +318,42 @@ input[type=submit], button {
 
 .add__wrapper {
     display: flex;
+}
+
+@media screen and (max-width: 760px) {
+    .card {
+        flex: 0 0 calc(50% - 72px);
+    }
+    .recent-history__buttons {
+        flex: 0 0 50%;
+    }
+    .ring__wrapper {
+        flex: 0 0 calc(50% - 48px);
+    }
+}
+
+@media screen and (max-width: 512px) {
+    .card {
+        flex: 0 0 calc(100% - 72px);
+    }
+    .recent-history__buttons {
+        flex: 0 0 100%;
+    }
+    .ring__wrapper {
+        flex: 0 0 calc(100% - 160px);
+        margin: 24px 80px;
+    }
+    .chart {
+        display: none;
+    }
+    .title {
+        font-size: 7.8vw;
+    }
+}
+
+@media screen and (max-width: 412px) {
+    .ring__wrapper {
+        flex: 0 0 calc(100% - 48px);
+        margin: 24px;
+    }
 }

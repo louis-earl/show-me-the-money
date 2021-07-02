@@ -13,16 +13,15 @@ function PastMeetingSummary(props) {
     return (
         <>
             {props.meeting &&
-                <Link to={"/past-meeting/" + id} className="card__outer">
-                    <div className="card">
-                        <h3>{meeting_name}</h3>
-                        <p className="cost">${cost.toFixed(2)}</p>
+                <Link to={"/past-meeting/" + id} className="card">
 
-                        <DateBubble date={start_time} />
-                        <TimeBubble time={runtime} />
-                        <AttendeesBubble attendeeCount={attendee_count} />
+                    <h3>{meeting_name}</h3>
+                    <p className="cost">${cost.toFixed(2)}</p>
 
-                    </div>
+                    <DateBubble date={start_time} />
+                    <TimeBubble time={runtime} />
+                    <AttendeesBubble attendeeCount={attendee_count} />
+
                 </Link>
             }
         </>
