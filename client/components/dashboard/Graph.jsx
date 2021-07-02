@@ -22,10 +22,6 @@ function Graph(props) {
             }
         }
 
-
-
-
-
         const labels = props.meetingsHistory.map((meeting) => meeting.meeting_name)
         const data = {
             labels: labels,

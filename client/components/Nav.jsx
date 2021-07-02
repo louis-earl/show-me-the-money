@@ -6,12 +6,6 @@ import { logoutUser } from '../actions/auth'
 
 function Nav({ auth, isMeeting, logout, location }) {
 
-  const toggleBurger = () => {
-    setBurgerVisible(currentBurgerState => {
-      return !currentBurgerState
-    })
-  }
-
   useEffect(() => {
     window.onscroll = function () { checkNav() }
 
@@ -68,11 +62,11 @@ function Nav({ auth, isMeeting, logout, location }) {
             <ul className="nav__list">
 
               <li className={"nav__item" + (isLogin ? " nav-current" : "")}>
-                <Link onClick={toggleBurger} className="nav__link" to='/login'>Login</Link>
+                <Link className="nav__link" to='/login'>Login</Link>
               </li>
 
               <li className={"nav__item" + (navPath == "/register" ? " nav-current" : "")}>
-                <Link onClick={toggleBurger} className="nav__link" to='/register'>Register</Link>
+                <Link className="nav__link" to='/register'>Register</Link>
               </li>
 
             </ul>

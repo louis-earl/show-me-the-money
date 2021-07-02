@@ -16,9 +16,9 @@ function DisplayTime({ runtime }) {
 
     return (
         <span>
-            {showHrs && <>{hrs} {hrsText}, </>}
-            {showMin && <>{min} {minText}, </>}
-            {sec} {secText}
+            {showHrs && <>{hrs}&nbsp;{hrsText}, </>}
+            {showMin && <>{min}&nbsp;{minText}, </>}
+            {sec}&nbsp;{secText}
         </span>
     )
 }

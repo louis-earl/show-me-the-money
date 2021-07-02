@@ -26,7 +26,7 @@ function Ticker(props) {
   }, [])
 
   return (
-    <div className="ticker__wrapper">
+    <div className="ring__wrapper">
 
       <div className="ticker__ring">
         <div className="ticker">

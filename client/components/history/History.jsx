@@ -21,7 +21,7 @@ function History(props) {
     </div>
     {
       props.meetingsHistory.length > 0 ?
-        <div className="recent-history__grid"> {
+        <div className="dashboard__grid"> {
 
           historyArr.map((meeting) => {
               return <PastMeetingSummary key={meeting.id} meeting={meeting} />

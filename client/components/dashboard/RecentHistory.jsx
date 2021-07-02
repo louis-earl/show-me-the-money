@@ -20,7 +20,7 @@ function RecentHistory(props) {
     </div>
     {
       props.meetingsHistory.length > 0 ?
-        <div className="recent-history__grid"> {
+        <div className="dashboard__grid"> {
 
           recentHistoryArr.map((meeting, index) => {
             if (index < 5)
