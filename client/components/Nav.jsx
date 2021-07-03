@@ -53,7 +53,7 @@ function Nav({ auth, isMeeting, logout, location }) {
               </li>
 
               <li className="nav__item" id="log-out">
-                <Link to='/' className="nav__link" onClick={() => logout()}>Logout</Link>
+                <Link to="/" className="nav__link" onClick={() => logout()}>Logout</Link>
               </li>
 
             </ul>
@@ -81,7 +81,9 @@ function Nav({ auth, isMeeting, logout, location }) {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     logout: () => {
-      const confirmSuccess = () => ownProps.history.push('/')
+      const confirmSuccess = () => {
+        if (ownProps.location.pathname != "/") ownProps.history.push("/")
+      }
       dispatch(logoutUser(confirmSuccess))
     }
   }

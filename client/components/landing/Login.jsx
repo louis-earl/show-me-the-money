@@ -20,12 +20,11 @@ function Login(props) {
     })
   }
 
-
   const handleSubmit = (e) => {
     e.preventDefault()
     let { username, password } = formData
     const confirmSuccess = () => {
-      props.history.push("/")
+      if (props.location.pathname != "/") props.history.push('/') 
     }
     props.dispatch(loginUser({ username, password }, confirmSuccess))
   }

@@ -1,7 +1,8 @@
 import { getUserTokenInfo, isAuthenticated, removeUser } from '../utils/auth'
 import { login, register } from '../apis/auth'
+import { resetMeeting } from './currentMeeting'
 
-export function requestLogin () {
+export function requestLogin() {
   return {
     type: 'LOGIN_REQUEST',
     isFetching: true,
@@ -9,7 +10,7 @@ export function requestLogin () {
   }
 }
 
-export function receiveLogin (user) {
+export function receiveLogin(user) {
   return {
     type: 'LOGIN_SUCCESS',
     isFetching: false,
@@ -18,7 +19,7 @@ export function receiveLogin (user) {
   }
 }
 
-export function loginError (message) {
+export function loginError(message) {
   return {
     type: 'LOGIN_FAILURE',
     isFetching: false,
@@ -27,10 +28,10 @@ export function loginError (message) {
   }
 }
 
-export function loginUser (creds, confirmSuccess) {
+export function loginUser(credentials, confirmSuccess) {
   return dispatch => {
     dispatch(requestLogin())
-    return login(creds)
+    return login(credentials)
       .then(userInfo => {
         dispatch(receiveLogin(userInfo))
         confirmSuccess()
@@ -41,7 +42,7 @@ export function loginUser (creds, confirmSuccess) {
   }
 }
 
-export function requestLogout () {
+export function requestLogout() {
   return {
     type: 'LOGOUT_REQUEST',
     isFetching: true,
@@ -49,7 +50,7 @@ export function requestLogout () {
   }
 }
 
-export function receiveLogout () {
+export function receiveLogout() {
   return {
     type: 'LOGOUT_SUCCESS',
     isFetching: false,
@@ -57,18 +58,19 @@ export function receiveLogout () {
   }
 }
 
-export function logoutUser (confirmSuccess) {
+export function logoutUser(confirmSuccess) {
   return dispatch => {
     dispatch(requestLogout())
     removeUser()
     dispatch(receiveLogout())
+    dispatch(resetMeeting())
     confirmSuccess()
   }
 }
 
-export function registerUserRequest (creds, confirmSuccess) {
+export function registerUserRequest(credentials, confirmSuccess) {
   return (dispatch) => {
-    register(creds)
+    register(credentials)
       .then(userInfo => {
         dispatch(receiveLogin(userInfo))
         confirmSuccess()
@@ -79,7 +81,7 @@ export function registerUserRequest (creds, confirmSuccess) {
 
 export function checkAuth(confirmSuccess) {
   return dispatch => {
-    if(isAuthenticated()) {
+    if (isAuthenticated()) {
       dispatch(receiveLogin(getUserTokenInfo()))
       confirmSuccess()
     }

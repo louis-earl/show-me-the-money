@@ -35,7 +35,11 @@ function Register(props) {
     let { username, password, confirm_password, first_name, last_name, hourly_wage } = formData
     hourly_wage = parseFloat(hourly_wage).toFixed(2)
     if (confirm_password != password) return props.dispatch(loginError("Passwords don't match"))
-    const confirmSuccess = () => { props.history.push('/') }
+
+    const confirmSuccess = () => { 
+      if (props.location.pathname != "/") props.history.push('/') 
+    }
+
     props.dispatch(registerUserRequest({ username, password, first_name, last_name, hourly_wage }, confirmSuccess))
   }
 

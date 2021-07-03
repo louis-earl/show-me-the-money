@@ -6,15 +6,15 @@ const errorMessages = {
   "INVALID_CREDENTIALS": "Sorry, your username or password is incorrect.",
 }
 
-export function register (creds) {
-  return authRegister(creds, { baseUrl })
+export function register (credentials) {
+  return authRegister(credentials, { baseUrl })
     .catch(err => {
       throw errorMessages[err.response.body.errorType]
     })
 }
 
-export function login (creds) {
-  return authLogin(creds, { baseUrl })
+export function login (credentials) {
+  return authLogin(credentials, { baseUrl })
     .catch(err => {
       throw errorMessages[err.response.body.errorType]
     })
