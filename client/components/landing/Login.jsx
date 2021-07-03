@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom'
-import { loginUser, loginError } from "../../actions/auth"
+import { loginUser } from "../../actions/auth"
 
-function Login(props) {
-  const { auth } = props
+function Login({auth, dispatch, location, history}) {
 
   const [formData, setFormData] = useState({
     username: "",
@@ -24,9 +23,9 @@ function Login(props) {
     e.preventDefault()
     let { username, password } = formData
     const confirmSuccess = () => {
-      if (props.location.pathname != "/") props.history.push('/') 
+      if (location.pathname != "/") history.push('/') 
     }
-    props.dispatch(loginUser({ username, password }, confirmSuccess))
+    dispatch(loginUser({ username, password }, confirmSuccess))
   }
 
   return (
