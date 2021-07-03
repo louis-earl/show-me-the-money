@@ -26,9 +26,9 @@ function Ticker(props) {
   }, [])
 
   return (
-    <div className="ring__wrapper">
+    <div className="ring__wrapper ring__wrapper--meeting">
 
-      <div className="ticker__ring">
+      <div className="ring ring--ticker">
         <div className="ticker">
           <p className="ticker__meeting-name">{props.currentMeeting.meeting_name || "My Awesome Meeting"}</p>
           <p className="ticker__meeting-cost">${cost.toFixed(2)} </p>

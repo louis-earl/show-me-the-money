@@ -16,7 +16,7 @@ const CurrentMeeting = (props) => {
 
       <Ticker />
 
-      <div className="columns columns--center">
+      <div className="columns columns--input columns--center">
 
         <button className="button--warning" onClick={(e) => handlePause()}>
           Pause

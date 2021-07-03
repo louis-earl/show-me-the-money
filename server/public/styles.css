@@ -19,7 +19,7 @@ h2 {
 }
 
 .title {
-    color: white;
+    color: #ffffff;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 40px;
@@ -90,7 +90,6 @@ li.nav__item {
 
 li.nav__item a {
     display: block;
-    color: white;
     text-align: center;
     padding: 6px 12px;
     text-decoration: none;
@@ -112,7 +111,7 @@ li.nav__item:hover {
 }
 
 input[type=text], input[type=password], input[type=number] {
-    width: 100%;
+    flex: 1 1;
     padding: 12px 20px;
     margin: 8px 16px;
     box-sizing: border-box;
@@ -126,7 +125,7 @@ input[type=submit], button {
     background-color: #00be4f;
     border-radius: 28px;
     border: none;
-    padding: 12px 20px;
+    padding: 12px 32px;
     margin: 16px;
     color: #ffffff;
     font-size: 18px;
@@ -145,7 +144,7 @@ input[type=submit], button {
 }
 
 .button--user {
-    background-color: #fff;
+    background-color: #ffffff;
     color: #000;
     box-shadow: 0px 4px 4px #2d2e3355;
 }
@@ -164,6 +163,7 @@ input[type=submit], button {
     display: flex;
     margin: 0 -16px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .columns--center {
@@ -233,13 +233,20 @@ input[type=submit], button {
 .ring__wrapper {
     display: flex;
     justify-content: center;
-    margin: 24px;
-    flex: 0 0 calc(calc(100% / 3) - 48px);
+    margin: 24px 16px;
 }
 
-.ticker__ring {
+.ring__wrapper--statistic {
+    flex: 0 0 calc(calc(100% / 3) - 32px);
+}
+
+.ring__wrapper--meeting {
+    margin: 24px -16px;
+}
+
+.ring {
     background-color: #00be4f;
-    padding: 16px;
+    padding: 12px;
     border-radius: 50%;
     max-width: 56vh;
     max-height: 56vh;
@@ -247,14 +254,8 @@ input[type=submit], button {
     box-shadow: 0px 4px 4px #2d2e3355;
 }
 
-.statistic__ring {
-    background-color: #00be4f;
+.ring--statistic {
     padding: 8px;
-    border-radius: 50%;
-    max-width: 56vh;
-    max-height: 56vh;
-    flex-grow: 1;
-    box-shadow: 0px 4px 4px #2d2e3355;
 }
 
 .ticker {
@@ -327,9 +328,17 @@ input[type=submit], button {
     .recent-history__buttons {
         flex: 0 0 50%;
     }
-    .ring__wrapper {
+    .ring__wrapper--statistic {
         flex: 0 0 calc(50% - 48px);
+        margin: 16px 24px;
     }
+}
+
+@media screen and (max-width: 600px) {
+    .ticker__meeting-name {
+        margin: 16px 72px;
+    }
+    
 }
 
 @media screen and (max-width: 512px) {
@@ -339,9 +348,9 @@ input[type=submit], button {
     .recent-history__buttons {
         flex: 0 0 100%;
     }
-    .ring__wrapper {
-        flex: 0 0 calc(100% - 160px);
-        margin: 24px 80px;
+    .ring__wrapper--statistic {
+        flex: 0 0 80%;
+        margin: 24px 10%;
     }
     .chart {
         display: none;
@@ -349,11 +358,40 @@ input[type=submit], button {
     .title {
         font-size: 7.8vw;
     }
+    .columns--input {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .ticker__meeting-name {
+        font-size: 24px;
+        margin: 4px 64px;
+    }
+    .ticker__meeting-cost {
+        font-size: 64px;
+    }
+    .ticker__budget {
+    margin: -8px 12% 16px 54%;
+    }
 }
 
 @media screen and (max-width: 412px) {
-    .ring__wrapper {
-        flex: 0 0 calc(100% - 48px);
-        margin: 24px;
+    .ticker__meeting-name {
+        font-size: 20px;
+        margin: 4px 64px;
     }
+    .ticker__meeting-cost {
+        font-size: 52px;
+    }
+    .ring--ticker {
+        padding: 8px;
+    }
+    .ticker__icon {
+        width: 28px;
+        height: 28px;
+        margin: 4px 12px;
+    }
+    .ticker__budget {
+        padding: 4px;
+    }
+
 }

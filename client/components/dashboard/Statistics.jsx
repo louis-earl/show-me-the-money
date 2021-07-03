@@ -24,8 +24,8 @@ function Statistics(props) {
             props.meetingsHistory.length > 0 ?
                 <div className="dashboard__grid">
 
-                    <div className="ring__wrapper">
-                        <div className="statistic__ring">
+                    <div className="ring__wrapper ring__wrapper--statistic">
+                        <div className="ring ring--statistic">
                             <div className="ticker">
                                 <h3>Total Cost</h3>
                                 {/* <p>By attending meetings, {props.user.first_name} has cost</p> */}
@@ -34,8 +34,8 @@ function Statistics(props) {
                         </div>
                     </div>
 
-                    <div className="ring__wrapper">
-                        <div className="statistic__ring">
+                    <div className="ring__wrapper ring__wrapper--statistic">
+                        <div className="ring ring--statistic">
                             <div className="ticker">
                                 <h3>Total Time</h3>
                                 <p className="statistic"><DisplayTimeBig runtime={totalTime} /> </p>
@@ -43,8 +43,8 @@ function Statistics(props) {
                         </div>
                     </div>
 
-                    <div className="ring__wrapper">
-                        <div className="statistic__ring">
+                    <div className="ring__wrapper ring__wrapper--statistic">
+                        <div className="ring ring--statistic">
                             <div className="ticker">
                                 <h3>Meeting Count</h3>
                                 <p className="statistic"><span className="statistic__text">{totalMeetings}</span> meetings</p>

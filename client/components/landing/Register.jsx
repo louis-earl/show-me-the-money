@@ -40,7 +40,7 @@ function Register(props) {
   }
 
   return (
-    <form className="Register form box" onSubmit={handleSubmit}>
+    <form className="form box" onSubmit={handleSubmit}>
       <h2>Create Account</h2>
       <p>Welcome, let's get started!</p>
 
@@ -51,11 +51,11 @@ function Register(props) {
         <span className="error">{auth.errorMessage}</span>
       }
 
-      <div className="columns">
+      <div className="columns columns--input">
         <input required placeholder="User Name" type="text" name="username" autoComplete="username" onChange={handleChange} value={formData.username} />
       </div>
 
-      <div className="columns">
+      <div className="columns columns--input">
         <input required placeholder="First Name" type="text" name="first_name" onChange={handleChange} value={formData.first_name} />
 
         <input required placeholder="Last Name" type="text" name="last_name" onChange={handleChange} value={formData.last_name} />
@@ -63,13 +63,13 @@ function Register(props) {
 
       <br />
 
-      <div className="columns">
+      <div className="columns columns--input">
         <input required placeholder="Wage" type="number" name="hourly_wage" onChange={handleChange} value={formData.hourly_wage} />
       </div>
 
       <br />
 
-      <div className="columns">
+      <div className="columns columns--input">
         <input required placeholder="Password" type="password" name="password" autoComplete="new-password" onChange={handleChange} value={formData.password} />
 
         <input required placeholder="Confirm Password" type="password" name="confirm_password" autoComplete="new-password" onChange={handleChange} value={formData.confirm_password} />
@@ -77,7 +77,7 @@ function Register(props) {
 
       <br />
 
-      <div className="columns">
+      <div className="columns columns--input">
         <input value="Register" type="submit" />
       </div>
 

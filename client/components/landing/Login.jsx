@@ -41,7 +41,7 @@ function Login(props) {
         <span className="error">{auth.errorMessage}</span>
       )}
 
-      <div className="columns">
+      <div className="columns columns--input">
         <input
           required
           placeholder="Username"
@@ -53,7 +53,7 @@ function Login(props) {
         />
       </div>
 
-      <div className="columns">
+      <div className="columns columns--input">
         <input
           required
           placeholder="Password"
@@ -67,7 +67,7 @@ function Login(props) {
 
       <br />
 
-      <div className="columns">
+      <div className="columns columns--input">
         <input
           className="button"
           value="Sign In"

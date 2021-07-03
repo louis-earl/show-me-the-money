@@ -76,7 +76,7 @@ const NewMeeting = (props) => {
 
         <AddAttendees usersInMeeting={usersInMeeting} setUsersInMeeting={setUsersInMeeting} />
 
-        <div className="columns">
+        <div className="columns columns--input">
           <button onClick={(e) => handleClick()}>
             Start Meeting
           </button>
