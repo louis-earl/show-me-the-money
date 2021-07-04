@@ -239,6 +239,11 @@ input[type=submit], button {
     grid-column-end: 4;
 }
 
+.history__section {
+    margin: 24px 0;
+    padding-bottom: 32px;
+}
+
 .section {
     margin: 20px 0 60px 0;
 }

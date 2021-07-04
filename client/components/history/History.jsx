@@ -14,17 +14,46 @@ function History(props) {
 
   const historyArr = props.meetingsHistory.slice(0).reverse()
 
+  // [{title: "June 2021", meetings: []}, {title: "July 2021", meetings: []}]
+  let meetingDatesArr = []
+  props.meetingsHistory.forEach(m => {
 
-  return <div className="history section">
+    // Create date title
+    const dateObject = new Date(m.start_time)
+    const month = dateObject.toLocaleString("en-US", { month: "long" }) // December
+    const year = dateObject.toLocaleString("en-US", { year: "numeric" }) // 2019
+    const dateTitle = month + " " + year
+
+    // is date title already in array?
+    const groupObj = meetingDatesArr.find(g => g.title == dateTitle)
+    if (groupObj) {
+      groupObj.meetings.push(m)
+    }
+    else {
+      meetingDatesArr.push({ title: dateTitle, meetings: [m] })
+    }
+
+  })
+
+  return <div className="history">
     <div className="page-title">
-      <h2>{props.user.first_name}'s Meeting History</h2>
+      <h2>{props.user.first_name}'s meeting history</h2>
     </div>
     {
       props.meetingsHistory.length > 0 ?
-        <div className="dashboard__grid"> {
+        <div > {
 
-          historyArr.map((meeting) => {
-              return <PastMeetingSummary key={meeting.id} meeting={meeting} />
+          meetingDatesArr.slice(0).reverse().map((meetingGroup, i) => {
+            return (
+              <div className="history__section" key={i}>
+                <h3>{meetingGroup.title}</h3>
+                <div className="dashboard__grid">
+                  {meetingGroup.meetings.slice(0).reverse().map(meeting => {
+                    return <PastMeetingSummary key={meeting.id} meeting={meeting} />
+                  })}
+                </div>
+              </div>
+            )
           })}
 
         </div>

@@ -34,7 +34,7 @@ function Graph(props) {
             }]
         }
         return <>
-        <h2>Cost of Meetings</h2>
+        <h2>Cost of meetings</h2>
         <Bar labels={labels} data={data} options={options}/>
         </>
     }

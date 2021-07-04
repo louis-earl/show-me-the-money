@@ -10,7 +10,7 @@ function RecentHistory(props) {
 
   return <div className="history section">
     <div className="page-title">
-      <h2>{props.user.first_name}'s Recent Meetings</h2>
+      <h2>{props.user.first_name}'s recent meetings</h2>
     </div>
 
     <div className="dashboard__grid">
