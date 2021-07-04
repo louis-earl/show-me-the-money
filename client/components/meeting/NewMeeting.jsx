@@ -8,7 +8,8 @@ import { startMeeting } from "../../actions/currentMeeting"
 
 const NewMeeting = (props) => {
   const [usersInMeeting, setUsersInMeeting] = useState([])
-  const [localMeetingName, setLocalMeetingName] = useState("")
+  const [localName, setLocalName] = useState("")
+  const [localBudget, setLocalBudget] = useState(0)
   const [nameErrorMessage, setNameErrorMessage] = useState("")
   const [attendeeErrorMessage, setAttendeeErrorMessage] = useState("")
 
@@ -18,11 +19,11 @@ const NewMeeting = (props) => {
 
   const handleClick = () => {
     let canStart = true
-    if (localMeetingName == "") {
+    if (localName == "") {
       setNameErrorMessage("Meeting name required")
       canStart = false
     }
-    else if (localMeetingName.length <= 3) {
+    else if (localName.length <= 3) {
       setNameErrorMessage("Meeting name must be longer than 3 characters")
       canStart = false
     }
@@ -39,12 +40,16 @@ const NewMeeting = (props) => {
     }
     
     if (canStart) {
-      props.dispatch(startMeeting(props.currentUsers, localMeetingName))
+      props.dispatch(startMeeting(props.currentUsers, localName))
     }
   }
 
-  const handleChange = (e) => {
-    setLocalMeetingName(e.target.value)
+  const handleNameChange = (e) => {
+    setLocalName(e.target.value)
+  }
+
+  const handleBudgetChange = (e) => {
+    setLocalBudget(e.target.value)
   }
 
   return (
@@ -62,11 +67,22 @@ const NewMeeting = (props) => {
         <div className="columns">
           <input
             required
-            className="meeting"
             placeholder="Meeting Name"
             type="text"
             name="meeting_name"
-            onChange={handleChange}
+            onChange={handleNameChange}
+          />
+        </div>
+
+        <p>Optionally, you can set a budget for your meeting:</p>
+
+        <div className="columns">
+          <input
+            required
+            placeholder="Budget"
+            type="number"
+            name="budget"
+            onChange={handleBudgetChange}
           />
         </div>
 
