@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { connect } from "react-redux"
 
 import Ticker from "./Ticker"
@@ -18,9 +18,9 @@ const CurrentMeeting = (props) => {
 
       <div className="columns columns--input columns--center">
 
-        <button className="button--warning" onClick={(e) => handlePause()}>
+        {/* <button className="button--warning" onClick={(e) => handlePause()}>
           Pause
-        </button>
+        </button> */}
 
         <button className="button--error" onClick={(e) => handleEnd()}>
           End Meeting

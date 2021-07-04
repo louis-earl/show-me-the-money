@@ -13,11 +13,8 @@ const AddAttendees = (props) => {
     }, [])
 
     const handleClick = (e, user) => {
-        const styleClass = "button--user-selected"
-        let arr = [...props.usersInMeeting]
-        if (e.target.className == styleClass) { e.target.className = "button--user" }
-        else { e.target.className = styleClass }
 
+        let arr = [...props.usersInMeeting]
         const foundUser = arr.find(el => el.username === user.username) !== undefined
         if (foundUser) {
             const index = arr.indexOf(user.username)
@@ -29,37 +26,44 @@ const AddAttendees = (props) => {
         }
     }
 
-
     return (
         <div className="users">
             <div className="columns">
-                <div>
-                    {props.users.map((user, i) => {
-                        return (
-                            <button
-                                key={i}
-                                className={user.username === props.user.username ? "button--user-selected" : "button--user"}
-                                type='button'
-                                onClick={(e) => handleClick(e, user)}
-                            >
-                                {user.username}
-                            </button>
-                        )
-                    })}
-                </div>
-            </div>
+                {props.users.map((user, i) => {
 
+                    const isSelected = props.currentUsers.map(e => e.username).includes(user.username)
+
+                    return (
+                        <div
+                            key={i}
+                            className={isSelected ? "user user--selected" : "user"}
+                            type='button'
+                            onClick={(e) => handleClick(e, user)}
+                        >
+                            <h3 className={isSelected 
+                                ? "user__first-last user__first-last--selected" 
+                                : "user__first-last"}>
+                                {user.first_name}  {user.last_name}
+                            </h3>
+                            <p className={isSelected 
+                                ? "user__username user__username--selected" 
+                                : "user__username"}>
+                                @{user.username}
+                            </p>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }
 
-// will need map state to props
 const mapStateToProps = (globalState) => {
     return {
         users: globalState.users,
-        user: globalState.auth.user
+        user: globalState.auth.user,
+        currentUsers: globalState.currentUsers
     }
 }
-
 
 export default connect(mapStateToProps)(AddAttendees)

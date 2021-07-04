@@ -143,10 +143,41 @@ input[type=submit], button {
     box-shadow: 0px 4px 4px #2d2e3355;
 }
 
-.button--user {
+.user {
     background-color: #ffffff;
-    color: #000;
+    /* flex: 0 0 calc(25% - 60px); */
+    border-radius: 16px;
+    padding: 16px;
+    margin: 16px;
+    font-size: 18px;
+    font-weight: 600;
     box-shadow: 0px 4px 4px #2d2e3355;
+}
+
+.user--selected {
+    background-color: #00be4f;
+}
+
+.user__username {
+    color: #2d2e33;
+    margin: 0;
+}
+
+.user__username--selected {
+    color: #f2f2f2;
+}
+
+.user__first-last {
+    color: #000000;
+    margin: 0;
+}
+
+.user__first-last--selected {
+    color: #ffffff;
+}
+
+.user__grid {
+    display: flex;
 }
 
 .error {
