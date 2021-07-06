@@ -23,7 +23,8 @@ function Nav({ auth, isMeeting, logout, location }) {
   }, [])
 
   const navPath = location.pathname
-  const isLogin = navPath == "/login" || navPath == "/"
+  const isLogin = navPath == "/login"
+  const isLanding = navPath == "/"
   const isHistory = navPath == "/history" || navPath.includes("/past-meeting")
   const isDashboard = navPath == "/dashboard" || navPath == "/"
 
@@ -61,6 +62,10 @@ function Nav({ auth, isMeeting, logout, location }) {
           : (
             <ul className="nav__list">
 
+              <li className={"nav__item" + (isLanding ? " nav-current" : "")}>
+                <Link className="nav__link" to='/'>About</Link>
+              </li>
+
               <li className={"nav__item" + (isLogin ? " nav-current" : "")}>
                 <Link className="nav__link" to='/login'>Login</Link>
               </li>
@@ -68,6 +73,8 @@ function Nav({ auth, isMeeting, logout, location }) {
               <li className={"nav__item" + (navPath == "/register" ? " nav-current" : "")}>
                 <Link className="nav__link" to='/register'>Register</Link>
               </li>
+
+
 
             </ul>
           )

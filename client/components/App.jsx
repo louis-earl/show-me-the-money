@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import Landing from './landing/Landing'
 import Login from './landing/Login'
 import Register from './landing/Register'
 import Nav from './Nav'
@@ -35,7 +36,7 @@ function App({ auth, dispatch }) {
           {auth.isAuthenticated ?
             <Route exact path="/" component={Dashboard} />
             :
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Landing} />
           }
 
           <Route path="/login" component={Login} />

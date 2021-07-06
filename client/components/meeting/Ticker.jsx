@@ -36,9 +36,10 @@ function Ticker(props) {
 
           <div className="ticker__info-wrapper">
 
-            <TimeBubble time={seconds * 1000} />
-
-            <AttendeesBubble attendeeCount={props.currentMeeting.attendee_count} />
+            <div>
+              <TimeBubble time={seconds * 1000} />
+              <AttendeesBubble attendeeCount={props.currentMeeting.attendee_count} />
+            </div>
 
           </div>
         </div>
