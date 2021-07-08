@@ -2,8 +2,11 @@
   "name": "show-me-the-money",
   "version": "0.4.0",
   "description": "$how Me The Money",
-  "repository": "https://github.com/dev-academy-challenges/show-me-the-money.git",
+  "repository": "https://github.com/louis-earl/show-me-the-money.git",
   "main": "server/index.js",
+  "engines": {
+    "node": "15.x"
+  },
   "scripts": {
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run webpack -- --watch",
