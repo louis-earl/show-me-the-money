@@ -13,7 +13,7 @@ function Ticker(props) {
 
     // if meeting already in progress, use those details instead 
     if (props.currentMeeting.meetingInProgress) {
-      const runTime = (Date.now() - props.currentMeeting.start_time) / 1000
+      const runTime = Math.round(Date.now() / 1000) - props.currentMeeting.start_time
       setSeconds(runTime)
       props.dispatch(tickOneSecond())
     }

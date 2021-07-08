@@ -5,7 +5,8 @@
   "repository": "https://github.com/louis-earl/show-me-the-money.git",
   "main": "server/index.js",
   "engines": {
-    "node": "15.x"
+    "node": "15.x",
+    "npm": "7.x"
   },
   "scripts": {
     "dev": "run-p dev:client dev:server",

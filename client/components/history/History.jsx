@@ -17,7 +17,7 @@ function History(props) {
   props.meetingsHistory.forEach(m => {
 
     // Create date title
-    const dateObject = new Date(m.start_time)
+    const dateObject = new Date(m.start_time * 1000)
     const month = dateObject.toLocaleString("en-US", { month: "long" }) // December
     const year = dateObject.toLocaleString("en-US", { year: "numeric" }) // 2019
     const dateTitle = month + " " + year

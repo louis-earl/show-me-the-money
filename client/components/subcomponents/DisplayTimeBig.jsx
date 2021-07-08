@@ -1,7 +1,7 @@
 import React from 'react'
 
 function DisplayTime({ runtime }) {
-    const date = new Date(runtime)
+    const date = new Date(runtime * 1000)
     const hrs = date.getHours() - 12
     const min = date.getMinutes()
     const sec = date.getSeconds()

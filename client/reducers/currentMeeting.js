@@ -23,13 +23,13 @@ function currentMeeting(state = initialMeetingState, action) {
         ...state,
         meeting_name: action.meetingName,
         attendees: action.attendees,
-        start_time: Date.now(),
+        start_time: Math.round(Date.now() / 1000),
         meetingInProgress: true,
         attendee_count: action.attendees.length,
       }
 
     case END_MEETING:
-      return { ...state, meetingInProgress: false, end_time: Date.now() }
+      return { ...state, meetingInProgress: false, end_time: Math.round(Date.now() / 1000)}
 
     case TICK_ONE_SECOND:
       const wagesArr = state.attendees.map(e => e.hourly_wage / 3600)
@@ -37,7 +37,7 @@ function currentMeeting(state = initialMeetingState, action) {
       const reducer = (a, b) => { return a + b }
       const totalWagesPerSec = wagesArr.reduce(reducer)
 
-      const totalWages = totalWagesPerSec * ((Date.now() - state.start_time) / 1000)
+      const totalWages = totalWagesPerSec * (Math.round(Date.now() / 1000) - state.start_time)
 
       return { ...state, cost: totalWages }
 
