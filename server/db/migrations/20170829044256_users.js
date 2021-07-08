@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  knex.schema.dropTableIfExists('users')
+  return knex.schema.dropTableIfExists('users')
     .then(() => {
       return knex.schema.createTable('users', table => {
         table.increments('id')
