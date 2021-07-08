@@ -14,6 +14,12 @@ function getUsersMeetingHistory (id, db = connection) {
     .join('attendees', 'meetings.id', 'attendees.meeting_id')
     .where('user_id', id)
     .select()
+    .then(meetings => {
+        meetings.map(m => {
+            return {...m, cost: parseFloat(m.cost)}
+        })
+        return meetings
+    })
     .catch((err) => {
         console.log(err.message)
       })
@@ -35,6 +41,10 @@ function getMeetingByMeetingID (meetingID, db = connection) {
     .where('id', meetingID)
     .select()
     .first()
+    .then(m => {
+        console.log("get meeting by meetingId", m)
+        return m
+    })
     .catch((err) => {
         console.log(err.message)
       })
