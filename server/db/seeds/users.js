@@ -8,7 +8,6 @@ exports.seed = function (knex) {
       return Promise.all(
         [
           {
-            id: 1,
             username: 'louieearll',
             password: 'test',
             first_name: 'Louis',
@@ -16,7 +15,6 @@ exports.seed = function (knex) {
             hourly_wage: 23.89,
           },
           {
-            id: 2,
             username: 'katier',
             password: 'test',
             first_name: 'Katherine',
@@ -24,7 +22,6 @@ exports.seed = function (knex) {
             hourly_wage: 33.8,
           },
           {
-            id: 3,
             username: 'alex',
             password: 'test',
             first_name: 'Alex',
@@ -32,7 +29,6 @@ exports.seed = function (knex) {
             hourly_wage: 33.8,
           },
           {
-            id: 4,
             username: 'jackk',
             password: 'test',
             first_name: 'Jack',
@@ -40,7 +36,6 @@ exports.seed = function (knex) {
             hourly_wage: 40.5,
           },
           {
-            id: 5,
             username: 'mel-wright',
             password: 'test',
             first_name: 'Melanie',
@@ -48,7 +43,6 @@ exports.seed = function (knex) {
             hourly_wage: 46,
           },
           {
-            id: 6,
             username: 'anonadmin',
             password: 'test',
             first_name: 'Admin',
@@ -56,7 +50,6 @@ exports.seed = function (knex) {
             hourly_wage: 46,
           },
           {
-            id: 7,
             username: 'watson99',
             password: 'test',
             first_name: 'Stewart',

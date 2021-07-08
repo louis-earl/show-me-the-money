@@ -40,10 +40,6 @@ function getMeetingByMeetingID(meetingID, db = connection) {
         .where('id', meetingID)
         .select()
         .first()
-        .then(m => {
-            console.log("get meeting by meetingId", m)
-            return m
-        })
         .catch((err) => {
             console.log(err.message)
         })
