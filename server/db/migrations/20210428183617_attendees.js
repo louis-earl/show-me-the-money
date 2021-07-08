@@ -1,10 +1,13 @@
-exports.up = function(knex) {
-    return knex.schema.createTable('attendees', table => {
-    table.integer('user_id')
-    table.integer('meeting_id')
-    })
+exports.up = function (knex) {
+    knex.schema.dropTableIfExists('attendees')
+        .then(() => {
+            return knex.schema.createTable('attendees', table => {
+                table.integer('user_id')
+                table.integer('meeting_id')
+            })
+        })
 }
 
-exports.down = function(knex) {
+exports.down = function (knex) {
     return knex.schema.dropTableIfExists('attendees')
 }
