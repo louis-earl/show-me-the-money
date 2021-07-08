@@ -12,8 +12,6 @@ function History(props) {
       props.dispatch(receiveMeetings(props.user.id))
   }, [props.user.id])
 
-  const historyArr = props.meetingsHistory.slice(0).reverse()
-
   // [{title: "June 2021", meetings: []}, {title: "July 2021", meetings: []}]
   let meetingDatesArr = []
   props.meetingsHistory.forEach(m => {

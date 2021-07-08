@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Landing from './landing/Landing'
@@ -12,6 +12,7 @@ import PastMeetingFull from './history/PastMeetingFull'
 import History from './history/History'
 
 import { checkAuth } from '../actions/auth'
+import NotFound from './NotFound'
 
 function App({ auth, dispatch }) {
 
@@ -34,18 +35,23 @@ function App({ auth, dispatch }) {
         <div className="content">
 
           {auth.isAuthenticated ?
-            <Route exact path="/" component={Dashboard} />
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route path="/meeting" component={Meeting} />
+              <Route path="/past-meeting/:id" component={PastMeetingFull} />
+              <Route path="/history" component={History} />
+              <Route component={NotFound} />
+            </Switch>
             :
-            <Route exact path="/" component={Landing} />
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route component={NotFound} />
+            </Switch>
           }
 
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route path="/meeting" component={Meeting} />
-          <Route path="/past-meeting/:id" component={PastMeetingFull} />
-          <Route path="/history" component={History} />
         </div>
       </div>
 
