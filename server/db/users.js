@@ -20,10 +20,10 @@ function userExists (username, db = connection) {
 function getUserByUsername (username, db = connection) {
   return db('users')
     .where('username', username)
-    .then(u => {
-      return {...u, hourly_wage: parseFloat(u.hourly_wage)}
-    })
     .first()
+    .then(u => {
+      return { ...u, hourly_wage: parseFloat(u.hourly_wage) }
+    })
 }
 
 function getAllUsers (db = connection) {
