@@ -6,5 +6,5 @@ exports.up = function(knex) {
 }
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('attendees')
+    return knex.schema.dropTableIfExists('attendees')
 }
