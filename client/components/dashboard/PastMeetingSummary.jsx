@@ -12,7 +12,7 @@ function PastMeetingSummary(props) {
 
     return (
         <>
-            {props.meeting &&
+            {props.meeting &&   
                 <Link to={"/past-meeting/" + id} className="card">
 
                     <h3>{meeting_name}</h3>

@@ -27,9 +27,8 @@ function Statistics(props) {
                     <div className="ring__wrapper ring__wrapper--statistic">
                         <div className="ring ring--statistic">
                             <div className="ticker">
-                                <h3>Total Cost</h3>
-                                {/* <p>By attending meetings, {props.user.first_name} has cost</p> */}
-                                <p className="cost statistic">${totalCost.toFixed(2)}</p>
+                                <h3>Total Cost:</h3>
+                                <p className="cost statistic">${totalCost.toFixed(0)}</p>
                             </div>
                         </div>
                     </div>
@@ -37,7 +36,7 @@ function Statistics(props) {
                     <div className="ring__wrapper ring__wrapper--statistic">
                         <div className="ring ring--statistic">
                             <div className="ticker">
-                                <h3>Total Time</h3>
+                                <h3>Total Time:</h3>
                                 <p className="statistic"><DisplayTimeBig runtime={totalTime} /> </p>
                             </div>
                         </div>
@@ -46,7 +45,7 @@ function Statistics(props) {
                     <div className="ring__wrapper ring__wrapper--statistic">
                         <div className="ring ring--statistic">
                             <div className="ticker">
-                                <h3>Meeting Count</h3>
+                                <h3>Total Attended:</h3>
                                 <p className="statistic"><span className="statistic__text">{totalMeetings}</span> meetings</p>
                             </div>
                         </div>

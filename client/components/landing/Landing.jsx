@@ -16,7 +16,9 @@ function Landing(props) {
             </div>
 
             <div className="section landing__grid">
-                <div className="landing__ticker-example"><TickerExample /></div>
+                <div className="landing__ticker-example">
+                    <TickerExample />
+                </div>
                 <div>
                     <h1>Ever wondered how much they really cost?</h1>
                     <p>$how Me The Money is an app designed to display the cost of your meetings in real time.</p>
@@ -26,23 +28,27 @@ function Landing(props) {
 
             <div className="section landing__grid">
                 <h1>Keep a record of your meeting history.</h1>
+                <img className="landing__image--history" src="./images/meeting-history.jpg" />
             </div>
 
             <div className="section landing__grid">
+                <img className="landing__image--statistics" src="./images/statistics.jpg" />
                 <h1>Track the cost of your meetings over time.</h1>
             </div>
 
 
-            <h1 className="center-text">Ready? Let's get started!</h1>
-            <div className="columns columns--input columns--center">
-
-                <button className="" onClick={(e) => handlePause()}>
-                    Login
-                </button>
-
-                <button className="" onClick={(e) => handleEnd()}>
-                    Register
-                </button>
+            <div className="section card">
+                <h1 className="center-text">Ready? Let's get started!</h1>
+                <div className="columns columns--input columns--center">
+    
+                    <button className="" onClick={(e) => handlePause()}>
+                        Login
+                    </button>
+    
+                    <button className="" onClick={(e) => handleEnd()}>
+                        Register
+                    </button>
+                </div>
             </div>
 
 

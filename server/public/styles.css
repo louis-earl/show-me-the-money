@@ -43,14 +43,24 @@ h2 {
 }
 
 .landing__image--boring {
-    width: 59.5%;
+    width: 58%;
     margin: 20px 0 0 28px;
     border-radius: 16px;
 }
 
+.landing__image--history {
+    margin: 0 0 40px 0;
+    width: 58%;
+}
+
+.landing__image--statistics {
+    width: 50%;
+    margin: 0 40px 40px 0;
+}
+
 .landing__ticker-example {
     width: 100%;
-    margin: 0 52px 0 0;
+    margin: 0 60px 0 0;
 }
 
 a {
