@@ -24,33 +24,34 @@ function Statistics(props) {
             props.meetingsHistory.length > 0 ?
                 <div className="dashboard__grid">
 
-                    <div className="ring__wrapper ring__wrapper--statistic">
-                        <div className="ring ring--statistic">
-                            <div className="ticker">
+                    <div className="ring ring--statistic">
+                        <div className="ticker">
+                            <div className="ticker__content">
                                 <h3>Total Cost:</h3>
                                 <p className="cost statistic">${totalCost.toFixed(0)}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="ring__wrapper ring__wrapper--statistic">
-                        <div className="ring ring--statistic">
-                            <div className="ticker">
+                    <div className="ring ring--statistic">
+                        <div className="ticker">
+                            <div className="ticker__content">
+
                                 <h3>Total Time:</h3>
                                 <p className="statistic"><DisplayTimeBig runtime={totalTime} /> </p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="ring__wrapper ring__wrapper--statistic">
-                        <div className="ring ring--statistic">
-                            <div className="ticker">
+
+                    <div className="ring ring--statistic">
+                        <div className="ticker">
+                            <div className="ticker__content">
                                 <h3>Total Attended:</h3>
                                 <p className="statistic"><span className="statistic__text">{totalMeetings}</span> meetings</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 :
