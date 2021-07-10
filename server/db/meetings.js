@@ -43,6 +43,9 @@ function getMeetingByMeetingID(meetingID, db = connection) {
         .where('id', meetingID)
         .select()
         .first()
+        .then(m => {
+            return { ...m, cost: parseFloat(m.cost)}
+        })
         .catch((err) => {
             console.log(err.message)
         })
