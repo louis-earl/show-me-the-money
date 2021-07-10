@@ -16,7 +16,7 @@ function TickerExample(props) {
               <div className="ticker__info-wrapper">
     
                 <div>
-                    <TimeBubble time={1513000} />
+                    <TimeBubble time={1513} />
                     <AttendeesBubble attendeeCount={5} />
                 </div>
     
