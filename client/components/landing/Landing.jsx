@@ -43,7 +43,7 @@ function Landing(props) {
 
                     <Link to="./login">
                         <div className="button">
-                            Login
+                            Sign In
                         </div>
                     </Link>
 
