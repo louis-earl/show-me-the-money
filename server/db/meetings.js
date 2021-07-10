@@ -3,7 +3,10 @@ const connection = require('./connection')
 function saveMeeting(obj, db = connection) {
     return db('meetings')
         .insert(obj, 'id')
-        .then(meetingID => getMeetingByMeetingID(meetingID))
+        .then(meetingID => {
+            console.log("saveMeeting in dbFuncs:", meetingID[0])
+            return getMeetingByMeetingID(meetingID[0])
+        })
         .catch((err) => {
             console.log(err.message)
         })
