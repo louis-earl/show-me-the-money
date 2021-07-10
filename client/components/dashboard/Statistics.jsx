@@ -25,8 +25,8 @@ function Statistics(props) {
                 <div className="dashboard__grid">
 
                     <div className="ring ring--statistic">
-                        <div className="ticker">
-                            <div className="ticker__content">
+                        <div className="circle circle--statistic">
+                            <div className="circle__content circle__content--statistic">
                                 <h3>Total Cost:</h3>
                                 <p className="cost statistic">${totalCost.toFixed(0)}</p>
                             </div>
@@ -34,8 +34,8 @@ function Statistics(props) {
                     </div>
 
                     <div className="ring ring--statistic">
-                        <div className="ticker">
-                            <div className="ticker__content">
+                        <div className="circle circle--statistic">
+                            <div className="circle__content circle__content--statistic">
 
                                 <h3>Total Time:</h3>
                                 <p className="statistic"><DisplayTimeBig runtime={totalTime} /> </p>
@@ -45,8 +45,8 @@ function Statistics(props) {
 
 
                     <div className="ring ring--statistic">
-                        <div className="ticker">
-                            <div className="ticker__content">
+                        <div className="circle circle--statistic">
+                            <div className="circle__content circle__content--statistic">
                                 <h3>Total Attended:</h3>
                                 <p className="statistic"><span className="statistic__text">{totalMeetings}</span> meetings</p>
                             </div>

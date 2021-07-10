@@ -235,9 +235,6 @@ input[type=submit], button, .button {
 }
 
 .dashboard__grid {
-    /* display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px; */
     display: flex;
     flex-wrap: wrap;
     margin: -12px;
@@ -285,55 +282,69 @@ input[type=submit], button, .button {
     margin: 20px 0;
 }
 
-/* .ring__wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 24px 16px;
-}
-
-.ring__wrapper--statistic {
-    flex: 0 0 calc(calc(100% / 3) - 32px);
-}
-
-.ring__wrapper--meeting {
-    margin: 24px -16px;
-} */
-
 .ring {
     background-color: #00be4f;
     border-radius: 50%;
     height: 0;
-    padding-bottom: calc(calc(100% / 3) - 24px);
-    width: calc(calc(100% / 3) - 24px);
     box-shadow: 0px 4px 4px #2d2e3355;
-    margin: 12px;
 }
 
-/* .ring--statistic {
-    padding: 8px;
-} */
+.ring--statistic {
+    /* The margin provides spacing between statistic elements */
+    margin: 12px;
+    padding-bottom: calc(calc(100% / 3) - 24px);
+    width: calc(calc(100% / 3) - 24px);
+}
 
-.ticker {
+.ring--ticker {
+    /* The margin centers the ticker on screen */
+    margin: 0 auto;
+    /* padding-bottom: 56%; */
+    width: 100%;
+    max-width: 500px;
+}
+
+.circle {
     background-color: #ffffff;
     border-radius: 50%;
     height: 0;
-    padding-bottom: calc(100% - 16px);
-    width: calc(100% - 16px);
-    transform: translate(-8px, -8px);
     box-shadow: 0px 4px 4px #2d2e3355;
-    margin: 16px;
+    
 }
 
-.ticker__content {
-    padding-top: calc(calc(100% / 3) - 32px);
+.circle--statistic {
+    /* The margin provides the width of the ring */
+    margin: 16px;
+    transform: translate(-8px, -8px);
+    padding-bottom: calc(100% - 16px);
+    width: calc(100% - 16px);
+}
+
+.circle--ticker {
+    /* The margin provides the width of the ring */
+    margin: 20px;
+    transform: translate(-10px, 10px);
+    padding-bottom: calc(100% - 20px);
+    width: calc(100% - 20px);
+}
+
+.circle__content {
     text-align: center;
+}
+
+.circle__content--statistic {
+    padding-top: calc(calc(100% / 3) - 32px);
+}
+
+.circle__content--ticker {
+    padding-top: calc(20% - 32px);
 }
 
 .ticker__meeting-name {
     font-size: 32px;
     color: #2d2e33;
     font-weight: 700;
-    margin: 16px 56px;
+    margin: 8px 56px 16px 56px;
 }
 
 .ticker__meeting-cost {
@@ -360,12 +371,16 @@ input[type=submit], button, .button {
     margin: 8px 12px;
 }
 
+.ticker__budget-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .ticker__budget {
     font-size: 16px;
-    padding: 8px;
+    padding: 8px 12px;
     background-color: #e5e5e5;
-    flex-grow: 0;
-    margin: -8px 20% 16px 54%;
+    margin: -12px 0 12px 25%;
     border-radius: 12px;
 }
 
@@ -391,7 +406,7 @@ input[type=submit], button, .button {
     .recent-history__buttons {
         flex: 0 0 50%;
     }
-    .ring {
+    .ring--statistic {
         padding-bottom: calc(50% - 32px);
         width: calc(50% - 32px);
     }
@@ -408,15 +423,13 @@ input[type=submit], button, .button {
         margin: 20px 0 0 0;
         width: 100%;
     }
-    
-
 }
 
 @media screen and (max-width: 600px) {
     .ticker__meeting-name {
-        margin: 16px 72px;
+        margin: 8px 72px 16px 72px;
     }
-    .ring {
+    .ring--statistic {
         padding-bottom: calc(66.66% - 32px);
         width: calc(66.66% - 32px);
     }
@@ -444,41 +457,54 @@ input[type=submit], button, .button {
     }
     .ticker__meeting-name {
         font-size: 24px;
-        margin: 4px 64px;
+        margin: 16px 72px 4px 72px;
     }
     .ticker__meeting-cost {
         font-size: 64px;
     }
     .ticker__budget {
-        margin: -8px 12% 16px 54%;
+        padding: 4px 8px;
     }
-    .ring {
+    .ring--statistic {
         padding-bottom: calc(75% - 32px);
         width: calc(75% - 32px);
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .ticker__meeting-name {
+        font-size: 22px;
+        margin: 8px 64px 4px 64px;
     }
 }
 
 @media screen and (max-width: 412px) {
     .ticker__meeting-name {
         font-size: 20px;
-        margin: 4px 64px;
+        margin: 4px 54px;
     }
     .ticker__meeting-cost {
         font-size: 52px;
-    }
-    .ring--ticker {
-        padding: 8px;
     }
     .ticker__icon {
         width: 28px;
         height: 28px;
         margin: 4px 12px;
     }
-    .ticker__budget {
-        padding: 4px;
-    }
-    .ring {
+    .ring--statistic {
         padding-bottom: calc(100% - 32px);
         width: calc(100% - 32px);
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .ticker__meeting-name {
+        font-size: 18px;
+    }
+    .ticker__meeting-cost {
+        font-size: 48px;
+    }
+    .ticker__info-text, .ticker__budget {
+        font-size: 12px;
     }
 }

@@ -11,6 +11,13 @@ function Ticker(props) {
 
   useEffect(() => {
 
+    // Adjust ticker size on mount and on window resize
+    adjustTickerSize()
+
+    window.onresize = () => {
+      adjustTickerSize()
+    }
+
     // if meeting already in progress, use those details instead 
     if (props.currentMeeting.meetingInProgress) {
       const runTime = Math.round(Date.now() / 1000) - props.currentMeeting.start_time
@@ -22,22 +29,36 @@ function Ticker(props) {
       setSeconds(seconds => seconds + 1)
       props.dispatch(tickOneSecond())
     }, 1000)
-    return () => { clearInterval(interval) }
+
+    return () => {
+      clearInterval(interval)
+      window.onresize = null
+    }
   }, [])
+
+  function adjustTickerSize() {
+    const tickerRing = document.getElementById("ring--ticker");
+    const size = tickerRing.clientWidth
+    tickerRing.style.paddingBottom = size.toString() + "px"
+  }
 
   return (
 
-    <div className="ring ring--ticker">
-      <div className="ticker">
-        <p className="ticker__meeting-name">{props.currentMeeting.meeting_name || "My Awesome Meeting"}</p>
-        <p className="ticker__meeting-cost">${cost.toFixed(2)} </p>
-        <p className="ticker__budget">of $100.00</p>
+    <div id="ring--ticker" className="ring ring--ticker">
+      <div className="circle circle--ticker">
+        <div className="circle__content circle__content--ticker">
+          <p className="ticker__meeting-name">{props.currentMeeting.meeting_name || "My Awesome Meeting"}</p>
+          <p className="ticker__meeting-cost">${cost.toFixed(2)} </p>
+          <div className="ticker__budget-wrapper">
+            <p className="ticker__budget">of $100.00</p>
+          </div>
 
-        <div className="ticker__info-wrapper">
+          <div className="ticker__info-wrapper">
 
-          <div>
-            <TimeBubble time={seconds} />
-            <AttendeesBubble attendeeCount={props.currentMeeting.attendee_count} />
+            <div>
+              <TimeBubble time={seconds} />
+              <AttendeesBubble attendeeCount={props.currentMeeting.attendee_count} />
+            </div>
           </div>
 
         </div>
