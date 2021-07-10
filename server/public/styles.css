@@ -39,29 +39,17 @@ h2 {
 .landing__grid {
     display: flex;
     align-items: center;
-    
+    gap: 24px;
+}
+
+.landing__image {
+    width: calc(50% - 12px);
 }
 
 .landing__image--boring {
-    width: 58%;
-    margin: 20px 0 0 28px;
     border-radius: 16px;
 }
 
-.landing__image--history {
-    margin: 0 0 40px 0;
-    width: 58%;
-}
-
-.landing__image--statistics {
-    width: 50%;
-    margin: 0 40px 40px 0;
-}
-
-.landing__ticker-example {
-    width: 100%;
-    margin: 0 60px 0 0;
-}
 
 a {
     text-decoration: none;
@@ -148,7 +136,7 @@ input[type=text], input[type=password], input[type=number] {
     box-shadow: 0px 4px 4px #2d2e3355;
 }
 
-input[type=submit], button {
+input[type=submit], button, .button {
     background-color: #00be4f;
     border-radius: 28px;
     border: none;
@@ -402,11 +390,25 @@ input[type=submit], button {
     }
 }
 
+@media screen and (max-width: 660px) {
+    .landing__grid {
+        flex-direction: column;
+    }
+
+    .landing__grid--reverse {
+        flex-direction: column-reverse;
+    }
+
+    .landing__image {
+        margin: 20px 0 0 0;
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .ticker__meeting-name {
         margin: 16px 72px;
     }
-    
 }
 
 @media screen and (max-width: 512px) {
