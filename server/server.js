@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const path = require('path')
 
 const authRoutes = require('./routes/auth')
@@ -10,6 +11,7 @@ const attendeesRoutes = require('./routes/attendees')
 const server = express()
 
 server.use(express.json())
+server.use(cors())
 server.use(express.static(path.join('server', 'public')))
 
 server.use('/api/v1', authRoutes)
